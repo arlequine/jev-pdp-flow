@@ -26,3 +26,11 @@ export const findVariantBySku = (sku: string) => {
 
 /** Precio con IVA en centavos. Aritmética entera; se redondea una sola vez. */
 export const grossCents = (netCents: number) => Math.round((netCents * (100 + seed.taxRate * 100)) / 100);
+
+/** Precio final para el cliente: con IVA, en centavos, con la tasa explícita. */
+export const money = (netCents: number) => ({
+  amountCents: grossCents(netCents),
+  currency: 'MXN' as const,
+  taxIncluded: true as const,
+  taxRate: seed.taxRate,
+});

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import type { LegacyProduct, LegacyReview, LegacyStock, LegacyVariant } from '@jev/contracts';
-import { findById, findBySlug, seed } from '../lib/data';
+import { findById, findBySlug, money, seed } from '../lib/data';
 
 /**
  * Endpoints de la PDP vieja. La PDP los llama en cascada:
@@ -19,6 +19,7 @@ legacy.get('/api/legacy/products/:slug', (req, res) => {
     brand: p.brand,
     description: p.description,
     price: p.netPriceCents / 100,
+    priceMoney: money(p.netPriceCents),
     images: p.colors.map((c) => c.image),
   };
   res.json(body);
