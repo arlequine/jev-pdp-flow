@@ -35,6 +35,7 @@ legacy.get('/api/legacy/products/:id/variants', (req, res) => {
     color: v.color,
     size: v.size,
     image: p.colors.find((c) => c.name === v.color)!.image,
+    priceMoney: money(v.netPriceCents ?? p.netPriceCents),
   }));
   res.json(body);
 });

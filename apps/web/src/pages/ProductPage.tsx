@@ -5,6 +5,10 @@
 import { useEffect, useState } from 'react';
 import { PriceBlock } from '../features/pdp/PriceBlock';
 import '../features/pdp/pdp.css';
+import { VariantSelector } from '../features/pdp/VariantSelector';
+import { StockBadge } from '../features/pdp/StockBadge';
+import { AddToCart } from '../features/pdp/AddToCart';
+import { pickVariant, type VariantView } from '../features/pdp/variants';
 
 const styles: any = {
   breadcrumbs: { fontSize: 12, color: '#bbb', marginBottom: 14 },
@@ -13,15 +17,7 @@ const styles: any = {
   title: { fontSize: 30, margin: '6px 0 10px 0', color: '#222', fontWeight: 'normal' },
   rating: { fontSize: 13, color: '#aaa', marginBottom: 14 },
   priceNote: { fontSize: 11, color: '#ccc', marginBottom: 20 },
-  label: { fontSize: 12, color: '#aaa', margin: '16px 0 8px 0', textTransform: 'uppercase' },
-  swatches: { display: 'flex' },
-  swatch: { width: 32, height: 32, borderRadius: 16, marginRight: 10, cursor: 'pointer', border: '2px solid #fff', boxShadow: '0 0 0 1px #ddd' },
-  swatchActive: { width: 32, height: 32, borderRadius: 16, marginRight: 10, cursor: 'pointer', border: '2px solid #fff', boxShadow: '0 0 0 2px #555' },
-  sizes: { display: 'flex', flexWrap: 'wrap' },
-  size: { minWidth: 44, padding: '8px 10px', marginRight: 8, marginBottom: 8, textAlign: 'center', border: '1px solid #e5e5e5', color: '#aaa', cursor: 'pointer', fontSize: 13 },
-  sizeActive: { minWidth: 44, padding: '8px 10px', marginRight: 8, marginBottom: 8, textAlign: 'center', border: '1px solid #555', color: '#333', cursor: 'pointer', fontSize: 13 },
   sizeGuide: { fontSize: 12, color: '#bbb', textDecoration: 'underline', cursor: 'pointer', marginTop: 4 },
-  stock: { fontSize: 13, color: '#9c9', margin: '14px 0' },
   qtyRow: { display: 'flex', alignItems: 'center', margin: '14px 0' },
   qtyBtn: { width: 30, height: 30, lineHeight: '30px', textAlign: 'center', border: '1px solid #eee', cursor: 'pointer', color: '#aaa' },
   qtyVal: { width: 40, textAlign: 'center', fontSize: 14 },
@@ -34,7 +30,6 @@ const styles: any = {
   review: { borderTop: '1px solid #f0f0f0', padding: '12px 0' },
   reviewHead: { fontSize: 12, color: '#bbb' },
   reviewText: { fontSize: 13, color: '#999', marginTop: 4 },
-  added: { fontSize: 12, color: '#9c9', marginTop: 8 },
   share: { marginTop: 18, fontSize: 12, color: '#ccc' },
   shareIcon: { display: 'inline-block', width: 22, height: 22, borderRadius: 11, background: '#eee', marginRight: 6, verticalAlign: 'middle' },
   modalBg: { position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,.4)', zIndex: 20 },
@@ -59,7 +54,6 @@ export default function ProductPage(props: any) {
   const [qty, setQty] = useState(1);
   const [tab, setTab] = useState('desc');
   const [showGuide, setShowGuide] = useState(false);
-  const [added, setAdded] = useState(false);
   const [wish, setWish] = useState(false);
   const [cp, setCp] = useState('');
   const [shipMsg, setShipMsg] = useState('');
@@ -145,11 +139,22 @@ export default function ProductPage(props: any) {
     if (sizes.indexOf(v.size) === -1) sizes.push(v.size);
   });
 
-  // stock total del producto
-  let totalStock = 0;
-  for (let i = 0; i < stock.length; i++) {
-    totalStock = totalStock + stock[i].qty;
-  }
+  // variantes con su stock y su precio (PDP-142.5)
+  const variantViews: VariantView[] = variants.map((v) => ({
+    sku: v.sku,
+    color: v.color,
+    size: v.size,
+    image: v.image,
+    price: v.priceMoney,
+    stock: (stock.find((x) => x.variantId === v.id) || { qty: 0 }).qty,
+  }));
+  const selected = pickVariant(variantViews, selectedColor, selectedSize);
+
+  const chooseColor = (c: string) => {
+    setSelectedColor(c);
+    const v = variantViews.find((x) => x.color === c);
+    if (v && product.images.indexOf(v.image) !== -1) setImageIndex(product.images.indexOf(v.image));
+  };
 
   // promedio de reseñas
   let sum = 0;
@@ -182,26 +187,6 @@ export default function ProductPage(props: any) {
     if (name === 'Terracota') return '#b5543a';
     if (name === 'Mezclilla') return '#3e5f8a';
     return '#ccc';
-  };
-
-  const addToCart = () => {
-    let sku = variants.length > 0 ? variants[0].sku : '';
-    for (let i = 0; i < variants.length; i++) {
-      if (variants[i].color === selectedColor && variants[i].size === selectedSize) {
-        sku = variants[i].sku;
-      }
-    }
-    fetch('/api/cart', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sku: sku, quantity: qty }),
-    })
-      .then((r) => r.json())
-      .then((c) => {
-        console.log('carrito', c);
-        setAdded(true);
-        setTimeout(() => setAdded(false), 2500);
-      });
   };
 
   const toggleWish = () => {
@@ -281,37 +266,24 @@ export default function ProductPage(props: any) {
             {stars(avg)} {avg} ({reviews.length} reseñas)
           </div>
 
-          <PriceBlock price={product.priceMoney} />
+          <PriceBlock price={selected ? selected.price : product.priceMoney} />
           <div style={styles.priceNote}>Envío gratis en compras mayores a $999</div>
 
-          {/* color */}
-          <div style={styles.label}>Color: {selectedColor}</div>
-          <div style={styles.swatches}>
-            {colors.map((c) => (
-              <div
-                key={c}
-                title={c}
-                style={{ ...(c === selectedColor ? styles.swatchActive : styles.swatch), background: colorHex(c) }}
-                onClick={() => setSelectedColor(c)}
-              />
-            ))}
-          </div>
-
-          {/* talla */}
-          <div style={styles.label}>Talla: {selectedSize}</div>
-          <div style={styles.sizes}>
-            {sizes.map((s) => (
-              <div key={s} style={s === selectedSize ? styles.sizeActive : styles.size} onClick={() => setSelectedSize(s)}>
-                {s}
-              </div>
-            ))}
-          </div>
+          <VariantSelector
+            colors={colors.map((c) => ({ name: c, hex: colorHex(c) }))}
+            sizes={sizes}
+            variants={variantViews}
+            color={selectedColor}
+            size={selectedSize}
+            onColor={chooseColor}
+            onSize={setSelectedSize}
+          />
           <div style={styles.sizeGuide} onClick={() => setShowGuide(true)}>
             Guía de tallas
           </div>
 
-          {/* stock */}
-          <div style={styles.stock}>{totalStock > 0 ? 'En stock' : 'Agotado'}</div>
+          {/* stock de la variante elegida */}
+          <StockBadge stock={selected ? selected.stock : 0} />
 
           {/* cantidad */}
           <div style={styles.qtyRow}>
@@ -325,12 +297,7 @@ export default function ProductPage(props: any) {
           </div>
 
           {/* agregar al carrito: arriba de las reseñas; en móvil queda fijo abajo */}
-          <div className="pdp-buybar">
-            <div className="pdp-add" onClick={addToCart}>
-              AGREGAR AL CARRITO
-            </div>
-            {added && <div style={styles.added}>Agregado ✓</div>}
-          </div>
+          <AddToCart sku={selected?.sku} stock={selected ? selected.stock : 0} quantity={qty} />
 
           {/* tabs */}
           <div style={styles.tabs}>

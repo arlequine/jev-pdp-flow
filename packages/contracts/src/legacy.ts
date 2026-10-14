@@ -26,6 +26,8 @@ export const LegacyVariant = z.object({
   color: z.string(),
   size: z.string(),
   image: z.string(),
+  /** Precio final de la variante, con IVA (PDP-142.5). Campo nuevo. */
+  priceMoney: Money,
 });
 export type LegacyVariant = z.infer<typeof LegacyVariant>;
 

@@ -19,6 +19,8 @@ cart.post('/api/cart', (req, res) => {
   const found = findVariantBySku(parsed.data.sku);
   if (!found) return void res.status(404).json({ error: 'not_found' });
   const { product, variant } = found;
+  // Sin stock no entra al carrito (PDP-142.5): antes el pedido fallaba después, en el almacén.
+  if (variant.stock <= 0) return void res.status(409).json({ error: 'out_of_stock', sku: variant.sku });
   // El precio SIEMPRE lo calcula el servidor: con IVA, en centavos.
   const unitPriceCents = grossCents(variant.netPriceCents ?? product.netPriceCents);
   const prev = lines.get(variant.sku);
