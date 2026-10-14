@@ -20,10 +20,8 @@ const LABEL: Record<string, string> = {
   'jev-es': 'Jev (preguntas en español)',
   'orden-del-ticket': 'Orden del ticket',
   'urgente-primero': '"URGENTE" primero',
-  'pedirle-a-sonnet': 'Pedirle el orden a Sonnet',
-  'pedirle-a-opus': 'Pedirle el orden a Opus',
+  'opus-claude-code': 'Pedirle el orden a Opus (Claude Code)',
   baseline: 'Regex / carpeta',
-  opus: 'Opus revisando el diff',
 };
 
 if (!a.hasData) {
@@ -37,17 +35,17 @@ if (what === 'prioritize' || what === 'all') {
   console.log(bold('\n1. Priorización'));
   console.log(
     table(
-      ['Método', 'Criterios', 'Spearman', 'Costo'],
-      a.prioritize.map((p) => [LABEL[p.method] ?? p.method, p.passed == null ? '—' : `${p.passed}/${p.total}`, p.spearman == null ? '—' : p.spearman.toFixed(2), usd(p.costUsd)]),
-      ['l', 'r', 'r', 'r'],
+      ['Método', 'Criterios', 'Spearman', 'Tiempo', 'Costo'],
+      a.prioritize.map((p) => [LABEL[p.method] ?? p.method, p.passed == null ? '—' : `${p.passed}/${p.total}`, p.spearman == null ? '—' : p.spearman.toFixed(2), p.latencyMs == null ? '—' : `${(p.latencyMs / 1000).toFixed(2)} s`, usd(p.costUsd)]),
+      ['l', 'r', 'r', 'r', 'r'],
     ),
   );
-  if (!a.prioritize.some((p) => p.method.startsWith('pedirle'))) console.log(dim('Para comparar con Sonnet y Opus: npm run prioritize -- PDP-142 --baselines'));
+  if (!a.prioritize.some((p) => p.method.endsWith('claude-code'))) console.log(dim('Para comparar con Opus en Claude Code: npm run compare -- PDP-142'));
 }
 
 if (what === 'refactor' || what === 'all') {
   console.log(bold('\n2. Refactor'));
-  if (!a.refactor.rows.length) console.log(dim('Sin datos: corre una subtarea con Claude Code (hook Stop) o con npm run refactor.'));
+  if (!a.refactor.rows.length) console.log(dim('Sin datos: corre una subtarea con Claude Code (el hook Stop guarda los tokens).'));
   else {
     console.log(
       table(
@@ -62,7 +60,7 @@ if (what === 'refactor' || what === 'all') {
 
 if (what === 'review' || what === 'all') {
   console.log(bold('\n3. Revisión (fixtures)'));
-  if (!a.review.length) console.log(dim('Sin datos: npm run review -- --fixtures [--compare-opus]'));
+  if (!a.review.length) console.log(dim('Sin datos: npm run review -- --fixtures'));
   else
     console.log(
       table(
@@ -72,7 +70,7 @@ if (what === 'review' || what === 'all') {
       ),
     );
   if (a.branchReview)
-    console.log(`Última revisión de rama: Jev ${usd(a.branchReview.jevUsd)} (${a.branchReview.jevRequests} requests)${a.branchReview.haikuUsd ? ` + Haiku ${usd(a.branchReview.haikuUsd)}` : ''}`);
+    console.log(`Última revisión de rama: Jev ${usd(a.branchReview.jevUsd)} (${a.branchReview.jevRequests} requests)`);
 }
 
 if (what === 'all') {

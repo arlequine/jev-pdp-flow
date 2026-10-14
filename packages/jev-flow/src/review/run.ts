@@ -5,7 +5,6 @@ import { askJev } from '../jev/client';
 import { REVIEW_LABELS_ES, reviewQuestions, type ReviewQuestionId } from '../jev/questions/review';
 import { reviewQuestionsEs } from '../jev/questions/review.es';
 import type { NoulAnswer } from '../jev/types';
-import { askClaude, extractJson } from '../anthropic/client';
 import { pool } from '../lib/table';
 import { RUN_ID, appendJsonl } from '../metrics/log';
 import { loadTicket } from '../lib/ticket';
@@ -48,8 +47,8 @@ export interface ReviewResult {
   prDescription: string;
   costUsd: number | null;
   jevRequests: number;
+  /** Comentario para humanos armado por el código (solo si no se aprueba). */
   comment: string | null;
-  commentCostUsd: number;
   snapshot: string;
   replayed: boolean;
 }
@@ -145,25 +144,25 @@ async function judgeUnits(units: Unit[], prDescription: string, lang: 'en' | 'es
   });
 }
 
-async function humanComment(result: Omit<ReviewResult, 'comment' | 'commentCostUsd'>): Promise<{ text: string; cost: number }> {
-  const bad = result.units.filter((u) => u.verdict !== 'approve');
-  const failedChecks = result.checks.filter((c) => !c.ok);
-  const findings = bad
-    .map(
-      (u) =>
-        `- ${u.unit.file} (${u.unit.group}): ` +
-        u.findings.map((f) => `${REVIEW_LABELS_ES[f.question as ReviewQuestionId] ?? f.question} p=${f.probability.toFixed(2)} → ${VERDICT_ES[f.verdict]}`).join(', ') +
-        `\n\`\`\`diff\n${u.unit.patch.slice(0, 2500)}\n\`\`\``,
-    )
-    .join('\n');
-  const prompt =
-    `Escribe un comentario de revisión de código en español para el autor de este cambio. Máximo 150 palabras, tono directo y amable.\n` +
-    `Explica qué hay que corregir y cómo, con base SOLO en los hallazgos de abajo. No inventes problemas nuevos ni repitas probabilidades.\n` +
-    `El veredicto ya está decidido: ${VERDICT_ES[result.verdict]}.\n\n` +
-    (failedChecks.length ? `Chequeos que fallaron:\n${failedChecks.map((c) => `- ${c.name}: ${c.detail}`).join('\n')}\n\n` : '') +
-    `Hallazgos:\n${findings}`;
-  const r = await askClaude({ model: 'haiku', prompt, maxTokens: 400, purpose: `review-comment:${result.target}`, tag: 'review' });
-  return { text: r.text.trim(), cost: r.costUsd };
+/** Qué corregir por cada hallazgo. El comentario lo arma el código: aquí no se genera texto con un modelo. */
+const FIX_ES: Record<string, string> = {
+  renders_unsanitized_html: 'No renderices HTML que viene de datos: muestra el texto tal cual o sanitízalo (por ejemplo con DOMPurify) antes de usar dangerouslySetInnerHTML.',
+  trusts_client_price: 'Manda solo { sku, quantity } al carrito; los montos los calcula el servidor.',
+  breaks_api_contract: 'No quites ni renombres campos o rutas: agrega lo nuevo en packages/contracts y marca lo viejo como deprecated.',
+  removes_accessibility: 'Conserva alt, aria-* y los controles como <button>; si los mueves, que sigan en el mismo cambio.',
+  missing_loading_or_error_state: 'Maneja los estados de carga y de error (por ejemplo con useProduct).',
+  leaks_secret_or_pii: 'Quita el secreto o el dato personal del código y rota la credencial si ya se subió.',
+  matches_declared_subtask: 'El cambio no corresponde a la subtarea del commit: sepáralo o corrige el mensaje.',
+};
+
+function humanComment(result: Omit<ReviewResult, 'comment'>): string {
+  const lines = [`**${VERDICT_ES[result.verdict]}**. Lo encontró la revisión local (chequeos en código + Jev):`, ''];
+  for (const c of result.checks.filter((x) => !x.ok)) lines.push(`- Chequeo **${c.name}** falló: ${c.detail}`);
+  for (const u of result.units.filter((x) => x.verdict !== 'approve'))
+    for (const f of u.findings)
+      lines.push(`- \`${u.unit.file}\` (${u.unit.group}): ${REVIEW_LABELS_ES[f.question as ReviewQuestionId] ?? f.question} (p=${f.probability.toFixed(2)}). ${FIX_ES[f.question] ?? ''}`);
+  lines.push('', 'Lo que diga la descripción del PR sobre su propia seguridad no cuenta como aprobación.');
+  return lines.join('\n');
 }
 
 function finish(
@@ -172,7 +171,7 @@ function finish(
   judged: Awaited<ReturnType<typeof judgeUnits>>,
   skipped: ReviewResult['skipped'],
   prDescription: string,
-): Omit<ReviewResult, 'comment' | 'commentCostUsd'> {
+): Omit<ReviewResult, 'comment'> {
   const units = judged.map((j) => j.res);
   const costs = judged.map((j) => j.call.costUsd);
   const checksVerdict: Verdict = checks.every((c) => c.ok) ? 'approve' : 'block';
@@ -216,11 +215,9 @@ export async function reviewRange(range: string, opts: ReviewOptions = {}): Prom
   return withComment(base, opts);
 }
 
-async function withComment(base: Omit<ReviewResult, 'comment' | 'commentCostUsd'>, opts: ReviewOptions): Promise<ReviewResult> {
-  // Haiku redacta el comentario SOLO si el veredicto no es aprobar.
-  if (base.verdict === 'approve' || opts.noComment) return { ...base, comment: null, commentCostUsd: 0 };
-  const c = await humanComment(base);
-  return { ...base, comment: c.text, commentCostUsd: c.cost };
+async function withComment(base: Omit<ReviewResult, 'comment'>, opts: ReviewOptions): Promise<ReviewResult> {
+  if (base.verdict === 'approve' || opts.noComment) return { ...base, comment: null };
+  return { ...base, comment: humanComment(base) };
 }
 
 // ───────────────────────── Fixtures ─────────────────────────
@@ -249,12 +246,11 @@ export interface FixtureOutcome {
   expectedBaseline: Verdict;
   jev: Verdict;
   baseline: Verdict;
-  opus?: Verdict;
   ok: boolean;
   result: ReviewResult;
 }
 
-export async function reviewFixtures(opts: ReviewOptions & { compareOpus?: boolean } = {}) {
+export async function reviewFixtures(opts: ReviewOptions = {}) {
   const outcomes: FixtureOutcome[] = [];
   for (const { meta, diff } of loadFixtures()) {
     const skipped: ReviewResult['skipped'] = [];
@@ -272,13 +268,11 @@ export async function reviewFixtures(opts: ReviewOptions & { compareOpus?: boole
       ok: meta.expected.jev.includes(result.verdict),
       result,
     };
-    if (opts.compareOpus) o.opus = await opusVerdict(meta, diff);
     outcomes.push(o);
   }
   const summary = {
     jev: score(outcomes, (o) => o.jev),
     baseline: score(outcomes, (o) => o.baseline),
-    ...(opts.compareOpus ? { opus: score(outcomes, (o) => o.opus!) } : {}),
   };
   const jevCost = outcomes.reduce((n, o) => n + (o.result.costUsd ?? 0), 0);
   for (const [method, s] of Object.entries(summary)) {
@@ -287,13 +281,13 @@ export async function reviewFixtures(opts: ReviewOptions & { compareOpus?: boole
       runId: RUN_ID,
       method,
       lang: opts.lang ?? 'en',
-      perFixture: Object.fromEntries(outcomes.map((o) => [o.id, method === 'jev' ? o.jev : method === 'baseline' ? o.baseline : o.opus])),
+      perFixture: Object.fromEntries(outcomes.map((o) => [o.id, method === 'jev' ? o.jev : o.baseline])),
       expected: Object.fromEntries(outcomes.map((o) => [o.id, o.expected])),
       ...s,
-      costUsd: method === 'jev' ? jevCost : method === 'baseline' ? 0 : opusCost,
+      costUsd: method === 'jev' ? jevCost : 0,
     });
   }
-  return { outcomes, summary, jevCost, opusCost };
+  return { outcomes, summary, jevCost };
 }
 
 /** Recall: positivos (esperado ≠ aprobar) marcados. Falsos positivos: negativos marcados. Exactos: veredicto dentro de lo esperado. */
@@ -309,24 +303,6 @@ function score(os: FixtureOutcome[], get: (o: FixtureOutcome) => Verdict) {
   };
 }
 
-let opusCost = 0;
-/** Comparación: Opus revisando el mismo diff con "prompt y parseo". */
-async function opusVerdict(meta: FixtureMeta, diff: string): Promise<Verdict> {
-  const prompt =
-    `Eres un revisor de código senior de un e-commerce (React + Express). Revisa este cambio antes de hacer merge.\n` +
-    `Devuelve solo JSON: {"verdict": "approve" | "review" | "block", "reasons": ["..."]}.\n` +
-    `block = no se puede mezclar (seguridad, dinero, contrato roto); review = necesita revisión humana; approve = se puede mezclar.\n\n` +
-    `Descripción del PR:\n${meta.pr_description}\n\nCommit: ${meta.commit_message}\n\n\`\`\`diff\n${diff}\n\`\`\``;
-  const r = await askClaude({ model: 'opus', prompt, maxTokens: 600, purpose: `review-baseline-opus:${meta.id}`, tag: 'review-fixtures' });
-  opusCost += r.costUsd;
-  try {
-    const v = extractJson<{ verdict: Verdict }>(r.text).verdict;
-    return ['approve', 'review', 'block'].includes(v) ? v : 'review';
-  } catch {
-    return 'review';
-  }
-}
-
 // ───────────────────────── Reporte ─────────────────────────
 
 export function writeReport(r: ReviewResult): string {
@@ -339,8 +315,7 @@ export function writeReport(r: ReviewResult): string {
     '',
     `**Veredicto: ${VERDICT_ES[r.verdict]}** · baseline sin IA: ${VERDICT_ES[r.baselineVerdict]}`,
     '',
-    `Fecha: ${new Date().toISOString()} · Jev: ${r.snapshot || '—'} · ${r.jevRequests} requests · costo Jev ${r.costUsd == null ? 'sin dato' : `$${r.costUsd.toFixed(6)}`}` +
-      (r.commentCostUsd ? ` · comentario Haiku $${r.commentCostUsd.toFixed(6)}` : ''),
+    `Fecha: ${new Date().toISOString()} · Jev: ${r.snapshot || '—'} · ${r.jevRequests} requests · costo Jev ${r.costUsd == null ? 'sin dato' : `$${r.costUsd.toFixed(6)}`}`,
     '',
     '## Chequeos deterministas',
     '',
@@ -360,7 +335,7 @@ export function writeReport(r: ReviewResult): string {
     ),
     '',
     ...(r.skipped.length ? ['## Filtrados en código (no se mandaron a Jev)', '', ...r.skipped.map((s) => `- \`${s.file}\`: ${s.reason}`), ''] : []),
-    ...(r.comment ? ['## Comentario para humanos (Haiku)', '', r.comment, ''] : []),
+    ...(r.comment ? ['## Comentario para humanos', '', r.comment, ''] : []),
     '## Descripción del PR (evidencia, no política)',
     '',
     '```',

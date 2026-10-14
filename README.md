@@ -17,13 +17,13 @@ Mensaje central: Jev toma decisiones baratas y calibradas, Claude genera solo do
 ```bash
 nvm use                 # Node 22
 npm install
-cp .env.example .env    # TYPESAFE_API_KEY y ANTHROPIC_API_KEY
+cp .env.example .env    # TYPESAFE_API_KEY (no hace falta key de Anthropic)
 npm run dev             # API http://localhost:4000 · web http://localhost:5173
 ```
 
 Abre http://localhost:5173/product/sudadera-basica. En `main` verás la PDP legacy; en `refactor/pdp-recorded`, la refactorizada.
 
-Sin keys, todo lo que no llama a modelos funciona (`dev`, `test`, `metrics`, `demo:compare`, `dashboard`). Lo que llama a Jev o a Anthropic necesita `JEV_MODE=record` una vez (con keys) para que `replay` funcione después sin red. Ver `docs/runbook.md`, sección B.
+Sin keys, todo lo que no llama a modelos funciona (`dev`, `test`, `metrics`, `demo:compare`, `dashboard`). Lo que llama a Jev o a `claude -p` necesita `JEV_MODE=record` una vez (con keys) para que `replay` funcione después sin red. Ver `docs/runbook.md`, sección B.
 
 ## Scripts
 
@@ -34,8 +34,8 @@ Sin keys, todo lo que no llama a modelos funciona (`dev`, `test`, `metrics`, `de
 | `npm run typecheck` · `npm test` | TypeScript estricto y vitest (contrato, unitarios y web) |
 | `npm run prioritize -- PDP-142 [--baselines] [--lang es]` | Priorización con Jev → `.jev/plan.json` |
 | `npm run review -- main..refactor/pdp [--skip-checks]` | Revisión local de una rama |
-| `npm run review -- --fixtures [--compare-opus]` | Revisión de los fixtures d01–d05 |
-| `npm run refactor -- PDP-142.N` | Plan B: la subtarea con Sonnet 5.5 vía API |
+| `npm run review -- --fixtures` | Revisión de los fixtures d01–d05 |
+| `npm run compare -- PDP-142` | Costo y tiempo de respuesta al priorizar: Jev vs Opus en Claude Code |
 | `npm run cost [-- prioritize\|refactor\|review]` | Costos por paso y por modelo |
 | `npm run dashboard` · `npm run dashboard:export` | Dashboard en :4300 · capturas para el deck |
 | `npm run metrics [-- --after <ref>]` | Antes vs. después: requests, tiempos, accesibilidad, bundle, líneas, capturas |
@@ -51,11 +51,11 @@ Sin keys, todo lo que no llama a modelos funciona (`dev`, `test`, `metrics`, `de
 apps/api            Express + TS. Endpoints legacy (deprecated) y GET /api/products/:slug
 apps/web            React + Vite. Catálogo y PDP en /product/:slug
 packages/contracts  Esquemas zod compartidos (Money, ProductDetail, legacy, ticket)
-packages/jev-flow   Cliente de Jev (API nativa de TypeSafe), Anthropic, record/replay,
+packages/jev-flow   Cliente de Jev (API nativa de TypeSafe), Claude Code headless, record/replay,
                     priorización, revisión, costos, dashboard y servidor MCP
 tickets/            PDP-142.md, PDP-142.json y la verdad de referencia
 fixtures/diffs/     d01–d05 con su veredicto esperado
-recordings/         Grabaciones de Jev y Anthropic para JEV_MODE=replay
+recordings/         Grabaciones de Jev y de `claude -p` para JEV_MODE=replay
 metrics/            *.jsonl de cada llamada, before-after.json y capturas
 .claude/            settings (permisos y hooks), skills y comandos de Claude Code
 docs/               charla.md, runbook.md, hackathon.md, brand/ y slides/
@@ -74,7 +74,7 @@ docs/               charla.md, runbook.md, hackathon.md, brand/ y slides/
 ## Claude Code
 
 - `CLAUDE.md`: reglas de negocio y de trabajo.
-- Skills: `jev-prioritize`, `pdp-refactor`, `jev-pr-review`, `jev-cost`. Comandos: `/prioritize`, `/review-local`.
+- Skills: `jev-prioritize`, `pdp-refactor`, `jev-pr-review`, `jev-vs-opus`, `jev-cost`. Comandos: `/prioritize`, `/review-local`, `/compare`.
 - Servidor MCP `jev` (`.mcp.json`): `jev_prioritize`, `jev_plan`, `jev_review`, `jev_review_fixtures`, `jev_cost`, `jev_ask`.
 - Hooks (`.claude/settings.json`):
   - `PreToolUse` intercepta `git merge … refactor/*` y `git push … main`, corre la revisión y bloquea con exit 2 si no es APROBAR (falla cerrado si la revisión no puede correr).
@@ -89,7 +89,8 @@ docs/               charla.md, runbook.md, hackathon.md, brand/ y slides/
 - El texto de tickets, PRs y commits va bajo `evidence` con una regla anti-inyección en cada instrucción.
 - Nada de aritmética, fechas ni conteos en Jev.
 - Umbrales y pesos en un solo archivo: `packages/jev-flow/src/thresholds.ts`.
-- `JEV_MODE=live|record|replay` cubre Jev y Anthropic. Las keys solo en `.env`.
+- `JEV_MODE=live|record|replay` cubre Jev y las respuestas de `claude -p`. Las keys solo en `.env`.
+- **Sin API de Anthropic.** Claude solo se usa desde Claude Code: Sonnet para el refactor y `claude -p --model opus` para comparar costo y tiempo de respuesta al priorizar (skill `jev-vs-opus`, comando `/compare`).
 
 ## Estado y limitaciones conocidas
 

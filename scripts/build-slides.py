@@ -87,16 +87,18 @@ def load_numbers():
         if v is None: return None
         return '$0' if v == 0 else (f'${v:.6f}'.rstrip('0') if v < 0.01 else f'${v:.4f}'.rstrip('0').rstrip('.'))
     for p in cost.get('prioritize', []):
-        key = {'jev': 'jev', 'pedirle-a-sonnet': 'sonnet', 'pedirle-a-opus': 'opus'}.get(p['method'])
+        key = {'jev': 'jev', 'opus-claude-code': 'opus'}.get(p['method'])
         if key:
             nums[f'prioritize.{key}.cost'] = usd(p.get('costUsd'))
+            if p.get('latencyMs') is not None:
+                nums[f'prioritize.{key}.time'] = f"{p['latencyMs'] / 1000:.1f} s"
             nums[f'prioritize.{key}.passed'] = None if p.get('passed') is None else str(p['passed'])
     ref = cost.get('refactor') or {}
     if ref.get('rows'):
         nums['refactor.cost'] = usd(ref.get('totalUsd'))
         nums['refactor.opus'] = usd(ref.get('opusUsd'))
     for r in cost.get('review', []):
-        key = {'jev': 'jev', 'opus': 'opus', 'baseline': 'baseline'}.get(r['method'])
+        key = {'jev': 'jev', 'baseline': 'baseline'}.get(r['method'])
         if key:
             nums[f'review.{key}.cost'] = usd(r.get('costUsd'))
             nums[f'review.{key}.exact'] = f"{r['exact']}/{r['total']}"

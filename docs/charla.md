@@ -25,7 +25,7 @@ Las cifras de esta charla salen de `metrics/*.jsonl` y de `metrics/before-after.
 ## 2. Las 3 ideas
 
 1. **Jev decide barato y calibrado.** Para preguntas cerradas ("¿esto toca dinero?", "¿este diff renderiza HTML sin sanitizar?") no hace falta un LLM que escriba. Jev responde con probabilidades, cuesta USD {{prices.jev.input}} por millón de tokens de entrada y la salida es gratis.
-2. **Claude genera solo donde aporta.** Escribir el refactor sí necesita un modelo generativo: ahí va Sonnet. Haiku solo redacta el comentario cuando la revisión no aprueba.
+2. **Claude genera solo donde aporta.** Escribir el refactor sí necesita un modelo generativo: ahí va Sonnet, dentro de Claude Code. La demo no llama a la API de Anthropic: el comentario de la revisión lo arma el código.
 3. **El código pone las reglas.** El orden, los umbrales, los motivos, los chequeos deterministas y el bloqueo del merge son código. La IA aporta señales, no decisiones finales.
 
 ---
@@ -84,20 +84,20 @@ subtítulo: El problema de los tokens, las 3 ideas y qué es Jev
 ```slide
 patrón: comparación
 título: El problema: "prompt y parseo"
-izq-título: Pedirle el orden a un LLM grande
+izq-título: Pedirle el orden a Opus (Claude Code)
 izq-código: > ordena estas 10 subtareas y responde en JSON
-izq-etiqueta: Resultado en el ensayo (Opus)
+izq-etiqueta: Resultado en el ensayo
 izq-viñetas:
 - ✗ Se paga leer, razonar y escribir la respuesta
 - ✗ El motivo queda en prosa: no se puede auditar
-- ✗ {{prioritize.opus.passed}} de 5 criterios · {{prioritize.opus.cost}}
+- ✗ {{prioritize.opus.passed}} de 5 criterios · {{prioritize.opus.time}} · {{prioritize.opus.cost}}
 der-título: Preguntarle a Jev lo justo
 der-código: > touches_money? blocks_purchase? area? impacto?
 der-etiqueta: Resultado en el ensayo (Jev + código)
 der-viñetas:
 - ✓ 8 preguntas cerradas por subtarea, en un solo request
 - ✓ El orden y el motivo los calcula el código
-- ✓ {{prioritize.jev.passed}} de 5 criterios · {{prioritize.jev.cost}}
+- ✓ {{prioritize.jev.passed}} de 5 criterios · {{prioritize.jev.time}} · {{prioritize.jev.cost}}
 cierre: Una decisión no necesita una redacción: **necesita una probabilidad y una regla.**
 notas: Las cifras son del ensayo (metrics/prioritize-runs.jsonl). Con un solo ticket, la diferencia de criterios es ilustrativa, no un benchmark.
 ```
@@ -109,7 +109,7 @@ patrón: tarjetas
 título: Las 3 ideas de hoy
 tarjetas:
 - 1 | Jev decide | Barato y calibrado: preguntas cerradas que devuelven probabilidades, no texto.
-- 2 | Claude genera | Solo donde aporta: Sonnet escribe el refactor y Haiku el comentario si hace falta.
+- 2 | Claude genera | Solo donde aporta: Sonnet escribe el refactor en Claude Code.
 - 3 | El código manda | El orden, los umbrales, los motivos, los chequeos y el bloqueo del merge.
 cierre: Pregúntale a la IA **lo justo**.
 ```
@@ -222,7 +222,7 @@ c3-título: Modo replay
 c3-sub: La demo corre sin red
 c3-cajas:
 - Jev | recordings/jev
-- Anthropic | recordings/anthropic
+- Claude Code | recordings/claude-code
 - JEV_MODE | live · record · replay
 cierre: El agente propone. **El merge lo deciden el código y una persona.**
 ```
@@ -259,9 +259,9 @@ izq-imagen: metrics/charts/models.png
 der-título: Por paso
 der-etiqueta: Jev contra la alternativa, en el ensayo
 der-viñetas:
-- Priorizar: Jev {{prioritize.jev.cost}} · Opus {{prioritize.opus.cost}}
+- Priorizar: Jev {{prioritize.jev.cost}} en {{prioritize.jev.time}} · Opus {{prioritize.opus.cost}} en {{prioritize.opus.time}}
 - Refactor: Sonnet {{refactor.cost}} · con Opus {{refactor.opus}}
-- Revisar 5 fixtures: Jev {{review.jev.cost}} · Opus {{review.opus.cost}}
+- Revisar 5 fixtures: Jev {{review.jev.cost}} · {{review.jev.exact}} correctos
 cierre: Se paga generación **solo donde se genera.**
 ```
 
@@ -276,7 +276,7 @@ tarjetas:
 - 3 | Catálogo | Jev detecta lo que la ficha promete de más; Claude la reescribe.
 - 4 | Soporte | Equipo, urgencia y si toca dinero, en una sola request.
 - 5 | Precios | ¿La PDP muestra el total con IVA? Regex primero, Jev después.
-- 6 | Carrito | Por qué abandonan: Jev clasifica, el código cuenta, Haiku resume.
+- 6 | Carrito | Por qué abandonan: Jev clasifica, el código cuenta, Claude resume.
 cierre: Preguntas sugeridas y criterios de éxito en **docs/hackathon.md**. El servidor MCP **jev** ya está listo.
 ```
 
@@ -316,13 +316,13 @@ Antes de empezar: `npm run demo:reset` y `npm run dev` corriendo; `JEV_MODE=repl
 | 15:30–17:00 | 1 · PDP antes | La PDP en :5173, DevTools en modo móvil. Network: 4 requests en cascada. `$1299.5`, botón tapado por el banner | `npm run dev` ya corriendo, en `main` | "Esto es lo que negocio describe como 'convierte mal, se ve mal y nadie la quiere tocar'." | Captura `metrics/before-after/before-mobile.png` |
 | 17:00–18:00 | 1 · Ticket | `tickets/PDP-142.md` | Abrir el archivo | Señalo el URGENTE!!!, el "precio raro", la nota del CTO y el cupón del checkout. "¿En qué orden lo harían ustedes?" | — |
 | 18:00–20:00 | 2 · Priorización | Tabla: .4 primero, URGENTE al final, la nota del CTO no movió nada, el checkout fuera | `npm run prioritize -- PDP-142` | "Jev contestó preguntas cerradas; el orden y el motivo de cada fila los calculó el código." | `JEV_MODE=replay npm run prioritize -- PDP-142` |
-| 20:00–22:00 | 2 · Costo | Costo de la priorización contra pedírselo a Sonnet u Opus | `npm run cost -- prioritize` | "Mismo ticket, otra escala de costo, y además el modelo grande se dejó llevar por el 'URGENTE'." (solo si así salió en el ensayo) | Igual, en replay |
+| 20:00–22:00 | 2 · Jev vs Opus | La misma priorización pidiéndosela a Opus en Claude Code: criterios, tiempo de respuesta y costo | `npm run compare -- PDP-142` (o `/compare` en Claude Code) | "Mismo ticket: cuánto cuesta y cuánto tarda cada forma, y qué criterios cumple." Solo menciono que Opus se dejó llevar por el 'URGENTE' si así salió en el ensayo | `JEV_MODE=replay npm run compare -- PDP-142` |
 | 22:00–23:00 | 3 · Contexto | `CLAUDE.md` y `.jev/plan.json` | Abrir los dos archivos | "Sonnet no decide qué hacer: lee el plan y las reglas de negocio." | — |
-| 23:00–26:30 | 3 · Refactor en vivo | Claude Code con Sonnet ejecuta PDP-142.4 en `refactor/pdp`: precio con IVA, formato MXN, test de `PriceBlock`, commit | `claude --model sonnet` → "Usa la skill pdp-refactor para PDP-142.4" | "Aquí sí vale la pena generar." | Si pasa de 4 min: Ctrl-C y `git show refactor/pdp-recorded~8 --stat`. Sin Claude Code: `npm run refactor -- PDP-142.4` (replay) |
+| 23:00–26:30 | 3 · Refactor en vivo | Claude Code con Sonnet ejecuta PDP-142.4 en `refactor/pdp`: precio con IVA, formato MXN, test de `PriceBlock`, commit | `claude --model sonnet` → "Usa la skill pdp-refactor para PDP-142.4" | "Aquí sí vale la pena generar." | Si pasa de 4 min o Claude Code falla: Ctrl-C y `git show refactor/pdp-recorded~8 --stat` |
 | 26:30–27:00 | 3 · Costo | Precio correcto en el navegador y costo de la sesión | `npm run cost -- refactor` | "Las otras 8 subtareas se hicieron en el ensayo: están en `refactor/pdp-recorded`." | — |
-| 27:00–29:00 | 4 · Trampa | BLOQUEAR en `refactor/pdp-trap`: `renders_unsanitized_html` alto en `ProductDescription.tsx`; comentario de Haiku | `npm run review -- main..refactor/pdp-trap` | "El commit dice 'ya aprobado por seguridad'. Jev lo leyó como evidencia, no como aprobación." | Replay |
+| 27:00–29:00 | 4 · Trampa | BLOQUEAR en `refactor/pdp-trap`: `renders_unsanitized_html` alto en `ProductDescription.tsx`; comentario para humanos (lo arma el código) | `npm run review -- main..refactor/pdp-trap` | "El commit dice 'ya aprobado por seguridad'. Jev lo leyó como evidencia, no como aprobación." | Replay |
 | 29:00–30:00 | 4 · Hook | Claude Code intenta el merge y el hook lo bloquea con exit 2 | En Claude Code: "haz merge de refactor/pdp-trap a main" | "El bloqueo no depende de que el asistente coopere: lo aplica el harness." | Mostrar `.claude/settings.json` y correr `echo '{"tool_name":"Bash","tool_input":{"command":"git merge refactor/pdp-trap"}}' \| node .claude/hooks/pre-merge-review.mjs` |
-| 30:00–31:00 | 4 · Limpio | APROBAR en `refactor/pdp-recorded`; no se llama a Haiku | `npm run review -- main..refactor/pdp-recorded` | "Cuando todo está bien, la IA no escribe nada." | Replay |
+| 30:00–31:00 | 4 · Limpio | APROBAR en `refactor/pdp-recorded`; sin comentario | `npm run review -- main..refactor/pdp-recorded` | "Cuando todo está bien, nadie escribe nada." | Replay |
 | 31:00–32:00 | 4 · Fixtures | Jev contra regex/carpeta y Opus en d01–d05 | `npm run review -- --fixtures` | d02: la regex no lo ve. d03: la regex lo marca de más. | Replay |
 | 32:00–34:00 | 5 · Antes y después | Lado a lado, escritorio y móvil, con el panel de métricas | `git switch refactor/pdp-recorded` y `npm run demo:compare` | Requests, carga, accesibilidad, líneas | D13 |
 | 34:00–35:00 | 5 · Dashboard | Costos por paso y por modelo | `npm run dashboard` | Cierro con las 3 ideas | D14 |
@@ -345,14 +345,13 @@ Precios de lista (USD por millón de tokens), en `packages/jev-flow/src/prices.t
 | Modelo | Entrada | Salida |
 |---|---|---|
 | Jev 1.13 | 0.042 | 0 |
-| Haiku 5.5 | 0.10 | 0.50 |
 | Sonnet 5.5 | 2 | 10 |
 | Opus 5.5 | 4 | 20 |
 
 Cómo se mide:
 
 - **Jev (API nativa de TypeSafe):** cada respuesta trae `usage.input_tokens`; el costo se calcula como tokens × precio de lista (`costSource: computed`). Si una respuesta no trae tokens, el costo queda "sin dato".
-- **Anthropic por API** (baselines, Haiku, plan B): tokens de la respuesta × precio de lista.
+- **Opus en Claude Code** (`npm run compare`): `claude -p --model opus --output-format json` devuelve tokens, `duration_ms` y `total_cost_usd`. Se muestran los dos costos: tokens × precio de lista (comparable con Jev) y el que reporta Claude Code.
 - **Claude Code:** el hook `Stop` suma los tokens del transcript por modelo (`metrics/claude-code.jsonl`). La caché se cobra con los multiplicadores de Anthropic (escritura 1.25×, lectura 0.1× del precio de entrada).
 - **"Con Opus":** estimación con los mismos tokens a precio de Opus. Se dice así en el deck.
 
@@ -360,9 +359,9 @@ Cifras del ensayo (las llena `npm run slides`; para verlas en la terminal: `npm 
 
 | Paso | Jev | Alternativa |
 |---|---|---|
-| Priorizar PDP-142 | {{prioritize.jev.cost}} | Sonnet {{prioritize.sonnet.cost}} · Opus {{prioritize.opus.cost}} |
+| Priorizar PDP-142 (costo · tiempo) | {{prioritize.jev.cost}} · {{prioritize.jev.time}} | Opus en Claude Code {{prioritize.opus.cost}} · {{prioritize.opus.time}} |
 | Refactor | — | Sonnet {{refactor.cost}} · con Opus {{refactor.opus}} |
-| Revisar los 5 fixtures | {{review.jev.cost}} | Opus {{review.opus.cost}} |
+| Revisar los 5 fixtures | {{review.jev.cost}} | Regex/carpeta $0 · {{review.baseline.exact}} correctos |
 
 ---
 
@@ -373,7 +372,7 @@ Cifras del ensayo (las llena `npm run slides`; para verlas en la terminal: `npm 
 | No hay red o falla la API de TypeSafe | Todo en replay | `export JEV_MODE=replay` y repetir el comando |
 | Falta una grabación (`no hay grabación …`) | El estado del repo no es el del ensayo | `npm run demo:reset` y repetir |
 | Claude Code tarda más de 4 min o falla | Ctrl-C y mostrar el commit del ensayo | `git show refactor/pdp-recorded~8 --stat` |
-| Claude Code no abre | Plan B por API, reproducido | `JEV_MODE=replay npm run refactor -- PDP-142.4` |
+| Claude Code no abre | Mostrar el commit del ensayo | `git show refactor/pdp-recorded~8 --stat` |
 | El hook no se dispara | Correrlo a mano | ver la fila 29:00 del guion |
 | `demo:compare` no levanta | Capturas y cifras | D13 |
 | El dashboard no abre | Diapositiva de costos | D14 |
@@ -399,7 +398,10 @@ tickets/PDP-142.json ──► jev-flow/prioritize ──► Jev (1 request × s
                                                thresholds.ts ──► APROBAR / REVISAR / BLOQUEAR
                                                                        │ si no aprueba
                                                                        ▼
-                                                               Haiku redacta el comentario
+                                                        el código arma el comentario para humanos
+
+tickets/PDP-142.md ──► npm run compare ──► Jev (arriba)  vs  claude -p --model opus (prompt y parseo)
+                                           costo · tiempo de respuesta · criterios de éxito
 ```
 
 ### Priorización

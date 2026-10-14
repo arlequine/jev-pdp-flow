@@ -24,7 +24,6 @@
     "test:unit": "vitest run --project unit --project web",
     "prioritize": "tsx packages/jev-flow/src/prioritize/cli.ts",
     "review": "tsx packages/jev-flow/src/review/cli.ts",
-    "refactor": "tsx packages/jev-flow/src/refactor/cli.ts",
     "cost": "tsx packages/jev-flow/src/cost/cli.ts",
     "dashboard": "tsx packages/jev-flow/src/dashboard/server.ts",
     "dashboard:export": "tsx packages/jev-flow/src/dashboard/export.ts",
@@ -34,7 +33,8 @@
     "metrics": "tsx scripts/metrics.ts",
     "slides:brand": "python3 scripts/extract-brand.py",
     "slides": "python3 scripts/build-slides.py",
-    "ticket:publish-gh": "tsx scripts/publish-ticket-gh.ts"
+    "ticket:publish-gh": "tsx scripts/publish-ticket-gh.ts",
+    "compare": "tsx packages/jev-flow/src/compare/cli.ts"
   },
   "devDependencies": {
     "@types/node": "22.18.1",

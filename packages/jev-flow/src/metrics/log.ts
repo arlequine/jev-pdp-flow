@@ -11,7 +11,7 @@ export interface CallLog {
   runId: string;
   command: string;
   purpose: string;
-  kind: 'jev' | 'anthropic' | 'claude-code';
+  kind: 'jev' | 'claude-code';
   provider: string;
   requestedModel: string;
   /** Snapshot que respondió (campo `model` de la respuesta). */
@@ -54,6 +54,6 @@ export const getCommand = () => currentCommand;
 
 export function logCall(row: Omit<CallLog, 'ts' | 'runId' | 'command'>) {
   const full: CallLog = { ts: new Date().toISOString(), runId: RUN_ID, command: currentCommand, ...row };
-  appendJsonl(row.kind === 'jev' ? 'jev' : row.kind === 'anthropic' ? 'anthropic' : 'claude-code', full);
+  appendJsonl(row.kind === 'jev' ? 'jev' : 'claude-code', full);
   return full;
 }

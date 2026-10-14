@@ -35,11 +35,11 @@ Tienda de ropa (MXN) en un monorepo: `apps/api` (Express, :4000), `apps/web` (Re
 | `npm run prioritize -- PDP-142` | Priorización con Jev → `.jev/plan.json` |
 | `npm run review -- main..refactor/pdp` | Revisión local: deterministas + Jev → APROBAR / REVISAR / BLOQUEAR |
 | `npm run review -- --fixtures` | Revisión de los fixtures d01–d05 |
-| `npm run refactor -- PDP-142.N` | Plan B: la subtarea con Sonnet vía API |
+| `npm run compare -- PDP-142` | Costo y tiempo al priorizar: Jev vs Opus en Claude Code |
 | `npm run cost` · `npm run dashboard` | Costos por modelo y por paso |
 | `npm run metrics` · `npm run demo:compare` | Antes vs. después |
 
-`JEV_MODE=live|record|replay` aplica a Jev y a Anthropic. En la demo, `replay` corre sin red.
+`JEV_MODE=live|record|replay` aplica a Jev y a las respuestas de `claude -p` de la comparación. La demo no usa la API de Anthropic: Claude solo se usa desde Claude Code.
 
 ## Reglas de Jev
 

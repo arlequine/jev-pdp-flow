@@ -1,6 +1,6 @@
 /**
  * npm run review -- main..refactor/pdp [--lang es] [--skip-checks] [--no-comment] [--json] [--strict]
- * npm run review -- --fixtures [--compare-opus]
+ * npm run review -- --fixtures
  *
  * Revisión local sin GitHub: deterministas primero, Jev por commit × archivo, umbrales en thresholds.ts.
  */
@@ -23,7 +23,7 @@ const log = (...a: unknown[]) => (json ? undefined : console.log(...a));
 
 if (flags.fixtures) {
   log(bold('\nRevisión de fixtures'), dim(`· Jev ${JEV_PROVIDER} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
-  const { outcomes, summary, jevCost, opusCost } = await reviewFixtures({ lang, compareOpus: Boolean(flags['compare-opus']) });
+  const { outcomes, summary, jevCost } = await reviewFixtures({ lang });
   const rows = outcomes.map((o) => [
     o.id,
     o.title,
@@ -31,16 +31,15 @@ if (flags.fixtures) {
     color(o.jev),
     o.ok ? green('✓') : red('✗'),
     color(o.baseline),
-    ...(o.opus ? [color(o.opus)] : []),
   ]);
-  log(table(['Fixture', 'Contenido', 'Esperado', 'Jev', '', 'Regex/carpeta', ...(flags['compare-opus'] ? ['Opus'] : [])], rows));
+  log(table(['Fixture', 'Contenido', 'Esperado', 'Jev', '', 'Regex/carpeta'], rows));
   const pct = (n: number | null) => (n == null ? '—' : `${Math.round(n * 100)} %`);
   log('');
   for (const [m, s] of Object.entries(summary))
     log(`${m.padEnd(9)} recall ${pct(s.recall)} · falsos positivos ${s.falsePositives}/${s.negatives} · exactos ${s.exact}/${s.total}`);
-  log(`\nCosto Jev ${usd(jevCost)}${flags['compare-opus'] ? ` · Opus ${usd(opusCost)}` : ''}`);
+  log(`\nCosto Jev ${usd(jevCost)}`);
   log(dim('Con 5 fixtures estas cifras son ilustrativas, no un benchmark.'));
-  if (json) console.log(JSON.stringify({ outcomes: outcomes.map(({ result, ...o }) => o), summary, jevCost, opusCost }, null, 2));
+  if (json) console.log(JSON.stringify({ outcomes: outcomes.map(({ result, ...o }) => o), summary, jevCost }, null, 2));
   process.exit(0);
 }
 
@@ -78,7 +77,6 @@ function print(r: ReviewResult) {
     log(table(['Commit', 'Archivo', 'Veredicto', 'Hallazgos (p de Jev)'], rows));
   }
   log(`\n${bold('Veredicto')}: ${color(r.verdict)}   ${dim(`baseline regex/carpeta: ${VERDICT_ES[r.baselineVerdict]}`)}`);
-  log(`Costo Jev ${usd(r.costUsd)} · ${r.jevRequests} requests${r.replayed && r.jevRequests ? dim(' · reproducido') : ''}${r.commentCostUsd ? ` · Haiku ${usd(r.commentCostUsd)}` : ''}`);
-  if (r.comment) log(`\n${bold(cyan('Comentario para humanos (Haiku)'))}\n${r.comment}`);
-  else if (r.verdict === 'approve') log(dim('Aprobado: no se llama a Haiku.'));
+  log(`Costo Jev ${usd(r.costUsd)} · ${r.jevRequests} requests${r.replayed && r.jevRequests ? dim(' · reproducido') : ''}`);
+  if (r.comment) log(`\n${bold(cyan('Comentario para humanos (lo arma el código)'))}\n${r.comment}`);
 }

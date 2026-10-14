@@ -14,6 +14,11 @@ interface PrioritizeRunRow {
   excluded: string[];
   evaluation: Evaluation;
   costUsd: number | null;
+  latencyMs?: number;
+  latencySource?: string;
+  reportedCostUsd?: number | null;
+  model?: string;
+  outputTokens?: number;
   requests?: number;
   inputTokens?: number;
   replayed?: boolean;
@@ -52,7 +57,6 @@ const lastRunId = (rows: CallLog[], command: string) => rows.filter((r) => r.com
 
 export function aggregate() {
   const jev = readJsonl<CallLog>('jev');
-  const anthropic = readJsonl<CallLog>('anthropic');
   const ccRaw = readJsonl<ClaudeCodeRow>('claude-code');
   const pRuns = readJsonl<PrioritizeRunRow>('prioritize-runs');
   const rRuns = readJsonl<ReviewRunRow>('review-runs');
@@ -67,27 +71,26 @@ export function aggregate() {
     order: r.order,
     excluded: r.excluded,
     costUsd: r.costUsd,
+    latencyMs: r.latencyMs ?? null,
+    latencySource: r.latencySource ?? null,
+    reportedCostUsd: r.reportedCostUsd ?? null,
     ts: r.ts,
   }));
 
-  // ── 2. Refactor: Claude Code (Stop hook) + plan B por API ──
+  // ── 2. Refactor: sesiones de Claude Code (hook Stop) ──
   const sessions = lastBy(ccRaw, (r) => `${r.sessionId}:${r.model}`).map((s) => ({
     ...s,
     costUsd: safeCost(s.model, { input: s.inputTokens, output: s.outputTokens, cacheWrite: s.cacheWriteTokens, cacheRead: s.cacheReadTokens }),
     opusUsd: costUsd(CLAUDE.opus, { input: s.inputTokens, output: s.outputTokens, cacheWrite: s.cacheWriteTokens, cacheRead: s.cacheReadTokens }),
   }));
-  const apiRefactor = anthropic.filter((r) => r.purpose.startsWith('refactor:'));
-  const refactorRows = [
-    ...sessions.map((s) => ({ source: `Claude Code ${s.sessionId.slice(0, 8)}`, model: s.model, inputTokens: s.inputTokens + s.cacheWriteTokens + s.cacheReadTokens, outputTokens: s.outputTokens, costUsd: s.costUsd, opusUsd: s.opusUsd })),
-    ...apiRefactor.map((r) => ({
-      source: r.purpose.replace(/^refactor:/, 'API '),
-      model: r.model,
-      inputTokens: r.inputTokens ?? 0,
-      outputTokens: r.outputTokens ?? 0,
-      costUsd: r.costUsd,
-      opusUsd: costUsd(CLAUDE.opus, { input: r.inputTokens ?? 0, output: r.outputTokens ?? 0 }),
-    })),
-  ];
+  const refactorRows = sessions.map((s) => ({
+    source: `Claude Code ${s.sessionId.slice(0, 8)}${s.branch ? ` (${s.branch})` : ''}`,
+    model: s.model,
+    inputTokens: s.inputTokens + s.cacheWriteTokens + s.cacheReadTokens,
+    outputTokens: s.outputTokens,
+    costUsd: s.costUsd,
+    opusUsd: s.opusUsd,
+  }));
 
   // ── 3. Revisión: fixtures (última corrida por método) + última revisión de rama ──
   const review = lastBy(rRuns, (r) => r.method).map((r) => ({ method: r.method, recall: r.recall, falsePositives: r.falsePositives, negatives: r.negatives, exact: r.exact, total: r.total, costUsd: r.costUsd, perFixture: r.perFixture }));
@@ -96,7 +99,6 @@ export function aggregate() {
     ? {
         jevUsd: sum(jev.filter((r) => r.runId === lastReview).map((r) => r.costUsd)),
         jevRequests: jev.filter((r) => r.runId === lastReview).length,
-        haikuUsd: sum(anthropic.filter((r) => r.runId === lastReview && r.purpose.startsWith('review-comment')).map((r) => r.costUsd)),
       }
     : null;
 
@@ -111,7 +113,10 @@ export function aggregate() {
     const cur = byModel.get(k) ?? { calls: 0, inputTokens: 0, outputTokens: 0, costUsd: 0 };
     byModel.set(k, { calls: cur.calls + 1, inputTokens: cur.inputTokens + i, outputTokens: cur.outputTokens + o, costUsd: cur.costUsd + c });
   };
-  for (const r of [...jev, ...anthropic]) add(r.model, r.inputTokens ?? 0, r.outputTokens ?? 0, r.costUsd ?? 0);
+  for (const r of jev) add(r.model, r.inputTokens ?? 0, r.outputTokens ?? 0, r.costUsd ?? 0);
+  // Comparaciones con Opus en Claude Code (npm run compare): la última de cada corrida.
+  for (const c of readJsonl<{ claudeCode: { model: string; costUsd: number | null; inputTokens: number; cacheWriteTokens: number; cacheReadTokens: number; outputTokens: number } }>('compare-runs'))
+    add(c.claudeCode.model, c.claudeCode.inputTokens + c.claudeCode.cacheWriteTokens + c.claudeCode.cacheReadTokens, c.claudeCode.outputTokens, c.claudeCode.costUsd ?? 0);
   for (const s of sessions) add(s.model, s.inputTokens + s.cacheWriteTokens + s.cacheReadTokens, s.outputTokens, s.costUsd ?? 0);
 
   const snapshots = [...new Set(jev.map((r) => r.model))];
@@ -120,7 +125,8 @@ export function aggregate() {
     pricesAsOf: PRICES_AS_OF,
     prices: PRICES,
     snapshots,
-    hasData: jev.length + anthropic.length + ccRaw.length > 0,
+    hasData: jev.length + ccRaw.length > 0,
+    compare: readJsonl<Record<string, unknown>>('compare-runs').at(-1) ?? null,
     prioritize,
     refactor: { rows: refactorRows, totalUsd: sum(refactorRows.map((r) => r.costUsd)), opusUsd: sum(refactorRows.map((r) => r.opusUsd)) },
     review,

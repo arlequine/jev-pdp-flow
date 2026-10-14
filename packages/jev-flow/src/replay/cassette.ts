@@ -3,7 +3,7 @@ import { dirname } from 'node:path';
 import { jevMode, path, type JevMode } from '../config';
 import { requestKey } from '../lib/stable';
 
-export type CassetteKind = 'jev' | 'anthropic';
+export type CassetteKind = 'jev' | 'claude-code';
 
 export interface Cassette<Req, Res> {
   key: string;

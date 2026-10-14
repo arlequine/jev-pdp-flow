@@ -10,7 +10,7 @@ export const JEV_MODEL_ID = 'jev-1.13.0';
 /** API nativa de TypeSafe (default del SDK @typesafe-ai/sdk 0.6.0). TYPESAFE_BASE_URL la puede cambiar. */
 export const JEV_BASE_URL = process.env.TYPESAFE_BASE_URL ?? 'https://api.typesafe.ai';
 
-/** Modelos de Anthropic, fijos. */
+/** Modelos de Claude (se usan desde Claude Code, no por API). */
 export const CLAUDE = {
   haiku: 'claude-haiku-5-5',
   sonnet: 'claude-sonnet-5-5',

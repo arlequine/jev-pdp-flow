@@ -38,7 +38,7 @@ Perfiles: negocio, marketing, desarrollo.
 - **Decisión:** publicar, ocultar o mandar a revisión; etiquetar de qué habla cada reseña.
 - **Preguntas:** `contains_personal_data`, `offensive_language`, `is_about_the_product` (no del envío), `mentions_size_fit`, `mentions_quality`, `mentions_delivery` (Noul) y `sentiment` (Score de 5 niveles).
 - **Código:** datos personales → ocultar; ofensivo ≥ 0.8 → ocultar, ≥ 0.4 → revisión; etiquetas con umbral por etiqueta, calibradas con una muestra.
-- **Generación:** ninguna. Opcional: Haiku resume las reseñas de un producto una vez al día.
+- **Generación:** ninguna. Opcional: Claude resume las reseñas de un producto una vez al día.
 - **Éxito:** precisión al ocultar ≥ 95 % en 30 reseñas etiquetadas.
 
 ### 2. Gate de devoluciones y reembolsos
@@ -49,7 +49,7 @@ Perfiles: negocio, análisis, desarrollo. Encaja con experiencia en fraude y ant
 - **Código primero:** el pedido existe, está dentro de los 30 días (fecha en código), el monto no supera lo pagado.
 - **Preguntas:** `customer_asks_refund`, `item_matches_order`, `policy_covers_reason`, `signals_of_abuse` (por ejemplo, devolución repetida descrita en el mensaje).
 - **Código:** todas ≥ 0.9 y monto bajo → aprobar; alguna ≤ 0.1 → rechazar; el resto → persona.
-- **Generación:** Haiku redacta la respuesta al cliente solo cuando hay rechazo o revisión.
+- **Generación:** Claude redacta la respuesta al cliente solo cuando hay rechazo o revisión.
 - **Éxito:** cero reembolsos automáticos equivocados en el set de prueba; % que se resuelve sin persona.
 
 ### 3. Fichas de producto que prometen de más
@@ -58,7 +58,7 @@ Perfiles: marketing, UX, negocio.
 
 - **Decisión:** si la descripción afirma algo que los atributos del producto no respaldan.
 - **State:** atributos del catálogo (materiales, tallas, cuidados) + descripción de marketing.
-- **Preguntas:** una Noul por afirmación extraída (`claim_supported_by_attributes`); las afirmaciones las extrae el código con regex o una lista, o Haiku si son libres.
+- **Preguntas:** una Noul por afirmación extraída (`claim_supported_by_attributes`); las afirmaciones las extrae el código con regex o una lista, o Claude si son libres.
 - **Código:** cualquier afirmación sin respaldo ≥ 0.7 → la ficha va a corrección.
 - **Generación:** Sonnet reescribe solo la ficha marcada, y Jev vuelve a verificarla (cascada verificada).
 - **Éxito:** % de fichas corregidas que pasan la verificación al primer intento.
@@ -70,7 +70,7 @@ Perfiles: negocio, análisis.
 - **Decisión:** a qué equipo va, qué tan urgente es y si toca dinero.
 - **Preguntas:** `team` (Choice: pagos, envíos, producto, cuenta, otro), `urgency` (Score), `touches_money`, `customer_is_angry`, `mentions_legal_action` (Noul).
 - **Código:** toca dinero o acción legal → prioridad alta; confianza del equipo < 0.5 → bandeja general.
-- **Generación:** Haiku sugiere la primera respuesta solo para tickets de prioridad alta.
+- **Generación:** Claude sugiere la primera respuesta solo para tickets de prioridad alta.
 - **Éxito:** % de tickets en el equipo correcto contra una muestra etiquetada.
 
 ### 5. Cumplimiento de precios en el catálogo
@@ -99,7 +99,7 @@ Perfiles: marketing, análisis, UX.
 - **Decisión:** clasificar respuestas abiertas de una encuesta de salida.
 - **Preguntas:** `reason` (Choice: precio, envío, talla, confianza, método de pago, otro), `mentions_competitor`, `would_return` (Noul).
 - **Código:** conteos por motivo y por semana (en código, no en Jev).
-- **Generación:** Haiku escribe el resumen semanal a partir de los conteos ya calculados.
+- **Generación:** Claude escribe el resumen semanal a partir de los conteos ya calculados.
 - **Éxito:** el resumen no contradice los conteos (lo verifica el código).
 
 ### 8. Asistente de tallas con reglas
@@ -109,7 +109,7 @@ Perfiles: UX, negocio.
 - **Decisión:** qué talla sugerir a partir de lo que escribe la persona ("normalmente uso M pero me queda justa en los hombros").
 - **Preguntas:** `usual_size` (Choice con las tallas), `prefers_loose_fit`, `mentions_shoulders_tight` (Noul).
 - **Código:** la tabla de tallas y la regla de ajuste; Jev nunca convierte medidas (eso es aritmética).
-- **Generación:** ninguna, o una frase corta de Haiku explicando la sugerencia.
+- **Generación:** ninguna, o una frase corta de Claude explicando la sugerencia.
 - **Éxito:** coincidencia con la talla que eligió el cliente en compras sin devolución.
 
 ---

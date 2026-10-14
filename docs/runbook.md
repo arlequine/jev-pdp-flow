@@ -44,7 +44,7 @@ Llena en `.env`:
 |---|---|
 | `TYPESAFE_API_KEY` | Jev por la API nativa de TypeSafe (no se usa OpenRouter) |
 | `TYPESAFE_BASE_URL` | Opcional; por defecto `https://api.typesafe.ai` |
-| `ANTHROPIC_API_KEY` | Baselines con Sonnet/Opus, comentario de Haiku y plan B |
+| — | No hace falta key de Anthropic: Claude se usa desde Claude Code con tu sesión (`claude -p "hola"` debe responder) |
 | `JEV_MODE` | `record` para el ensayo, `replay` para el escenario |
 
 Las keys solo viven en `.env` (está en `.gitignore`). `.claude/settings.json` le niega a Claude Code leerlo.
@@ -69,23 +69,25 @@ Todo lo de esta sección se corre con `JEV_MODE=record`: llama a las APIs y guar
 export JEV_MODE=record
 ```
 
-### B.1 Priorización y baselines
+### B.1 Priorización, baselines y Jev vs Opus
 
 ```bash
 npm run prioritize -- PDP-142 --baselines --lang es
+npm run compare -- PDP-142
 ```
 
 Debes ver:
-- la tabla de Jev con los criterios de éxito (meta: 5/5);
+- la tabla de Jev con los criterios de éxito (meta: 5/5) y el tiempo de respuesta;
 - la comparación inglés vs. español;
-- los baselines: orden del ticket, "URGENTE" primero, Sonnet y Opus.
+- los baselines sin IA: orden del ticket y "URGENTE" primero;
+- la comparación con Opus en Claude Code (`claude -p --model opus`): criterios, tiempo de respuesta, costo a precio de lista y el que reporta Claude Code. Queda grabada para `replay`.
 
 Si algún criterio falla, **no muevas los pesos para que pase** con 9 subtareas: anota qué pasó y cuéntalo en la charla. Si quieres ajustar, cambia `thresholds.ts`, vuelve a correr y registra por qué.
 
 ### B.2 Revisión: fixtures
 
 ```bash
-npm run review -- --fixtures --compare-opus
+npm run review -- --fixtures
 ```
 
 Debes ver: d01 y d02 en BLOQUEAR, d03 y d05 en APROBAR, d04 en REVISAR o BLOQUEAR, y la columna "Regex/carpeta" marcando d03.
@@ -118,14 +120,9 @@ git switch -c tmp-trap refactor/pdp-recorded && git apply fixtures/diffs/d01/cha
   && git branch -f refactor/pdp-trap HEAD && git switch main && git branch -D tmp-trap
 ```
 
-### B.4 Plan B por API (grabarlo)
+### B.4 Plan B del refactor
 
-```bash
-git switch main && git branch -D refactor/pdp 2>/dev/null
-npm run refactor -- PDP-142.4
-```
-
-Debes ver: `✓ typecheck y tests en verde · commit …` y el costo de Sonnet. Queda grabado; el día de la demo `JEV_MODE=replay npm run refactor -- PDP-142.4` lo reproduce siempre que `main` esté igual.
+No hay plan B por API: si la sesión de Claude Code falla o tarda en vivo, se muestra el mismo cambio hecho en el ensayo (`git show refactor/pdp-recorded~8 --stat`) y se sigue con la rama `refactor/pdp-recorded`.
 
 ### B.5 Revisión de ramas (graba lo que se verá en vivo)
 
@@ -134,7 +131,7 @@ npm run review -- main..refactor/pdp-trap
 npm run review -- main..refactor/pdp-recorded
 ```
 
-Debes ver: BLOQUEAR con `HTML sin sanitizar` en `ProductDescription.tsx` y el comentario de Haiku; luego APROBAR sin Haiku. El primer run tarda más porque corre typecheck y tests en un worktree; después usa la caché (`.jev/cache/`).
+Debes ver: BLOQUEAR con `HTML sin sanitizar` en `ProductDescription.tsx` y el comentario para humanos (lo arma el código); luego APROBAR. El primer run tarda más porque corre typecheck y tests en un worktree; después usa la caché (`.jev/cache/`).
 
 Prueba el hook:
 
@@ -197,7 +194,7 @@ code tickets/PDP-142.md
 
 # 2. Priorización
 npm run prioritize -- PDP-142
-npm run cost -- prioritize
+npm run compare -- PDP-142
 
 # 3. Refactor en vivo (en Claude Code con Sonnet)
 #    "Usa la skill pdp-refactor para PDP-142.4"

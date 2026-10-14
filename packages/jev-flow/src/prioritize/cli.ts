@@ -7,11 +7,11 @@ import '../lib/cli-errors';
 import { JEV_PROVIDER, jevMode } from '../config';
 import { RUN_ID, appendJsonl, setCommand } from '../metrics/log';
 import { usd } from '../prices';
-import { loadTicket, loadTicketMarkdown, loadTruth } from '../lib/ticket';
+import { loadTicket, loadTruth } from '../lib/ticket';
 import { bold, cyan, dim, green, parseArgs, red, table, yellow } from '../lib/table';
 import { evaluateOrder, type Evaluation } from './evaluate';
 import { prioritize, writePlan, type PrioritizeRun } from './run';
-import { llmOrder, ticketOrder, urgentFirst, type BaselineOrder } from './baselines';
+import { ticketOrder, urgentFirst } from './baselines';
 
 const { flags, positional } = parseArgs(process.argv.slice(2));
 const id = positional[0] ?? 'PDP-142';
@@ -64,6 +64,7 @@ function printRun(r: PrioritizeRun) {
   if (r.evaluation) printEval('Jev', r.evaluation);
   console.log(
     `\n${bold('Costo Jev')}: ${usd(r.costUsd)} · ${r.requests} requests · ${r.inputTokens.toLocaleString('es-MX')} tokens de entrada` +
+      ` · ${(r.latencyMs / 1000).toFixed(2)} s${r.latencySource === 'grabado' ? ' (latencias grabadas)' : ''}` +
       (r.replayed ? dim(' · reproducido de recordings/') : ''),
   );
   console.log(dim(`Snapshot: ${r.snapshot}`));
@@ -96,28 +97,15 @@ function printLangDiff(en: PrioritizeRun, es: PrioritizeRun) {
 
 async function baselines() {
   if (!truth) throw new Error('Los baselines necesitan tickets/<id>.truth.json');
-  console.log(bold('\nBaselines'));
-  const md = loadTicketMarkdown(id);
-  const list: BaselineOrder[] = [ticketOrder(ticket), urgentFirst(ticket)];
-  for (const m of ['sonnet', 'opus'] as const) list.push(await llmOrder(m, md, ticket));
+  console.log(bold('\nBaselines sin IA'));
   const rows: string[][] = [];
   const jevEval = run.evaluation!;
   rows.push(['jev', `${jevEval.passed}/5`, jevEval.spearman == null ? '—' : f2(jevEval.spearman), usd(run.costUsd)]);
-  for (const b of list) {
+  for (const b of [ticketOrder(ticket), urgentFirst(ticket)]) {
     const e = evaluateOrder(b.order, b.excluded, truth);
-    appendJsonl('prioritize-runs', {
-      ts: new Date().toISOString(),
-      runId: RUN_ID,
-      method: b.method,
-      ticket: ticket.id,
-      order: b.order,
-      excluded: b.excluded,
-      evaluation: e,
-      costUsd: b.costUsd,
-      note: b.note,
-    });
-    rows.push([b.method, `${e.passed}/5`, e.spearman == null ? '—' : f2(e.spearman), usd(b.costUsd)]);
+    appendJsonl('prioritize-runs', { ts: new Date().toISOString(), runId: RUN_ID, method: b.method, ticket: ticket.id, order: b.order, excluded: b.excluded, evaluation: e, costUsd: 0 });
+    rows.push([b.method, `${e.passed}/5`, e.spearman == null ? '—' : f2(e.spearman), usd(0)]);
   }
   console.log(table(['Método', 'Criterios', 'Spearman', 'Costo'], rows, ['l', 'r', 'r', 'r']));
-  console.log(dim('La inyección se evalúa por posición en los baselines; en Jev además se compara contra la corrida de control.'));
+  console.log(dim('Para comparar costo y tiempo contra Opus (en Claude Code): npm run compare -- ' + ticket.id));
 }

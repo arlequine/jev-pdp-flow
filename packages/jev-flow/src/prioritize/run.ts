@@ -23,6 +23,9 @@ export interface PrioritizeRun {
   inputTokens: number;
   replayed: boolean;
   snapshot: string;
+  /** Tiempo de respuesta de la priorización completa (ms). En replay se reconstruye con las latencias grabadas. */
+  latencyMs: number;
+  latencySource: 'medido' | 'grabado';
 }
 
 const toSignals = (id: string, main: JevResponse, rev: JevResponse): Signals => ({
@@ -37,6 +40,18 @@ const toSignals = (id: string, main: JevResponse, rev: JevResponse): Signals => 
   blocks_purchase: main.answers.blocks_purchase as NoulAnswer,
   cosmetic_only: main.answers.cosmetic_only as NoulAnswer,
 });
+
+const CONCURRENCY = 5;
+
+/** Reconstruye el tiempo total con las latencias grabadas: mismo pool de 5, y el control al final. */
+export function simulateWall(perSubtask: number[], controlMs: number) {
+  const workers = new Array(CONCURRENCY).fill(0);
+  for (const ms of perSubtask) {
+    const i = workers.indexOf(Math.min(...workers));
+    workers[i] += ms;
+  }
+  return Math.round(Math.max(...workers) + controlMs);
+}
 
 /** Máxima diferencia de probabilidad entre dos respuestas a las mismas preguntas (Noul y Score normalizado). */
 export function maxDelta(a: JevResponse, b: JevResponse): { delta: number; worst: string } {
@@ -65,7 +80,8 @@ export async function prioritize(ticket: Ticket, truth: TicketTruth | null, lang
   const qsRev = lang === 'en' ? reversedAreaQuestions() : reversedAreaQuestionsEs();
   const tag = `prioritize:${lang}`;
 
-  const results = await pool(ticket.subtasks, 5, async (s) => {
+  const t0 = performance.now();
+  const results = await pool(ticket.subtasks, CONCURRENCY, async (s) => {
     const state = prioritizeState(ticket, s);
     const [main, rev] = await Promise.all([
       askJev({ state, questions: qs, purpose: `prioritize:${s.id}`, tag }),
@@ -90,6 +106,7 @@ export async function prioritize(ticket: Ticket, truth: TicketTruth | null, lang
     }
   }
 
+  const wallMs = Math.round(performance.now() - t0);
   const signals = results.map((r) => toSignals(r.s.id, r.main.response, r.rev.response));
   const result = rank(ticket.subtasks, signals);
   const evaluation = truth
@@ -108,6 +125,8 @@ export async function prioritize(ticket: Ticket, truth: TicketTruth | null, lang
     inputTokens: calls.reduce((n, c) => n + (c.response.usage?.input_tokens ?? 0), 0),
     replayed: calls.every((c) => c.replayed),
     snapshot: calls[0]?.response.model ?? '',
+    latencyMs: calls.every((c) => c.replayed) ? simulateWall(results.map((r) => Math.max(r.main.latencyMs, r.rev.latencyMs)), calls.length > results.length * 2 ? calls.at(-1)!.latencyMs : 0) : wallMs,
+    latencySource: calls.every((c) => c.replayed) ? 'grabado' : 'medido',
   };
 
   appendJsonl('prioritize-runs', {
@@ -125,6 +144,8 @@ export async function prioritize(ticket: Ticket, truth: TicketTruth | null, lang
     inputTokens: run.inputTokens,
     replayed: run.replayed,
     snapshot: run.snapshot,
+    latencyMs: run.latencyMs,
+    latencySource: run.latencySource,
   });
   return run;
 }

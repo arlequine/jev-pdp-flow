@@ -8,6 +8,7 @@
       "Bash(npm run prioritize:*)",
       "Bash(npm run review:*)",
       "Bash(npm run cost:*)",
+      "Bash(npm run compare:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
       "Bash(git log:*)",

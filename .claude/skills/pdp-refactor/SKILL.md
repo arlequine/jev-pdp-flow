@@ -28,6 +28,6 @@ description: Ejecuta una o varias subtareas de PDP-142 en el orden de .jev/plan.
 - Sugiere `/review-local main..refactor/pdp`.
 - Los tokens y el costo de esta sesión los guarda el hook Stop en `metrics/claude-code.jsonl`; `npm run cost -- refactor` los muestra.
 
-## Plan B sin Claude Code
+## Plan B
 
-`npm run refactor -- PDP-142.N` hace lo mismo con Sonnet 5.5 vía la API (y en `JEV_MODE=replay` reproduce el ensayo).
+Si la sesión en vivo falla o tarda, el mismo cambio ya está hecho en el ensayo: `git show refactor/pdp-recorded~8 --stat` (PDP-142.4) o la rama completa `refactor/pdp-recorded`. La demo no usa la API de Anthropic.

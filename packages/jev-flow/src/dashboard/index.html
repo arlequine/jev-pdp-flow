@@ -96,8 +96,8 @@ const MODEL = (m) => /jev/i.test(m) ? 'jev' : /sonnet/i.test(m) ? 'sonnet' : /op
 const METHOD = {
   jev: ['Jev (inglés)', 'jev'], 'jev-es': ['Jev (español)', 'jev'],
   'orden-del-ticket': ['Orden del ticket', 'none'], 'urgente-primero': ['"URGENTE" primero', 'none'],
-  'pedirle-a-sonnet': ['Pedirle el orden a Sonnet', 'sonnet'], 'pedirle-a-opus': ['Pedirle el orden a Opus', 'opus'],
-  baseline: ['Regex / carpeta', 'none'], opus: ['Opus revisando el diff', 'opus'],
+  'opus-claude-code': ['Opus en Claude Code', 'opus'],
+  baseline: ['Regex / carpeta', 'none'],
 };
 const MODEL_LABEL = { jev: 'Jev 1.13', sonnet: 'Sonnet 5.5', opus: 'Opus 5.5', haiku: 'Haiku 5.5', none: 'Sin IA' };
 const VERDICT = { approve: ['APROBAR', 'var(--good)', '✓'], review: ['REVISAR', 'var(--warning)', '!'], block: ['BLOQUEAR', 'var(--critical)', '✕'] };
@@ -152,22 +152,24 @@ async function render() {
 
   // 1. Priorización
   const P = a.prioritize;
-  html += `<section id="sec-prioritize"><h2>1 · Priorización de PDP-142</h2><p class="sub">Jev decide por subtarea y el código ordena, contra el orden del ticket, lo que grita "URGENTE" y pedirle el orden completo a Sonnet u Opus.</p>`;
-  if (!P.length) html += empty('npm run prioritize -- PDP-142 --baselines');
+  html += `<section id="sec-prioritize"><h2>1 · Priorización de PDP-142</h2><p class="sub">Jev decide por subtarea y el código ordena, contra el orden del ticket, lo que grita "URGENTE" y pedirle el orden completo a Opus en Claude Code.</p>`;
+  if (!P.length) html += empty('npm run compare -- PDP-142 (y --baselines en prioritize)');
   else {
-    const rows = P.map((p) => ({ label: (METHOD[p.method] || [p.method])[0], model: (METHOD[p.method] || [0, 'none'])[1], value: p.passed, cost: p.costUsd, sp: p.spearman }));
+    const rows = P.map((p) => ({ label: (METHOD[p.method] || [p.method])[0], model: (METHOD[p.method] || [0, 'none'])[1], value: p.passed, cost: p.costUsd, sp: p.spearman, lat: p.latencyMs, latSrc: p.latencySource }));
     html += legend(rows.map((r) => r.model));
     html += `<div class="grid2"><div><p class="chart-title">Criterios de éxito cumplidos (de 5)</p>${hbar(rows, { max: 5, ticks: [0, 1, 2, 3, 4, 5], fmt: (v) => String(Math.round(v)) })}</div>`;
     html += `<div><p class="chart-title">Costo de una priorización (USD)</p>${hbar(rows.map((r) => ({ ...r, value: r.cost })), { fmt: usd })}</div></div>`;
-    html += `<details><summary>Ver tabla</summary>${table(['Método', 'Criterios', 'Top 3', 'Precio top 2', 'URGENTE fuera top 5', 'Inyección ignorada', 'Checkout excluido', 'Spearman', 'Costo'],
-      P.map((p) => [(METHOD[p.method] || [p.method])[0], `${p.passed ?? '—'}/5`, ...(p.checks ? ['top3', 'top2', 'noise', 'injection', 'outOfScope'].map((k) => (p.checks[k] ? '✓' : '✗')) : ['—', '—', '—', '—', '—']), p.spearman == null ? '—' : p.spearman.toFixed(2), usd(p.costUsd)]), [1, 7, 8])}</details>`;
+    const timed = rows.filter((r) => r.lat != null);
+    if (timed.length) html += `<div style="margin-top:12px"><p class="chart-title">Tiempo de respuesta (s)</p>${hbar(timed.map((r) => ({ ...r, value: r.lat / 1000, tip: r.latSrc === 'grabado' ? 'latencias grabadas' : 'medido' })), { fmt: (v) => v.toFixed(2) + ' s' })}</div>`;
+    html += `<details><summary>Ver tabla</summary>${table(['Método', 'Criterios', 'Top 3', 'Precio top 2', 'URGENTE fuera top 5', 'Inyección ignorada', 'Checkout excluido', 'Spearman', 'Tiempo', 'Costo'],
+      P.map((p) => [(METHOD[p.method] || [p.method])[0], `${p.passed ?? '—'}/5`, ...(p.checks ? ['top3', 'top2', 'noise', 'injection', 'outOfScope'].map((k) => (p.checks[k] ? '✓' : '✗')) : ['—', '—', '—', '—', '—']), p.spearman == null ? '—' : p.spearman.toFixed(2), p.latencyMs == null ? '—' : (p.latencyMs / 1000).toFixed(2) + ' s', usd(p.costUsd)]), [1, 7, 8, 9])}</details>`;
   }
   html += '</section>';
 
   // 2. Refactor
   const R = a.refactor;
   html += `<section id="sec-refactor"><h2>2 · Refactor con Sonnet 5.5</h2><p class="sub">Aquí sí conviene generar. Costo real con Sonnet contra los mismos tokens a precio de Opus.</p>`;
-  if (!R.rows.length) html += empty('una subtarea con Claude Code (hook Stop) o npm run refactor -- PDP-142.4');
+  if (!R.rows.length) html += empty('una subtarea con Claude Code (el hook Stop guarda los tokens)');
   else {
     const tok = R.rows.reduce((n, r) => n + r.inputTokens + r.outputTokens, 0);
     html += `<div class="tiles"><div class="tile"><div class="k">Costo real (Sonnet)</div><div class="hero">${usd(R.totalUsd)}</div></div>`
@@ -180,8 +182,8 @@ async function render() {
 
   // 3. Revisión
   const V = a.review;
-  html += `<section id="sec-review"><h2>3 · Revisión del PR en local</h2><p class="sub">Fixtures d01–d05: Jev contra reglas regex o por carpeta y contra Opus revisando el mismo diff. Con 5 casos las cifras son ilustrativas.</p>`;
-  if (!V.length) html += empty('npm run review -- --fixtures --compare-opus');
+  html += `<section id="sec-review"><h2>3 · Revisión del PR en local</h2><p class="sub">Fixtures d01–d05: Jev contra reglas regex o por carpeta. Con 5 casos las cifras son ilustrativas.</p>`;
+  if (!V.length) html += empty('npm run review -- --fixtures');
   else {
     const rows = V.map((r) => ({ label: (METHOD[r.method] || [r.method])[0], model: (METHOD[r.method] || [0, 'none'])[1], value: r.exact, cost: r.costUsd, tip: `recall ${pct(r.recall)}, falsos positivos ${r.falsePositives}/${r.negatives}` }));
     html += legend(rows.map((r) => r.model));
@@ -190,7 +192,7 @@ async function render() {
     const ids = Object.keys(V[0].perFixture);
     html += `<div style="margin-top:12px">${table(['Fixture', ...V.map((r) => (METHOD[r.method] || [r.method])[0])], ids.map((id) => [id, ...V.map((r) => verdict(r.perFixture[id]))]))}</div>`;
     html += `<details><summary>Ver tabla de métricas</summary>${table(['Método', 'Recall', 'Falsos positivos', 'Exactos', 'Costo'], V.map((r) => [(METHOD[r.method] || [r.method])[0], pct(r.recall), `${r.falsePositives}/${r.negatives}`, `${r.exact}/${r.total}`, usd(r.costUsd)]), [1, 2, 3, 4])}</details>`;
-    if (a.branchReview) html += `<p class="sub" style="margin-top:10px">Última revisión de rama: Jev ${usd(a.branchReview.jevUsd)} en ${a.branchReview.jevRequests} requests${a.branchReview.haikuUsd ? ` + comentario de Haiku ${usd(a.branchReview.haikuUsd)}` : ' (aprobada: sin Haiku)'}.</p>`;
+    if (a.branchReview) html += `<p class="sub" style="margin-top:10px">Última revisión de rama: Jev ${usd(a.branchReview.jevUsd)} en ${a.branchReview.jevRequests} requests.</p>`;
   }
   html += '</section>';
 

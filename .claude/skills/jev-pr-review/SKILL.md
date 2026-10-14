@@ -12,9 +12,9 @@ description: Revisa en local una rama o rango de git con Jev (sin GitHub) y devu
    - el **veredicto** tal cual (APROBAR, REVISAR o BLOQUEAR);
    - los chequeos deterministas que fallaron, si hubo;
    - los archivos con hallazgos y la probabilidad de Jev de cada uno;
-   - el comentario de Haiku, si lo hay (solo se genera cuando no se aprueba);
+   - el comentario para humanos, si lo hay (lo arma el código solo cuando no se aprueba);
    - la ruta del reporte en `reports/`.
-3. Si el veredicto es BLOQUEAR o REVISAR, propone cómo corregir el código. No cambies el veredicto.
+3. Si el veredicto es BLOQUEAR o REVISAR, puedes redactar tú (Claude Code) una explicación más clara para el autor y proponer cómo corregir el código. No cambies el veredicto.
 
 ## No hagas
 
