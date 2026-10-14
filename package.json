@@ -1,0 +1,50 @@
+{
+  "name": "jev-pdp-flow",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Demo de la charla 'Pregúntale a la IA lo justo': PDP de e-commerce priorizada con Jev, refactorizada con Sonnet y revisada en local con Jev.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/contracts",
+    "packages/jev-flow",
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev -w @jev/api",
+    "dev:web": "npm run dev -w @jev/web",
+    "seed": "tsx scripts/seed.ts",
+    "typecheck": "tsc -p packages/contracts && tsc -p packages/jev-flow && tsc -p apps/api && tsc -p apps/web",
+    "test": "vitest run",
+    "test:contract": "vitest run --project contract",
+    "test:unit": "vitest run --project unit --project web",
+    "prioritize": "tsx packages/jev-flow/src/prioritize/cli.ts",
+    "review": "tsx packages/jev-flow/src/review/cli.ts",
+    "refactor": "tsx packages/jev-flow/src/refactor/cli.ts",
+    "cost": "tsx packages/jev-flow/src/cost/cli.ts",
+    "dashboard": "tsx packages/jev-flow/src/dashboard/server.ts",
+    "dashboard:export": "tsx packages/jev-flow/src/dashboard/export.ts",
+    "mcp": "tsx packages/jev-flow/src/mcp/server.ts",
+    "demo:compare": "tsx scripts/demo-compare.ts",
+    "demo:reset": "bash scripts/demo-reset.sh",
+    "metrics": "tsx scripts/metrics.ts",
+    "slides:brand": "python3 scripts/extract-brand.py",
+    "slides": "python3 scripts/build-slides.py",
+    "ticket:publish-gh": "tsx scripts/publish-ticket-gh.ts"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.1",
+    "@vitejs/plugin-react": "5.0.2",
+    "concurrently": "9.2.1",
+    "lighthouse": "12.8.2",
+    "playwright": "1.56.1",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4",
+    "vite": "7.1.5"
+  }
+}

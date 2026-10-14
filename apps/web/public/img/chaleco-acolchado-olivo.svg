@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+<rect width="800" height="800" fill="#ecebe7"/>
+<path d="M250 170 L330 130 Q400 190 470 130 L550 170 L640 290 L570 340 L540 300 L540 660 L260 660 L260 300 L230 340 L160 290 Z" fill="#6b7041" stroke="none" stroke-width="4"/>
+<text x="400" y="740" font-family="Arial, sans-serif" font-size="34" text-anchor="middle" fill="#2b2b2b">Chaleco acolchado · Olivo</text>
+<text x="400" y="420" font-family="Arial, sans-serif" font-size="40" text-anchor="middle" fill="#f4f4f2" opacity="0.6">Bruma</text>
+</svg>

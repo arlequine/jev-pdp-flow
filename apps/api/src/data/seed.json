@@ -1,0 +1,1777 @@
+{
+  "taxRate": 0.16,
+  "currency": "MXN",
+  "products": [
+    {
+      "id": 1,
+      "slug": "sudadera-basica",
+      "name": "Sudadera básica",
+      "brand": "Norte",
+      "category": "Sudaderas",
+      "description": "Sudadera de felpa perchada, 80 % algodón y 20 % poliéster.\n\nCorte recto, puños y cintura con resorte. Ideal para capas en otoño.",
+      "netPriceCents": 129950,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/sudadera-basica-negro.svg"
+        },
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/sudadera-basica-arena.svg"
+        },
+        {
+          "name": "Gris",
+          "hex": "#8a8d91",
+          "image": "/img/sudadera-basica-gris.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "variants": [
+        {
+          "id": 1000,
+          "sku": "SUD-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 17
+        },
+        {
+          "id": 1001,
+          "sku": "SUD-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 14
+        },
+        {
+          "id": 1002,
+          "sku": "SUD-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 14
+        },
+        {
+          "id": 1003,
+          "sku": "SUD-NEG-XL",
+          "color": "Negro",
+          "size": "XL",
+          "stock": 12,
+          "netPriceCents": 134950
+        },
+        {
+          "id": 1004,
+          "sku": "SUD-ARE-S",
+          "color": "Arena",
+          "size": "S",
+          "stock": 1
+        },
+        {
+          "id": 1005,
+          "sku": "SUD-ARE-M",
+          "color": "Arena",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1006,
+          "sku": "SUD-ARE-L",
+          "color": "Arena",
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "id": 1007,
+          "sku": "SUD-ARE-XL",
+          "color": "Arena",
+          "size": "XL",
+          "stock": 0,
+          "netPriceCents": 134950
+        },
+        {
+          "id": 1008,
+          "sku": "SUD-GRI-S",
+          "color": "Gris",
+          "size": "S",
+          "stock": 2
+        },
+        {
+          "id": 1009,
+          "sku": "SUD-GRI-M",
+          "color": "Gris",
+          "size": "M",
+          "stock": 6
+        },
+        {
+          "id": 1010,
+          "sku": "SUD-GRI-L",
+          "color": "Gris",
+          "size": "L",
+          "stock": 13
+        },
+        {
+          "id": 1011,
+          "sku": "SUD-GRI-XL",
+          "color": "Gris",
+          "size": "XL",
+          "stock": 16,
+          "netPriceCents": 134950
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5000,
+          "author": "Mariana T.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-04-24T10:00:00.000Z"
+        },
+        {
+          "id": 5001,
+          "author": "Mariana T.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-02-02T11:00:00.000Z"
+        },
+        {
+          "id": 5002,
+          "author": "Jorge R.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-02-16T12:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "playera-cuello-redondo",
+      "name": "Playera cuello redondo",
+      "brand": "Norte",
+      "category": "Playeras",
+      "description": "Playera de algodón peinado de 180 g.\n\nNo se deforma después de lavarla.",
+      "netPriceCents": 34900,
+      "colors": [
+        {
+          "name": "Blanco",
+          "hex": "#f4f4f2",
+          "image": "/img/playera-cuello-redondo-blanco.svg"
+        },
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/playera-cuello-redondo-negro.svg"
+        },
+        {
+          "name": "Olivo",
+          "hex": "#6b7041",
+          "image": "/img/playera-cuello-redondo-olivo.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "variants": [
+        {
+          "id": 1012,
+          "sku": "PLA-BLA-S",
+          "color": "Blanco",
+          "size": "S",
+          "stock": 9
+        },
+        {
+          "id": 1013,
+          "sku": "PLA-BLA-M",
+          "color": "Blanco",
+          "size": "M",
+          "stock": 7
+        },
+        {
+          "id": 1014,
+          "sku": "PLA-BLA-L",
+          "color": "Blanco",
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "id": 1015,
+          "sku": "PLA-BLA-XL",
+          "color": "Blanco",
+          "size": "XL",
+          "stock": 15
+        },
+        {
+          "id": 1016,
+          "sku": "PLA-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "id": 1017,
+          "sku": "PLA-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 17
+        },
+        {
+          "id": 1018,
+          "sku": "PLA-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "id": 1019,
+          "sku": "PLA-NEG-XL",
+          "color": "Negro",
+          "size": "XL",
+          "stock": 14
+        },
+        {
+          "id": 1020,
+          "sku": "PLA-OLI-S",
+          "color": "Olivo",
+          "size": "S",
+          "stock": 10
+        },
+        {
+          "id": 1021,
+          "sku": "PLA-OLI-M",
+          "color": "Olivo",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1022,
+          "sku": "PLA-OLI-L",
+          "color": "Olivo",
+          "size": "L",
+          "stock": 12
+        },
+        {
+          "id": 1023,
+          "sku": "PLA-OLI-XL",
+          "color": "Olivo",
+          "size": "XL",
+          "stock": 6
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5003,
+          "author": "Diego H.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-05-01T10:00:00.000Z"
+        },
+        {
+          "id": 5004,
+          "author": "Iván N.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-08-17T11:00:00.000Z"
+        },
+        {
+          "id": 5005,
+          "author": "Pedro S.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-04-09T12:00:00.000Z"
+        },
+        {
+          "id": 5006,
+          "author": "Ana G.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-03-06T13:00:00.000Z"
+        },
+        {
+          "id": 5007,
+          "author": "Paola V.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-07-17T14:00:00.000Z"
+        },
+        {
+          "id": 5008,
+          "author": "Carla P.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-07-25T15:00:00.000Z"
+        },
+        {
+          "id": 5009,
+          "author": "Sofía L.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-09-24T16:00:00.000Z"
+        },
+        {
+          "id": 5010,
+          "author": "Sofía L.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-06-15T17:00:00.000Z"
+        },
+        {
+          "id": 5011,
+          "author": "Pedro S.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-06-19T18:00:00.000Z"
+        },
+        {
+          "id": 5012,
+          "author": "Jorge R.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-04-04T19:00:00.000Z"
+        },
+        {
+          "id": 5013,
+          "author": "Iván N.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-04-26T10:00:00.000Z"
+        },
+        {
+          "id": 5014,
+          "author": "Luis M.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-09-15T11:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "chamarra-mezclilla",
+      "name": "Chamarra de mezclilla",
+      "brand": "Bruma",
+      "category": "Chamarras",
+      "description": "Mezclilla de 12 oz con lavado medio.\n\nBotones metálicos y dos bolsas al pecho.",
+      "netPriceCents": 189900,
+      "colors": [
+        {
+          "name": "Mezclilla",
+          "hex": "#3e5f8a",
+          "image": "/img/chamarra-mezclilla-mezclilla.svg"
+        },
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/chamarra-mezclilla-negro.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "variants": [
+        {
+          "id": 1024,
+          "sku": "CHA-MEZ-S",
+          "color": "Mezclilla",
+          "size": "S",
+          "stock": 9
+        },
+        {
+          "id": 1025,
+          "sku": "CHA-MEZ-M",
+          "color": "Mezclilla",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1026,
+          "sku": "CHA-MEZ-L",
+          "color": "Mezclilla",
+          "size": "L",
+          "stock": 3
+        },
+        {
+          "id": 1027,
+          "sku": "CHA-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 15
+        },
+        {
+          "id": 1028,
+          "sku": "CHA-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 16
+        },
+        {
+          "id": 1029,
+          "sku": "CHA-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 15
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5015,
+          "author": "Iván N.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-05-02T10:00:00.000Z"
+        },
+        {
+          "id": 5016,
+          "author": "Valeria C.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-02-17T11:00:00.000Z"
+        },
+        {
+          "id": 5017,
+          "author": "Rubén A.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-03-12T12:00:00.000Z"
+        },
+        {
+          "id": 5018,
+          "author": "Iván N.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-03-24T13:00:00.000Z"
+        },
+        {
+          "id": 5019,
+          "author": "Mariana T.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-06-10T14:00:00.000Z"
+        },
+        {
+          "id": 5020,
+          "author": "Rubén A.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-03-25T15:00:00.000Z"
+        },
+        {
+          "id": 5021,
+          "author": "Ana G.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-08-12T16:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "pantalon-chino",
+      "name": "Pantalón chino",
+      "brand": "Bruma",
+      "category": "Pantalones",
+      "description": "Gabardina elástica de corte slim.\n\nCintura con presillas y bolsas sesgadas.",
+      "netPriceCents": 99900,
+      "colors": [
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/pantalon-chino-arena.svg"
+        },
+        {
+          "name": "Marino",
+          "hex": "#1d2b4f",
+          "image": "/img/pantalon-chino-marino.svg"
+        },
+        {
+          "name": "Olivo",
+          "hex": "#6b7041",
+          "image": "/img/pantalon-chino-olivo.svg"
+        }
+      ],
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "variants": [
+        {
+          "id": 1030,
+          "sku": "PAN-ARE-28",
+          "color": "Arena",
+          "size": "28",
+          "stock": 11
+        },
+        {
+          "id": 1031,
+          "sku": "PAN-ARE-30",
+          "color": "Arena",
+          "size": "30",
+          "stock": 12
+        },
+        {
+          "id": 1032,
+          "sku": "PAN-ARE-32",
+          "color": "Arena",
+          "size": "32",
+          "stock": 0
+        },
+        {
+          "id": 1033,
+          "sku": "PAN-ARE-34",
+          "color": "Arena",
+          "size": "34",
+          "stock": 13
+        },
+        {
+          "id": 1034,
+          "sku": "PAN-MAR-28",
+          "color": "Marino",
+          "size": "28",
+          "stock": 17
+        },
+        {
+          "id": 1035,
+          "sku": "PAN-MAR-30",
+          "color": "Marino",
+          "size": "30",
+          "stock": 7
+        },
+        {
+          "id": 1036,
+          "sku": "PAN-MAR-32",
+          "color": "Marino",
+          "size": "32",
+          "stock": 13
+        },
+        {
+          "id": 1037,
+          "sku": "PAN-MAR-34",
+          "color": "Marino",
+          "size": "34",
+          "stock": 8
+        },
+        {
+          "id": 1038,
+          "sku": "PAN-OLI-28",
+          "color": "Olivo",
+          "size": "28",
+          "stock": 11
+        },
+        {
+          "id": 1039,
+          "sku": "PAN-OLI-30",
+          "color": "Olivo",
+          "size": "30",
+          "stock": 11
+        },
+        {
+          "id": 1040,
+          "sku": "PAN-OLI-32",
+          "color": "Olivo",
+          "size": "32",
+          "stock": 0
+        },
+        {
+          "id": 1041,
+          "sku": "PAN-OLI-34",
+          "color": "Olivo",
+          "size": "34",
+          "stock": 0
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5022,
+          "author": "Valeria C.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-06-14T10:00:00.000Z"
+        },
+        {
+          "id": 5023,
+          "author": "Paola V.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-04-02T11:00:00.000Z"
+        },
+        {
+          "id": 5024,
+          "author": "Jorge R.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-08-15T12:00:00.000Z"
+        },
+        {
+          "id": 5025,
+          "author": "Mariana T.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-02-13T13:00:00.000Z"
+        },
+        {
+          "id": 5026,
+          "author": "Paola V.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-08-12T14:00:00.000Z"
+        },
+        {
+          "id": 5027,
+          "author": "Sofía L.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-07-01T15:00:00.000Z"
+        },
+        {
+          "id": 5028,
+          "author": "Héctor B.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-01-01T16:00:00.000Z"
+        },
+        {
+          "id": 5029,
+          "author": "Paola V.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-04-04T17:00:00.000Z"
+        },
+        {
+          "id": 5030,
+          "author": "Diego H.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-09-09T18:00:00.000Z"
+        },
+        {
+          "id": 5031,
+          "author": "Carla P.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-06-08T19:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "gorra-cinco-paneles",
+      "name": "Gorra de cinco paneles",
+      "brand": "Norte",
+      "category": "Accesorios",
+      "description": "Nylon ripstop con ajuste trasero.\n\nSecado rápido.",
+      "netPriceCents": 44900,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/gorra-cinco-paneles-negro.svg"
+        },
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/gorra-cinco-paneles-arena.svg"
+        }
+      ],
+      "sizes": [
+        "Única"
+      ],
+      "variants": [
+        {
+          "id": 1042,
+          "sku": "GOR-NEG-ÚNICA",
+          "color": "Negro",
+          "size": "Única",
+          "stock": 11
+        },
+        {
+          "id": 1043,
+          "sku": "GOR-ARE-ÚNICA",
+          "color": "Arena",
+          "size": "Única",
+          "stock": 0
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5032,
+          "author": "Ana G.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-05-07T10:00:00.000Z"
+        },
+        {
+          "id": 5033,
+          "author": "Luis M.",
+          "rating": 5,
+          "text": "Muy cómoda para diario.",
+          "createdAt": "2026-01-21T11:00:00.000Z"
+        },
+        {
+          "id": 5034,
+          "author": "Rubén A.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-06-10T12:00:00.000Z"
+        },
+        {
+          "id": 5035,
+          "author": "Iván N.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-04-23T13:00:00.000Z"
+        },
+        {
+          "id": 5036,
+          "author": "Mariana T.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-06-14T14:00:00.000Z"
+        },
+        {
+          "id": 5037,
+          "author": "Iván N.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-09-01T15:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "camisa-lino",
+      "name": "Camisa de lino",
+      "brand": "Marea",
+      "category": "Camisas",
+      "description": "Lino 100 % prelavado.\n\nCuello italiano y manga larga.",
+      "netPriceCents": 119900,
+      "colors": [
+        {
+          "name": "Blanco",
+          "hex": "#f4f4f2",
+          "image": "/img/camisa-lino-blanco.svg"
+        },
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/camisa-lino-arena.svg"
+        },
+        {
+          "name": "Terracota",
+          "hex": "#b5543a",
+          "image": "/img/camisa-lino-terracota.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "variants": [
+        {
+          "id": 1044,
+          "sku": "CAM-BLA-S",
+          "color": "Blanco",
+          "size": "S",
+          "stock": 10
+        },
+        {
+          "id": 1045,
+          "sku": "CAM-BLA-M",
+          "color": "Blanco",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1046,
+          "sku": "CAM-BLA-L",
+          "color": "Blanco",
+          "size": "L",
+          "stock": 4
+        },
+        {
+          "id": 1047,
+          "sku": "CAM-BLA-XL",
+          "color": "Blanco",
+          "size": "XL",
+          "stock": 9
+        },
+        {
+          "id": 1048,
+          "sku": "CAM-ARE-S",
+          "color": "Arena",
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "id": 1049,
+          "sku": "CAM-ARE-M",
+          "color": "Arena",
+          "size": "M",
+          "stock": 8
+        },
+        {
+          "id": 1050,
+          "sku": "CAM-ARE-L",
+          "color": "Arena",
+          "size": "L",
+          "stock": 10
+        },
+        {
+          "id": 1051,
+          "sku": "CAM-ARE-XL",
+          "color": "Arena",
+          "size": "XL",
+          "stock": 1
+        },
+        {
+          "id": 1052,
+          "sku": "CAM-TER-S",
+          "color": "Terracota",
+          "size": "S",
+          "stock": 12
+        },
+        {
+          "id": 1053,
+          "sku": "CAM-TER-M",
+          "color": "Terracota",
+          "size": "M",
+          "stock": 12
+        },
+        {
+          "id": 1054,
+          "sku": "CAM-TER-L",
+          "color": "Terracota",
+          "size": "L",
+          "stock": 11
+        },
+        {
+          "id": 1055,
+          "sku": "CAM-TER-XL",
+          "color": "Terracota",
+          "size": "XL",
+          "stock": 9
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5038,
+          "author": "Rubén A.",
+          "rating": 5,
+          "text": "Me quedó perfecta, la talla es exacta.",
+          "createdAt": "2026-09-19T10:00:00.000Z"
+        },
+        {
+          "id": 5039,
+          "author": "Diego H.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-07-11T11:00:00.000Z"
+        },
+        {
+          "id": 5040,
+          "author": "Ana G.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-04-19T12:00:00.000Z"
+        },
+        {
+          "id": 5041,
+          "author": "Rubén A.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-07-01T13:00:00.000Z"
+        },
+        {
+          "id": 5042,
+          "author": "Valeria C.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-03-22T14:00:00.000Z"
+        },
+        {
+          "id": 5043,
+          "author": "Paola V.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-09-14T15:00:00.000Z"
+        },
+        {
+          "id": 5044,
+          "author": "Héctor B.",
+          "rating": 5,
+          "text": "Me quedó perfecta, la talla es exacta.",
+          "createdAt": "2026-09-07T16:00:00.000Z"
+        },
+        {
+          "id": 5045,
+          "author": "Diego H.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-05-16T17:00:00.000Z"
+        },
+        {
+          "id": 5046,
+          "author": "Héctor B.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-07-07T18:00:00.000Z"
+        },
+        {
+          "id": 5047,
+          "author": "Iván N.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-04-05T19:00:00.000Z"
+        },
+        {
+          "id": 5048,
+          "author": "Valeria C.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-05-12T10:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "shorts-deportivos",
+      "name": "Shorts deportivos",
+      "brand": "Marea",
+      "category": "Deportivo",
+      "description": "Tela ligera con malla interior.\n\nBolsa con cierre para llaves.",
+      "netPriceCents": 52900,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/shorts-deportivos-negro.svg"
+        },
+        {
+          "name": "Marino",
+          "hex": "#1d2b4f",
+          "image": "/img/shorts-deportivos-marino.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "variants": [
+        {
+          "id": 1056,
+          "sku": "SHO-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 13
+        },
+        {
+          "id": 1057,
+          "sku": "SHO-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 13
+        },
+        {
+          "id": 1058,
+          "sku": "SHO-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 17
+        },
+        {
+          "id": 1059,
+          "sku": "SHO-MAR-S",
+          "color": "Marino",
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "id": 1060,
+          "sku": "SHO-MAR-M",
+          "color": "Marino",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1061,
+          "sku": "SHO-MAR-L",
+          "color": "Marino",
+          "size": "L",
+          "stock": 0
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5049,
+          "author": "Carla P.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-02-04T10:00:00.000Z"
+        },
+        {
+          "id": 5050,
+          "author": "Héctor B.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-02-08T11:00:00.000Z"
+        },
+        {
+          "id": 5051,
+          "author": "Jorge R.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-02-27T12:00:00.000Z"
+        },
+        {
+          "id": 5052,
+          "author": "Héctor B.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-09-17T13:00:00.000Z"
+        },
+        {
+          "id": 5053,
+          "author": "Iván N.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-06-19T14:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "chaleco-acolchado",
+      "name": "Chaleco acolchado",
+      "brand": "Bruma",
+      "category": "Chamarras",
+      "description": "Relleno sintético ligero que se guarda en su propia bolsa.\n\nRepele llovizna.",
+      "netPriceCents": 149950,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/chaleco-acolchado-negro.svg"
+        },
+        {
+          "name": "Olivo",
+          "hex": "#6b7041",
+          "image": "/img/chaleco-acolchado-olivo.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "variants": [
+        {
+          "id": 1062,
+          "sku": "CHA-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 9
+        },
+        {
+          "id": 1063,
+          "sku": "CHA-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1064,
+          "sku": "CHA-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 13
+        },
+        {
+          "id": 1065,
+          "sku": "CHA-NEG-XL",
+          "color": "Negro",
+          "size": "XL",
+          "stock": 7
+        },
+        {
+          "id": 1066,
+          "sku": "CHA-OLI-S",
+          "color": "Olivo",
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "id": 1067,
+          "sku": "CHA-OLI-M",
+          "color": "Olivo",
+          "size": "M",
+          "stock": 0
+        },
+        {
+          "id": 1068,
+          "sku": "CHA-OLI-L",
+          "color": "Olivo",
+          "size": "L",
+          "stock": 4
+        },
+        {
+          "id": 1069,
+          "sku": "CHA-OLI-XL",
+          "color": "Olivo",
+          "size": "XL",
+          "stock": 15
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5054,
+          "author": "Pedro S.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-06-14T10:00:00.000Z"
+        },
+        {
+          "id": 5055,
+          "author": "Iván N.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-07-24T11:00:00.000Z"
+        },
+        {
+          "id": 5056,
+          "author": "Luis M.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-02-02T12:00:00.000Z"
+        },
+        {
+          "id": 5057,
+          "author": "Diego H.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-09-21T13:00:00.000Z"
+        },
+        {
+          "id": 5058,
+          "author": "Héctor B.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-03-24T14:00:00.000Z"
+        },
+        {
+          "id": 5059,
+          "author": "Héctor B.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-03-19T15:00:00.000Z"
+        },
+        {
+          "id": 5060,
+          "author": "Rubén A.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-03-05T16:00:00.000Z"
+        },
+        {
+          "id": 5061,
+          "author": "Mariana T.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-06-19T17:00:00.000Z"
+        },
+        {
+          "id": 5062,
+          "author": "Iván N.",
+          "rating": 5,
+          "text": "Muy cómoda para diario.",
+          "createdAt": "2026-01-16T18:00:00.000Z"
+        },
+        {
+          "id": 5063,
+          "author": "Ana G.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-09-06T19:00:00.000Z"
+        },
+        {
+          "id": 5064,
+          "author": "Pedro S.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-06-05T10:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "calcetines-pack-3",
+      "name": "Calcetines, paquete de 3",
+      "brand": "Norte",
+      "category": "Accesorios",
+      "description": "Algodón con refuerzo en talón y punta.\n\nTres pares del mismo color.",
+      "netPriceCents": 22900,
+      "colors": [
+        {
+          "name": "Blanco",
+          "hex": "#f4f4f2",
+          "image": "/img/calcetines-pack-3-blanco.svg"
+        },
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/calcetines-pack-3-negro.svg"
+        },
+        {
+          "name": "Gris",
+          "hex": "#8a8d91",
+          "image": "/img/calcetines-pack-3-gris.svg"
+        }
+      ],
+      "sizes": [
+        "Única"
+      ],
+      "variants": [
+        {
+          "id": 1070,
+          "sku": "CAL-BLA-ÚNICA",
+          "color": "Blanco",
+          "size": "Única",
+          "stock": 13
+        },
+        {
+          "id": 1071,
+          "sku": "CAL-NEG-ÚNICA",
+          "color": "Negro",
+          "size": "Única",
+          "stock": 3
+        },
+        {
+          "id": 1072,
+          "sku": "CAL-GRI-ÚNICA",
+          "color": "Gris",
+          "size": "Única",
+          "stock": 12
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5065,
+          "author": "Carla P.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-04-04T10:00:00.000Z"
+        },
+        {
+          "id": 5066,
+          "author": "Iván N.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-03-11T11:00:00.000Z"
+        },
+        {
+          "id": 5067,
+          "author": "Diego H.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-02-22T12:00:00.000Z"
+        },
+        {
+          "id": 5068,
+          "author": "Mariana T.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-08-24T13:00:00.000Z"
+        },
+        {
+          "id": 5069,
+          "author": "Luis M.",
+          "rating": 4,
+          "text": "Buena calidad por el precio.",
+          "createdAt": "2026-01-01T14:00:00.000Z"
+        },
+        {
+          "id": 5070,
+          "author": "Carla P.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-07-13T15:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "mochila-urbana",
+      "name": "Mochila urbana",
+      "brand": "Marea",
+      "category": "Accesorios",
+      "description": "Compartimento acolchado para laptop de 15\".\n\n22 litros de capacidad.",
+      "netPriceCents": 109900,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/mochila-urbana-negro.svg"
+        },
+        {
+          "name": "Gris",
+          "hex": "#8a8d91",
+          "image": "/img/mochila-urbana-gris.svg"
+        }
+      ],
+      "sizes": [
+        "Única"
+      ],
+      "variants": [
+        {
+          "id": 1073,
+          "sku": "MOC-NEG-ÚNICA",
+          "color": "Negro",
+          "size": "Única",
+          "stock": 11
+        },
+        {
+          "id": 1074,
+          "sku": "MOC-GRI-ÚNICA",
+          "color": "Gris",
+          "size": "Única",
+          "stock": 15
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5071,
+          "author": "Iván N.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-01-18T10:00:00.000Z"
+        },
+        {
+          "id": 5072,
+          "author": "Héctor B.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-07-18T11:00:00.000Z"
+        },
+        {
+          "id": 5073,
+          "author": "Pedro S.",
+          "rating": 5,
+          "text": "Me quedó perfecta, la talla es exacta.",
+          "createdAt": "2026-09-13T12:00:00.000Z"
+        },
+        {
+          "id": 5074,
+          "author": "Rubén A.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-04-14T13:00:00.000Z"
+        },
+        {
+          "id": 5075,
+          "author": "Pedro S.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-02-11T14:00:00.000Z"
+        },
+        {
+          "id": 5076,
+          "author": "Ana G.",
+          "rating": 5,
+          "text": "Me quedó perfecta, la talla es exacta.",
+          "createdAt": "2026-01-03T15:00:00.000Z"
+        },
+        {
+          "id": 5077,
+          "author": "Ana G.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-05-25T16:00:00.000Z"
+        },
+        {
+          "id": 5078,
+          "author": "Carla P.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-05-06T17:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "falda-midi",
+      "name": "Falda midi plisada",
+      "brand": "Marea",
+      "category": "Faldas",
+      "description": "Plisado permanente y cintura elástica.\n\nForro interior.",
+      "netPriceCents": 79950,
+      "colors": [
+        {
+          "name": "Negro",
+          "hex": "#1f1f1f",
+          "image": "/img/falda-midi-negro.svg"
+        },
+        {
+          "name": "Terracota",
+          "hex": "#b5543a",
+          "image": "/img/falda-midi-terracota.svg"
+        },
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/falda-midi-arena.svg"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "variants": [
+        {
+          "id": 1075,
+          "sku": "FAL-NEG-XS",
+          "color": "Negro",
+          "size": "XS",
+          "stock": 0
+        },
+        {
+          "id": 1076,
+          "sku": "FAL-NEG-S",
+          "color": "Negro",
+          "size": "S",
+          "stock": 7
+        },
+        {
+          "id": 1077,
+          "sku": "FAL-NEG-M",
+          "color": "Negro",
+          "size": "M",
+          "stock": 16
+        },
+        {
+          "id": 1078,
+          "sku": "FAL-NEG-L",
+          "color": "Negro",
+          "size": "L",
+          "stock": 0
+        },
+        {
+          "id": 1079,
+          "sku": "FAL-TER-XS",
+          "color": "Terracota",
+          "size": "XS",
+          "stock": 9
+        },
+        {
+          "id": 1080,
+          "sku": "FAL-TER-S",
+          "color": "Terracota",
+          "size": "S",
+          "stock": 0
+        },
+        {
+          "id": 1081,
+          "sku": "FAL-TER-M",
+          "color": "Terracota",
+          "size": "M",
+          "stock": 4
+        },
+        {
+          "id": 1082,
+          "sku": "FAL-TER-L",
+          "color": "Terracota",
+          "size": "L",
+          "stock": 13
+        },
+        {
+          "id": 1083,
+          "sku": "FAL-ARE-XS",
+          "color": "Arena",
+          "size": "XS",
+          "stock": 3
+        },
+        {
+          "id": 1084,
+          "sku": "FAL-ARE-S",
+          "color": "Arena",
+          "size": "S",
+          "stock": 8
+        },
+        {
+          "id": 1085,
+          "sku": "FAL-ARE-M",
+          "color": "Arena",
+          "size": "M",
+          "stock": 1
+        },
+        {
+          "id": 1086,
+          "sku": "FAL-ARE-L",
+          "color": "Arena",
+          "size": "L",
+          "stock": 1
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5079,
+          "author": "Luis M.",
+          "rating": 5,
+          "text": "Me quedó perfecta, la talla es exacta.",
+          "createdAt": "2026-01-22T10:00:00.000Z"
+        },
+        {
+          "id": 5080,
+          "author": "Iván N.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-01-04T11:00:00.000Z"
+        },
+        {
+          "id": 5081,
+          "author": "Rubén A.",
+          "rating": 5,
+          "text": "La volvería a comprar.",
+          "createdAt": "2026-04-16T12:00:00.000Z"
+        },
+        {
+          "id": 5082,
+          "author": "Luis M.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-04-10T13:00:00.000Z"
+        },
+        {
+          "id": 5083,
+          "author": "Diego H.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-05-05T14:00:00.000Z"
+        },
+        {
+          "id": 5084,
+          "author": "Mariana T.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-01-07T15:00:00.000Z"
+        },
+        {
+          "id": 5085,
+          "author": "Ana G.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-01-10T16:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "sueter-punto",
+      "name": "Suéter de punto",
+      "brand": "Bruma",
+      "category": "Sudaderas",
+      "description": "Punto grueso con mezcla de lana.\n\nCuello redondo y orillas acanaladas.",
+      "netPriceCents": 114900,
+      "colors": [
+        {
+          "name": "Gris",
+          "hex": "#8a8d91",
+          "image": "/img/sueter-punto-gris.svg"
+        },
+        {
+          "name": "Marino",
+          "hex": "#1d2b4f",
+          "image": "/img/sueter-punto-marino.svg"
+        },
+        {
+          "name": "Arena",
+          "hex": "#d8c3a5",
+          "image": "/img/sueter-punto-arena.svg"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "variants": [
+        {
+          "id": 1087,
+          "sku": "SUE-GRI-S",
+          "color": "Gris",
+          "size": "S",
+          "stock": 9
+        },
+        {
+          "id": 1088,
+          "sku": "SUE-GRI-M",
+          "color": "Gris",
+          "size": "M",
+          "stock": 9
+        },
+        {
+          "id": 1089,
+          "sku": "SUE-GRI-L",
+          "color": "Gris",
+          "size": "L",
+          "stock": 11
+        },
+        {
+          "id": 1090,
+          "sku": "SUE-GRI-XL",
+          "color": "Gris",
+          "size": "XL",
+          "stock": 7
+        },
+        {
+          "id": 1091,
+          "sku": "SUE-MAR-S",
+          "color": "Marino",
+          "size": "S",
+          "stock": 9
+        },
+        {
+          "id": 1092,
+          "sku": "SUE-MAR-M",
+          "color": "Marino",
+          "size": "M",
+          "stock": 7
+        },
+        {
+          "id": 1093,
+          "sku": "SUE-MAR-L",
+          "color": "Marino",
+          "size": "L",
+          "stock": 11
+        },
+        {
+          "id": 1094,
+          "sku": "SUE-MAR-XL",
+          "color": "Marino",
+          "size": "XL",
+          "stock": 0
+        },
+        {
+          "id": 1095,
+          "sku": "SUE-ARE-S",
+          "color": "Arena",
+          "size": "S",
+          "stock": 11
+        },
+        {
+          "id": 1096,
+          "sku": "SUE-ARE-M",
+          "color": "Arena",
+          "size": "M",
+          "stock": 12
+        },
+        {
+          "id": 1097,
+          "sku": "SUE-ARE-L",
+          "color": "Arena",
+          "size": "L",
+          "stock": 7
+        },
+        {
+          "id": 1098,
+          "sku": "SUE-ARE-XL",
+          "color": "Arena",
+          "size": "XL",
+          "stock": 7
+        }
+      ],
+      "reviews": [
+        {
+          "id": 5086,
+          "author": "Paola V.",
+          "rating": 5,
+          "text": "Llegó rápido y bien empacado.",
+          "createdAt": "2026-06-15T10:00:00.000Z"
+        },
+        {
+          "id": 5087,
+          "author": "Rubén A.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-02-19T11:00:00.000Z"
+        },
+        {
+          "id": 5088,
+          "author": "Mariana T.",
+          "rating": 2,
+          "text": "Se encogió un poco después de lavarla.",
+          "createdAt": "2026-06-12T12:00:00.000Z"
+        },
+        {
+          "id": 5089,
+          "author": "Luis M.",
+          "rating": 3,
+          "text": "El color es un poco distinto al de la foto.",
+          "createdAt": "2026-04-23T13:00:00.000Z"
+        },
+        {
+          "id": 5090,
+          "author": "Rubén A.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-09-14T14:00:00.000Z"
+        },
+        {
+          "id": 5091,
+          "author": "Valeria C.",
+          "rating": 4,
+          "text": "Las costuras se ven bien hechas.",
+          "createdAt": "2026-01-25T15:00:00.000Z"
+        },
+        {
+          "id": 5092,
+          "author": "Rubén A.",
+          "rating": 2,
+          "text": "No era lo que esperaba.",
+          "createdAt": "2026-07-15T16:00:00.000Z"
+        },
+        {
+          "id": 5093,
+          "author": "Jorge R.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-04-01T17:00:00.000Z"
+        },
+        {
+          "id": 5094,
+          "author": "Valeria C.",
+          "rating": 4,
+          "text": "Tela gruesa, se siente resistente.",
+          "createdAt": "2026-09-27T18:00:00.000Z"
+        },
+        {
+          "id": 5095,
+          "author": "Ana G.",
+          "rating": 3,
+          "text": "Me hubiera gustado más variedad de tallas.",
+          "createdAt": "2026-08-21T19:00:00.000Z"
+        },
+        {
+          "id": 5096,
+          "author": "Carla P.",
+          "rating": 5,
+          "text": "Excelente, ya es mi favorita.",
+          "createdAt": "2026-04-25T10:00:00.000Z"
+        }
+      ]
+    }
+  ]
+}
