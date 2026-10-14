@@ -4,18 +4,11 @@
 // TODO: mover estilos a CSS
 import { useEffect, useState } from 'react';
 import { PriceBlock } from '../features/pdp/PriceBlock';
+import '../features/pdp/pdp.css';
 
 const styles: any = {
-  page: { width: 1100, margin: '0 auto', padding: '20px 0 160px 0', fontFamily: 'Arial' },
   breadcrumbs: { fontSize: 12, color: '#bbb', marginBottom: 14 },
   crumbLink: { color: '#bbb', textDecoration: 'none' },
-  row: { display: 'flex', flexDirection: 'row', width: 1100 },
-  left: { width: 620, marginRight: 40 },
-  right: { width: 440 },
-  mainImage: { width: 600, height: 600, background: '#f5f5f5', display: 'block' },
-  thumbs: { display: 'flex', marginTop: 10, width: 600 },
-  thumb: { width: 90, height: 90, marginRight: 8, cursor: 'pointer', border: '1px solid #eee' },
-  thumbActive: { width: 90, height: 90, marginRight: 8, cursor: 'pointer', border: '1px solid #999' },
   brand: { fontSize: 12, color: '#bbb', textTransform: 'uppercase', letterSpacing: 2 },
   title: { fontSize: 30, margin: '6px 0 10px 0', color: '#222', fontWeight: 'normal' },
   rating: { fontSize: 13, color: '#aaa', marginBottom: 14 },
@@ -41,12 +34,10 @@ const styles: any = {
   review: { borderTop: '1px solid #f0f0f0', padding: '12px 0' },
   reviewHead: { fontSize: 12, color: '#bbb' },
   reviewText: { fontSize: 13, color: '#999', marginTop: 4 },
-  addBtn: { marginTop: 22, width: 440, height: 48, lineHeight: '48px', textAlign: 'center', background: '#e9e9e9', color: '#9a9a9a', cursor: 'pointer', fontSize: 14, letterSpacing: 1 },
   added: { fontSize: 12, color: '#9c9', marginTop: 8 },
   share: { marginTop: 18, fontSize: 12, color: '#ccc' },
   shareIcon: { display: 'inline-block', width: 22, height: 22, borderRadius: 11, background: '#eee', marginRight: 6, verticalAlign: 'middle' },
   modalBg: { position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,.4)', zIndex: 20 },
-  modal: { width: 520, margin: '120px auto', background: '#fff', padding: 24 },
   modalClose: { float: 'right', cursor: 'pointer', color: '#bbb' },
   table: { width: '100%', fontSize: 12, color: '#999', borderCollapse: 'collapse' },
   td: { borderBottom: '1px solid #f3f3f3', padding: 6 },
@@ -249,7 +240,7 @@ export default function ProductPage(props: any) {
   const images = product.images || [];
 
   return (
-    <div style={styles.page}>
+    <div className="pdp">
       {promoLeft !== '' && (
         <div style={{ background: '#f7f7f7', color: '#bbb', fontSize: 12, padding: 8, textAlign: 'center', marginBottom: 12 }}>
           Buen Fin anticipado · termina en {promoLeft}
@@ -266,16 +257,16 @@ export default function ProductPage(props: any) {
         / {product.name}
       </div>
 
-      <div style={styles.row}>
+      <div className="pdp-row">
         {/* ---------------- IZQUIERDA: GALERIA ---------------- */}
-        <div style={styles.left}>
-          <img src={images[imageIndex]} style={styles.mainImage} />
-          <div style={styles.thumbs}>
+        <div className="pdp-gallery">
+          <img src={images[imageIndex]} className="pdp-main-image" width={800} height={800} />
+          <div className="pdp-thumbs">
             {images.map((img: any, i: number) => (
               <img
                 key={i}
                 src={img}
-                style={i === imageIndex ? styles.thumbActive : styles.thumb}
+                className={i === imageIndex ? 'pdp-thumb is-active' : 'pdp-thumb'}
                 onClick={() => setImageIndex(i)}
               />
             ))}
@@ -283,7 +274,7 @@ export default function ProductPage(props: any) {
         </div>
 
         {/* ---------------- DERECHA: INFO ---------------- */}
-        <div style={styles.right}>
+        <div className="pdp-info">
           <div style={styles.brand}>{product.brand}</div>
           <h1 style={styles.title}>{product.name}</h1>
           <div style={styles.rating}>
@@ -333,6 +324,14 @@ export default function ProductPage(props: any) {
             </div>
           </div>
 
+          {/* agregar al carrito: arriba de las reseñas; en móvil queda fijo abajo */}
+          <div className="pdp-buybar">
+            <div className="pdp-add" onClick={addToCart}>
+              AGREGAR AL CARRITO
+            </div>
+            {added && <div style={styles.added}>Agregado ✓</div>}
+          </div>
+
           {/* tabs */}
           <div style={styles.tabs}>
             <div style={tab === 'desc' ? styles.tabActive : styles.tab} onClick={() => setTab('desc')}>
@@ -377,11 +376,6 @@ export default function ProductPage(props: any) {
             ))}
           </div>
 
-          {/* agregar al carrito */}
-          <div style={styles.addBtn} onClick={addToCart}>
-            AGREGAR AL CARRITO
-          </div>
-          {added && <div style={styles.added}>Agregado ✓</div>}
 
           {/* favoritos */}
           <div style={{ marginTop: 12, fontSize: 12, color: wish ? '#c66' : '#bbb', cursor: 'pointer' }} onClick={toggleWish}>
@@ -415,7 +409,7 @@ export default function ProductPage(props: any) {
       </div>
 
       {/* ---------------- PREGUNTAS FRECUENTES ---------------- */}
-      <div style={{ width: 1100, marginTop: 40 }}>
+      <div className="pdp-section">
         <div style={styles.reviewsTitle}>Preguntas frecuentes</div>
         {faqs.map((f, i) => (
           <div key={i} style={{ borderTop: '1px solid #f0f0f0', padding: '10px 0' }}>
@@ -429,7 +423,7 @@ export default function ProductPage(props: any) {
 
       {/* ---------------- VISTOS RECIENTEMENTE ---------------- */}
       {recent.length > 0 && (
-        <div style={{ width: 1100, marginTop: 30 }}>
+        <div className="pdp-section">
           <div style={styles.reviewsTitle}>Vistos recientemente</div>
           <div style={{ display: 'flex' }}>
             {recent.map((r) => (
@@ -445,7 +439,7 @@ export default function ProductPage(props: any) {
       {/* ---------------- MODAL GUIA DE TALLAS ---------------- */}
       {showGuide && (
         <div style={styles.modalBg} onClick={() => setShowGuide(false)}>
-          <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
+          <div className="pdp-modal" onClick={(e) => e.stopPropagation()}>
             <span style={styles.modalClose} onClick={() => setShowGuide(false)}>
               ✕
             </span>
