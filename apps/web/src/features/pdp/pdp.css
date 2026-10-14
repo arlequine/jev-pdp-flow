@@ -11,7 +11,7 @@
 .pdp-thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; }
 .pdp-thumb { width: 90px; height: 90px; flex: 0 0 auto; cursor: pointer; border: 1px solid #eee; padding: 0; background: none; }
 .pdp-thumb > img { width: 100%; height: 100%; display: block; }
-.pdp-thumb.is-active { border-color: #555; }
+.pdp-thumb.is-active { border: 2px solid #111; }
 .pdp-buybar { margin-top: 22px; }
 .pdp-add { display: block; width: 100%; min-height: 48px; line-height: 48px; text-align: center; background: #222; color: #fff; cursor: pointer; font-size: 15px; letter-spacing: 1px; border: 0; }
 .pdp-section { margin-top: 40px; }
@@ -27,15 +27,56 @@
 }
 
 /* Variantes, stock y compra (PDP-142.5). */
-.pdp-label { font-size: 12px; color: #aaa; margin: 16px 0 8px; text-transform: uppercase; }
+.pdp-label { font-size: 12px; color: #595959; margin: 16px 0 8px; text-transform: uppercase; }
 .pdp-swatches, .pdp-sizes { display: flex; flex-wrap: wrap; gap: 10px; }
 .pdp-swatch { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px #ddd; cursor: pointer; padding: 0; }
 .pdp-swatch.is-active { box-shadow: 0 0 0 2px #555; }
-.pdp-size { min-width: 44px; min-height: 36px; padding: 8px 10px; border: 1px solid #e5e5e5; background: #fff; color: #aaa; cursor: pointer; font-size: 13px; }
-.pdp-size.is-active { border-color: #555; color: #333; }
+.pdp-size { min-width: 44px; min-height: 44px; padding: 8px 10px; border: 1px solid #8a8a8a; background: #fff; color: #333; cursor: pointer; font-size: 13px; }
+.pdp-size.is-active { border: 2px solid #111; color: #111; font-weight: bold; }
 .pdp-size.is-soldout { text-decoration: line-through; }
-.pdp-stock { font-size: 13px; color: #9c9; margin: 14px 0; }
-.pdp-stock.is-out { color: #c66; }
-.pdp-add:disabled { background: #bbb; cursor: not-allowed; }
-.pdp-added { font-size: 12px; color: #9c9; margin: 8px 0 0; }
-.pdp-error { font-size: 12px; color: #c66; margin: 8px 0 0; }
+.pdp-stock { font-size: 13px; color: #1e6b2a; margin: 14px 0; }
+.pdp-stock.is-out { color: #b3261e; }
+.pdp-add:disabled { background: #e0e0e0; color: #595959; cursor: not-allowed; }
+.pdp-added { font-size: 13px; color: #1e6b2a; margin: 8px 0 0; }
+.pdp-error { font-size: 13px; color: #b3261e; margin: 8px 0 0; }
+
+/* Accesibilidad (PDP-142.7): contraste ≥ 4.5:1, foco visible y textos legibles. */
+.pdp { color: #222; }
+.pdp button { font: inherit; }
+.pdp a:focus-visible, .pdp button:focus-visible, .pdp input:focus-visible { outline: 3px solid #1a56db; outline-offset: 2px; }
+.pdp-promo { background: #f3f3f3; color: #444; font-size: 13px; padding: 8px; text-align: center; margin: 0 0 12px; }
+.pdp-breadcrumbs { font-size: 13px; color: #595959; margin-bottom: 14px; }
+.pdp-breadcrumbs a { color: #595959; }
+.pdp-brand { font-size: 12px; color: #595959; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+.pdp-title { font-size: 30px; margin: 6px 0 10px; color: #222; font-weight: normal; }
+.pdp-rating { font-size: 14px; color: #595959; margin: 0 0 14px; }
+.pdp-note { font-size: 13px; color: #595959; margin: 0 0 20px; }
+.pdp-link { background: none; border: 0; padding: 8px 0; min-height: 44px; color: #222; text-decoration: underline; cursor: pointer; font-size: 14px; }
+.pdp-qty { display: flex; align-items: center; gap: 4px; margin: 14px 0; }
+.pdp-qty button { width: 44px; height: 44px; border: 1px solid #8a8a8a; background: #fff; color: #222; cursor: pointer; font-size: 18px; }
+.pdp-qty output { width: 40px; text-align: center; font-size: 15px; }
+.pdp-tabs { display: flex; border-bottom: 1px solid #ddd; margin-top: 24px; }
+.pdp-tab { padding: 12px 14px; font-size: 14px; color: #595959; background: none; border: 0; border-bottom: 2px solid transparent; cursor: pointer; }
+.pdp-tab.is-active { color: #111; border-bottom-color: #111; }
+.pdp-tab-body { font-size: 14px; color: #444; line-height: 1.6; padding: 6px 0; }
+.pdp-h2 { font-size: 17px; color: #222; margin: 0 0 10px; font-weight: bold; }
+.pdp-reviews { margin-top: 20px; }
+.pdp-review { border-top: 1px solid #eee; padding: 12px 0; }
+.pdp-review-head { font-size: 13px; color: #595959; margin: 0; }
+.pdp-review-text { font-size: 14px; color: #333; margin: 4px 0 0; }
+.pdp-shipping { margin-top: 18px; font-size: 14px; color: #444; }
+.pdp-shipping label { display: block; }
+.pdp-shipping-row { display: flex; gap: 8px; margin-top: 6px; }
+.pdp-shipping input { width: 160px; min-height: 44px; border: 1px solid #8a8a8a; padding: 6px 10px; font-size: 14px; color: #222; }
+.pdp-shipping button { min-height: 44px; padding: 6px 14px; background: #f0f0f0; border: 1px solid #8a8a8a; color: #222; cursor: pointer; }
+.pdp-faq { border-top: 1px solid #eee; }
+.pdp-faq button { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 12px 0; min-height: 44px; font-size: 14px; color: #333; cursor: pointer; }
+.pdp-faq p { font-size: 14px; color: #444; margin: 0 0 12px; }
+.pdp-recent { display: flex; flex-wrap: wrap; gap: 16px; list-style: none; padding: 0; margin: 0; }
+.pdp-recent a { display: block; font-size: 13px; color: #444; width: 120px; }
+.pdp-recent img { display: block; width: 120px; height: 120px; background: #f5f5f5; }
+.pdp-modal-bg { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 40; }
+.pdp-modal-close { float: right; width: 44px; height: 44px; background: none; border: 0; font-size: 18px; color: #333; cursor: pointer; }
+.pdp-modal-title { font-weight: normal; color: #222; font-size: 20px; }
+.pdp-table { width: 100%; font-size: 14px; color: #333; border-collapse: collapse; }
+.pdp-table th, .pdp-table td { border-bottom: 1px solid #eee; padding: 6px; text-align: left; }

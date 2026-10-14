@@ -17,15 +17,15 @@ describe('VariantSelector', () => {
     render(
       <VariantSelector colors={[{ name: 'Arena', hex: '#d8c3a5' }, { name: 'Negro', hex: '#111' }]} sizes={['M', 'XL']} variants={variants} color="Arena" size="M" onColor={onColor} onSize={onSize} />,
     );
-    fireEvent.click(screen.getByRole('button', { name: 'XL' }));
-    fireEvent.click(screen.getByTitle('Negro'));
+    fireEvent.click(screen.getByRole('button', { name: 'XL, agotada' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Negro' }));
     expect(onSize).toHaveBeenCalledWith('XL');
     expect(onColor).toHaveBeenCalledWith('Negro');
   });
 
   it('marca como agotada la talla sin stock en el color elegido', () => {
     render(<VariantSelector colors={[{ name: 'Arena', hex: '#d8c3a5' }]} sizes={['M', 'XL']} variants={variants} color="Arena" size="M" onColor={() => {}} onSize={() => {}} />);
-    expect(screen.getByRole('button', { name: 'XL' }).className).toContain('is-soldout');
+    expect(screen.getByRole('button', { name: 'XL, agotada' }).className).toContain('is-soldout');
     expect(screen.getByRole('button', { name: 'M' }).className).not.toContain('is-soldout');
   });
 });

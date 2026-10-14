@@ -35,8 +35,16 @@ export function AddToCart({ sku, stock, quantity }: Props) {
       <button type="button" className="pdp-add" disabled={soldOut || state === 'adding'} onClick={add}>
         {soldOut ? 'Agotado' : state === 'adding' ? 'Agregando…' : 'Agregar al carrito'}
       </button>
-      {state === 'added' && <p className="pdp-added">Agregado al carrito</p>}
-      {state === 'error' && <p className="pdp-error">No pudimos agregarlo. Intenta de nuevo.</p>}
+      {state === 'added' && (
+        <p className="pdp-added" role="status">
+          Agregado al carrito
+        </p>
+      )}
+      {state === 'error' && (
+        <p className="pdp-error" role="alert">
+          No pudimos agregarlo. Intenta de nuevo.
+        </p>
+      )}
     </div>
   );
 }

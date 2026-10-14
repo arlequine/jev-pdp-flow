@@ -24,12 +24,12 @@ export function App() {
         <a href="/" className="logo">Tienda Norte</a>
       </header>
       <main>{m ? <ProductPage slug={decodeURIComponent(m[1])} /> : <Catalog />}</main>
-      {!cookiesOk && <div className="cookie-banner">
+      {!cookiesOk && <div className="cookie-banner" role="region" aria-label="Aviso de cookies">
         Usamos cookies para mejorar tu experiencia. Al seguir navegando aceptas nuestra política de privacidad y el uso de
         cookies de terceros para medición y publicidad.
-        <div className="cookie-actions" onClick={acceptCookies}>
+        <button type="button" className="cookie-actions" onClick={acceptCookies}>
           Aceptar
-        </div>
+        </button>
       </div>}
     </>
   );

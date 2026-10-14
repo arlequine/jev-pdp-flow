@@ -1,7 +1,6 @@
 // ProductPage.tsx
 // PDP principal. NO TOCAR sin hablar con frontend (ver incidentes de marzo y julio).
 // TODO: separar en componentes cuando haya tiempo
-// TODO: mover estilos a CSS
 import { useEffect, useState } from 'react';
 import { PriceBlock } from '../features/pdp/PriceBlock';
 import '../features/pdp/pdp.css';
@@ -9,39 +8,7 @@ import { VariantSelector } from '../features/pdp/VariantSelector';
 import { StockBadge } from '../features/pdp/StockBadge';
 import { AddToCart } from '../features/pdp/AddToCart';
 import { pickVariant, type VariantView } from '../features/pdp/variants';
-
-const styles: any = {
-  breadcrumbs: { fontSize: 12, color: '#bbb', marginBottom: 14 },
-  crumbLink: { color: '#bbb', textDecoration: 'none' },
-  brand: { fontSize: 12, color: '#bbb', textTransform: 'uppercase', letterSpacing: 2 },
-  title: { fontSize: 30, margin: '6px 0 10px 0', color: '#222', fontWeight: 'normal' },
-  rating: { fontSize: 13, color: '#aaa', marginBottom: 14 },
-  priceNote: { fontSize: 11, color: '#ccc', marginBottom: 20 },
-  sizeGuide: { fontSize: 12, color: '#bbb', textDecoration: 'underline', cursor: 'pointer', marginTop: 4 },
-  qtyRow: { display: 'flex', alignItems: 'center', margin: '14px 0' },
-  qtyBtn: { width: 30, height: 30, lineHeight: '30px', textAlign: 'center', border: '1px solid #eee', cursor: 'pointer', color: '#aaa' },
-  qtyVal: { width: 40, textAlign: 'center', fontSize: 14 },
-  tabs: { display: 'flex', borderBottom: '1px solid #eee', marginTop: 24 },
-  tab: { padding: '10px 14px', fontSize: 13, color: '#bbb', cursor: 'pointer' },
-  tabActive: { padding: '10px 14px', fontSize: 13, color: '#333', cursor: 'pointer', borderBottom: '2px solid #333' },
-  tabBody: { fontSize: 13, color: '#999', lineHeight: 1.6, padding: '14px 0' },
-  reviewsBox: { marginTop: 20 },
-  reviewsTitle: { fontSize: 16, color: '#444', marginBottom: 10 },
-  review: { borderTop: '1px solid #f0f0f0', padding: '12px 0' },
-  reviewHead: { fontSize: 12, color: '#bbb' },
-  reviewText: { fontSize: 13, color: '#999', marginTop: 4 },
-  share: { marginTop: 18, fontSize: 12, color: '#ccc' },
-  shareIcon: { display: 'inline-block', width: 22, height: 22, borderRadius: 11, background: '#eee', marginRight: 6, verticalAlign: 'middle' },
-  modalBg: { position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,.4)', zIndex: 20 },
-  modalClose: { float: 'right', cursor: 'pointer', color: '#bbb' },
-  table: { width: '100%', fontSize: 12, color: '#999', borderCollapse: 'collapse' },
-  td: { borderBottom: '1px solid #f3f3f3', padding: 6 },
-};
-
-const SIZE_TABLE: any = {
-  S: [92, 70], M: [100, 72], L: [108, 74], XL: [116, 76],
-  XS: [84, 68], '28': [72, 100], '30': [76, 102], '32': [81, 104], '34': [86, 106],
-};
+import { SizeGuide } from '../features/pdp/SizeGuide';
 
 export default function ProductPage(props: any) {
   const [product, setProduct] = useState<any>(null);
@@ -223,51 +190,51 @@ export default function ProductPage(props: any) {
   ];
 
   const images = product.images || [];
+  const colorOfImage = (img: string) => (variants.find((v) => v.image === img) || { color: '' }).color;
 
   return (
     <div className="pdp">
-      {promoLeft !== '' && (
-        <div style={{ background: '#f7f7f7', color: '#bbb', fontSize: 12, padding: 8, textAlign: 'center', marginBottom: 12 }}>
-          Buen Fin anticipado · termina en {promoLeft}
-        </div>
-      )}
-      <div style={styles.breadcrumbs}>
-        <a href="/" style={styles.crumbLink}>
-          Inicio
-        </a>{' '}
-        /{' '}
-        <a href="/" style={styles.crumbLink}>
-          Ropa
-        </a>{' '}
-        / {product.name}
-      </div>
+      {promoLeft !== '' && <p className="pdp-promo">Buen Fin anticipado · termina en {promoLeft}</p>}
+      <nav className="pdp-breadcrumbs" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a> / <a href="/">Ropa</a> / <span aria-current="page">{product.name}</span>
+      </nav>
 
       <div className="pdp-row">
         {/* ---------------- IZQUIERDA: GALERIA ---------------- */}
         <div className="pdp-gallery">
-          <img src={images[imageIndex]} className="pdp-main-image" width={800} height={800} />
-          <div className="pdp-thumbs">
-            {images.map((img: any, i: number) => (
-              <img
-                key={i}
-                src={img}
+          <img
+            src={images[imageIndex]}
+            className="pdp-main-image"
+            width={800}
+            height={800}
+            alt={`${product.name} en color ${colorOfImage(images[imageIndex])}`}
+          />
+          <div className="pdp-thumbs" role="group" aria-label="Fotos del producto">
+            {images.map((img: string, i: number) => (
+              <button
+                key={img}
+                type="button"
                 className={i === imageIndex ? 'pdp-thumb is-active' : 'pdp-thumb'}
+                aria-label={`Ver foto ${i + 1}: ${product.name} en color ${colorOfImage(img)}`}
+                aria-pressed={i === imageIndex}
                 onClick={() => setImageIndex(i)}
-              />
+              >
+                <img src={img} alt="" width={90} height={90} />
+              </button>
             ))}
           </div>
         </div>
 
         {/* ---------------- DERECHA: INFO ---------------- */}
         <div className="pdp-info">
-          <div style={styles.brand}>{product.brand}</div>
-          <h1 style={styles.title}>{product.name}</h1>
-          <div style={styles.rating}>
-            {stars(avg)} {avg} ({reviews.length} reseñas)
-          </div>
+          <p className="pdp-brand">{product.brand}</p>
+          <h1 className="pdp-title">{product.name}</h1>
+          <p className="pdp-rating">
+            <span aria-hidden="true">{stars(avg)}</span> {avg} de 5 ({reviews.length} reseñas)
+          </p>
 
           <PriceBlock price={selected ? selected.price : product.priceMoney} />
-          <div style={styles.priceNote}>Envío gratis en compras mayores a $999</div>
+          <p className="pdp-note">Envío gratis en compras mayores a $999</p>
 
           <VariantSelector
             colors={colors.map((c) => ({ name: c, hex: colorHex(c) }))}
@@ -278,160 +245,130 @@ export default function ProductPage(props: any) {
             onColor={chooseColor}
             onSize={setSelectedSize}
           />
-          <div style={styles.sizeGuide} onClick={() => setShowGuide(true)}>
+          <button type="button" className="pdp-link" onClick={() => setShowGuide(true)}>
             Guía de tallas
-          </div>
+          </button>
 
           {/* stock de la variante elegida */}
           <StockBadge stock={selected ? selected.stock : 0} />
 
           {/* cantidad */}
-          <div style={styles.qtyRow}>
-            <div style={styles.qtyBtn} onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>
-              -
-            </div>
-            <div style={styles.qtyVal}>{qty}</div>
-            <div style={styles.qtyBtn} onClick={() => setQty(qty + 1)}>
+          <div className="pdp-qty" role="group" aria-label="Cantidad">
+            <button type="button" aria-label="Disminuir cantidad" onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>
+              −
+            </button>
+            <output aria-live="polite">{qty}</output>
+            <button type="button" aria-label="Aumentar cantidad" onClick={() => setQty(qty + 1)}>
               +
-            </div>
+            </button>
           </div>
 
           {/* agregar al carrito: arriba de las reseñas; en móvil queda fijo abajo */}
           <AddToCart sku={selected?.sku} stock={selected ? selected.stock : 0} quantity={qty} />
 
           {/* tabs */}
-          <div style={styles.tabs}>
-            <div style={tab === 'desc' ? styles.tabActive : styles.tab} onClick={() => setTab('desc')}>
-              Descripción
-            </div>
-            <div style={tab === 'envio' ? styles.tabActive : styles.tab} onClick={() => setTab('envio')}>
-              Envío
-            </div>
-            <div style={tab === 'dev' ? styles.tabActive : styles.tab} onClick={() => setTab('dev')}>
-              Devoluciones
-            </div>
-          </div>
-          {tab === 'desc' && (
-            <div style={styles.tabBody}>
-              {product.description.split('\n\n').map((par: string, i: number) => (
-                <p key={i}>{par}</p>
-              ))}
-            </div>
-          )}
-          {tab === 'envio' && (
-            <div style={styles.tabBody}>
-              Entrega de 3 a 5 días hábiles en zona metropolitana y de 5 a 8 días en el resto del país. Envío gratis en
-              compras mayores a $999.
-            </div>
-          )}
-          {tab === 'dev' && (
-            <div style={styles.tabBody}>
-              Tienes 30 días para cambios y devoluciones. La prenda debe estar sin uso y con etiquetas.
-            </div>
-          )}
-
-          {/* reseñas */}
-          <div style={styles.reviewsBox}>
-            <div style={styles.reviewsTitle}>Reseñas ({reviews.length})</div>
-            {reviews.map((r) => (
-              <div key={r.id} style={styles.review}>
-                <div style={styles.reviewHead}>
-                  {stars(r.rating)} · {r.author} · {formatDate(r.createdAt)}
-                </div>
-                <div style={styles.reviewText}>{r.text}</div>
-              </div>
+          <div className="pdp-tabs" role="tablist" aria-label="Información del producto">
+            {TABS.map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                role="tab"
+                id={`tab-${id}`}
+                aria-selected={tab === id}
+                aria-controls={`panel-${id}`}
+                className={tab === id ? 'pdp-tab is-active' : 'pdp-tab'}
+                onClick={() => setTab(id)}
+              >
+                {label}
+              </button>
             ))}
           </div>
+          <div className="pdp-tab-body" role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
+            {tab === 'desc' && product.description.split('\n\n').map((par: string, i: number) => <p key={i}>{par}</p>)}
+            {tab === 'envio' && (
+              <p>
+                Entrega de 3 a 5 días hábiles en zona metropolitana y de 5 a 8 días en el resto del país. Envío gratis en
+                compras mayores a $999.
+              </p>
+            )}
+            {tab === 'dev' && <p>Tienes 30 días para cambios y devoluciones. La prenda debe estar sin uso y con etiquetas.</p>}
+          </div>
 
+          {/* reseñas */}
+          <section className="pdp-reviews" aria-labelledby="reviews-title">
+            <h2 id="reviews-title" className="pdp-h2">
+              Reseñas ({reviews.length})
+            </h2>
+            {reviews.map((r) => (
+              <article key={r.id} className="pdp-review">
+                <p className="pdp-review-head">
+                  <span aria-label={`${r.rating} de 5 estrellas`}>{stars(r.rating)}</span> · {r.author} · {formatDate(r.createdAt)}
+                </p>
+                <p className="pdp-review-text">{r.text}</p>
+              </article>
+            ))}
+          </section>
 
           {/* favoritos */}
-          <div style={{ marginTop: 12, fontSize: 12, color: wish ? '#c66' : '#bbb', cursor: 'pointer' }} onClick={toggleWish}>
+          <button type="button" className="pdp-link" aria-pressed={wish} onClick={toggleWish}>
             {wish ? '♥ En tus favoritos' : '♡ Agregar a favoritos'}
-          </div>
+          </button>
 
           {/* envío */}
-          <div style={{ marginTop: 18, fontSize: 12, color: '#aaa' }}>
-            Calcula tu envío
-            <div style={{ display: 'flex', marginTop: 6 }}>
-              <input
-                value={cp}
-                onChange={(e) => setCp(e.target.value)}
-                placeholder="Código postal"
-                style={{ width: 140, border: '1px solid #eee', padding: 6, fontSize: 12, color: '#999' }}
-              />
-              <div style={{ marginLeft: 8, padding: '6px 10px', background: '#f0f0f0', cursor: 'pointer' }} onClick={calcShipping}>
+          <div className="pdp-shipping">
+            <label htmlFor="cp">Calcula tu envío</label>
+            <div className="pdp-shipping-row">
+              <input id="cp" value={cp} onChange={(e) => setCp(e.target.value)} placeholder="Código postal" inputMode="numeric" />
+              <button type="button" onClick={calcShipping}>
                 Calcular
-              </div>
+              </button>
             </div>
-            {shipMsg !== '' && <div style={{ marginTop: 6 }}>{shipMsg}</div>}
-          </div>
-
-          {/* compartir */}
-          <div style={styles.share}>
-            Compartir: <span style={styles.shareIcon} />
-            <span style={styles.shareIcon} />
-            <span style={styles.shareIcon} />
+            {shipMsg !== '' && <p aria-live="polite">{shipMsg}</p>}
           </div>
         </div>
       </div>
 
       {/* ---------------- PREGUNTAS FRECUENTES ---------------- */}
-      <div className="pdp-section">
-        <div style={styles.reviewsTitle}>Preguntas frecuentes</div>
+      <section className="pdp-section" aria-labelledby="faq-title">
+        <h2 id="faq-title" className="pdp-h2">
+          Preguntas frecuentes
+        </h2>
         {faqs.map((f, i) => (
-          <div key={i} style={{ borderTop: '1px solid #f0f0f0', padding: '10px 0' }}>
-            <div style={{ fontSize: 13, color: '#888', cursor: 'pointer' }} onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}>
+          <div key={i} className="pdp-faq">
+            <button type="button" aria-expanded={faqOpen === i} aria-controls={`faq-${i}`} onClick={() => setFaqOpen(faqOpen === i ? -1 : i)}>
               {faqOpen === i ? '−' : '+'} {f[0]}
-            </div>
-            {faqOpen === i && <div style={{ fontSize: 12, color: '#aaa', marginTop: 6 }}>{f[1]}</div>}
+            </button>
+            {faqOpen === i && <p id={`faq-${i}`}>{f[1]}</p>}
           </div>
         ))}
-      </div>
+      </section>
 
       {/* ---------------- VISTOS RECIENTEMENTE ---------------- */}
       {recent.length > 0 && (
-        <div className="pdp-section">
-          <div style={styles.reviewsTitle}>Vistos recientemente</div>
-          <div style={{ display: 'flex' }}>
+        <section className="pdp-section" aria-labelledby="recent-title">
+          <h2 id="recent-title" className="pdp-h2">
+            Vistos recientemente
+          </h2>
+          <ul className="pdp-recent">
             {recent.map((r) => (
-              <a key={r} href={'/product/' + r} style={{ marginRight: 16, fontSize: 12, color: '#aaa' }}>
-                <img src={'/img/' + r + '-negro.svg'} style={{ width: 120, height: 120, display: 'block', background: '#f5f5f5' }} />
-                {r.replace(/-/g, ' ')}
-              </a>
+              <li key={r}>
+                <a href={'/product/' + r}>
+                  <img src={'/img/' + r + '-negro.svg'} alt="" width={120} height={120} />
+                  {r.replace(/-/g, ' ')}
+                </a>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
       )}
 
-      {/* ---------------- MODAL GUIA DE TALLAS ---------------- */}
-      {showGuide && (
-        <div style={styles.modalBg} onClick={() => setShowGuide(false)}>
-          <div className="pdp-modal" onClick={(e) => e.stopPropagation()}>
-            <span style={styles.modalClose} onClick={() => setShowGuide(false)}>
-              ✕
-            </span>
-            <h3 style={{ fontWeight: 'normal', color: '#444' }}>Guía de tallas</h3>
-            <table style={styles.table}>
-              <thead>
-                <tr>
-                  <td style={styles.td}>Talla</td>
-                  <td style={styles.td}>Pecho / cintura (cm)</td>
-                  <td style={styles.td}>Largo (cm)</td>
-                </tr>
-              </thead>
-              <tbody>
-                {sizes.map((s) => (
-                  <tr key={s}>
-                    <td style={styles.td}>{s}</td>
-                    <td style={styles.td}>{SIZE_TABLE[s] ? SIZE_TABLE[s][0] : '-'}</td>
-                    <td style={styles.td}>{SIZE_TABLE[s] ? SIZE_TABLE[s][1] : '-'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      {showGuide && <SizeGuide sizes={sizes} onClose={() => setShowGuide(false)} />}
     </div>
   );
 }
+
+const TABS: [string, string][] = [
+  ['desc', 'Descripción'],
+  ['envio', 'Envío'],
+  ['dev', 'Devoluciones'],
+];
