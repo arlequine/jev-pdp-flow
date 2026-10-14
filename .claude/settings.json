@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npm test)",
+      "Bash(npm run test:*)",
+      "Bash(npm run prioritize:*)",
+      "Bash(npm run review:*)",
+      "Bash(npm run cost:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git switch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "mcp__jev__jev_plan",
+      "mcp__jev__jev_cost",
+      "mcp__jev__jev_review",
+      "mcp__jev__jev_review_fixtures"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Bash(cat .env*)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Edit(packages/jev-flow/src/thresholds.ts)"
+    ]
+  },
+  "enabledMcpjsonServers": ["jev"],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/pre-merge-review.mjs\"",
+            "timeout": 600
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/log-session-cost.mjs\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
