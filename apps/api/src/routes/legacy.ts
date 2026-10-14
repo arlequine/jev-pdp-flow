@@ -9,6 +9,13 @@ import { findById, findBySlug, money, seed } from '../lib/data';
  */
 export const legacy = Router();
 
+// Marcados como deprecated (PDP-142.1): siguen respondiendo igual, con el sucesor indicado.
+legacy.use('/api/legacy', (_req, res, next) => {
+  res.set('Deprecation', 'true');
+  res.set('Link', '</api/products/{slug}>; rel="successor-version"');
+  next();
+});
+
 legacy.get('/api/legacy/products/:slug', (req, res) => {
   const p = findBySlug(req.params.slug);
   if (!p) return void res.status(404).json({ error: 'not_found' });
