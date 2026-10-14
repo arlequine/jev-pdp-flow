@@ -3,6 +3,7 @@
  *
  * Jev evalúa cada subtarea; el código calcula el orden y escribe .jev/plan.json.
  */
+import '../lib/cli-errors';
 import { jevMode, jevProvider } from '../config';
 import { RUN_ID, appendJsonl, setCommand } from '../metrics/log';
 import { usd } from '../prices';

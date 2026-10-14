@@ -4,6 +4,7 @@
  *
  * Revisión local sin GitHub: deterministas primero, Jev por commit × archivo, umbrales en thresholds.ts.
  */
+import '../lib/cli-errors';
 import { readFileSync } from 'node:fs';
 import { jevMode, jevProvider } from '../config';
 import { REVIEW_LABELS_ES, type ReviewQuestionId } from '../jev/questions/review';

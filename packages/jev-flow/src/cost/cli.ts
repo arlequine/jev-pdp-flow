@@ -2,6 +2,7 @@
  * npm run cost [-- prioritize|refactor|review|all]
  * Costos por modelo y por paso de la demo, leídos de metrics/*.jsonl. Nada escrito a mano.
  */
+import '../lib/cli-errors';
 import { aggregate } from './aggregate';
 import { bold, dim, parseArgs, table } from '../lib/table';
 import { usd } from '../prices';
@@ -26,7 +27,8 @@ const LABEL: Record<string, string> = {
 };
 
 if (!a.hasData) {
-  console.log('Todavía no hay métricas. Corre la demo con JEV_MODE=record o replay (docs/runbook.md, sección B).');
+  console.log('Todavía no hay llamadas a modelos registradas. Corre la demo con JEV_MODE=record o replay (docs/runbook.md, sección B).');
+  if (a.beforeAfter) console.log('Las métricas de antes y después ya están: npm run dashboard (sección 4).');
   process.exit(0);
 }
 console.log(dim(`Precios de lista al ${a.pricesAsOf} · snapshots de Jev: ${a.snapshots.join(', ') || '—'}`));

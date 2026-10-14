@@ -5,6 +5,7 @@
  * Lee .jev/plan.json, trabaja en la rama refactor/pdp, aplica los archivos, corre typecheck y tests
  * y hace un commit "PDP-142.N: …". Con JEV_MODE=replay reproduce la respuesta grabada en el ensayo.
  */
+import '../lib/cli-errors';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, normalize, relative } from 'node:path';
