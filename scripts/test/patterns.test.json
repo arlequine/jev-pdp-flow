@@ -1,0 +1,36 @@
+{
+  "_nota": "Mapeo para la plantilla SINTÉTICA de scripts/test/make-test-template.py. El real va en docs/brand/patterns.json.",
+  "espera": { "clone": 1, "fill": { "Espera": "título" } },
+  "título": { "clone": 2, "fill": { "Título": "título", "Subtítulo": "subtítulo" } },
+  "agenda": {
+    "clone": 3, "page_number": "Número de diapositiva", "fill": { "Título": "título", "Cierre": "cierre" },
+    "cards": {
+      "slots": [
+        { "Tarjeta 1 número": "num", "Tarjeta 1 título": "title", "Tarjeta 1 texto": "text" },
+        { "Tarjeta 2 número": "num", "Tarjeta 2 título": "title", "Tarjeta 2 texto": "text" },
+        { "Tarjeta 3 número": "num", "Tarjeta 3 título": "title", "Tarjeta 3 texto": "text" },
+        { "Tarjeta 4 número": "num", "Tarjeta 4 título": "title", "Tarjeta 4 texto": "text" }
+      ],
+      "decor": [["Tarjeta 1 fondo"], ["Tarjeta 2 fondo"], ["Tarjeta 3 fondo"], ["Tarjeta 4 fondo"]]
+    }
+  },
+  "separador": { "clone": 4, "page_number": "Número de diapositiva", "fill": { "Número grande": "número", "Título": "título", "Subtítulo": "subtítulo" } },
+  "tarjetas": {
+    "clone": 5, "page_number": "Número de diapositiva", "fill": { "Título": "título", "Cierre": "cierre" },
+    "cards": {
+      "slots": [
+        { "Tarjeta 1 número": "num", "Tarjeta 1 título": "title", "Tarjeta 1 texto": "text" },
+        { "Tarjeta 2 número": "num", "Tarjeta 2 título": "title", "Tarjeta 2 texto": "text" },
+        { "Tarjeta 3 número": "num", "Tarjeta 3 título": "title", "Tarjeta 3 texto": "text" },
+        { "Tarjeta 4 número": "num", "Tarjeta 4 título": "title", "Tarjeta 4 texto": "text" },
+        { "Tarjeta 5 número": "num", "Tarjeta 5 título": "title", "Tarjeta 5 texto": "text" },
+        { "Tarjeta 6 número": "num", "Tarjeta 6 título": "title", "Tarjeta 6 texto": "text" }
+      ],
+      "decor": [["Tarjeta 1 fondo"], ["Tarjeta 2 fondo"], ["Tarjeta 3 fondo"], ["Tarjeta 4 fondo"], ["Tarjeta 5 fondo"], ["Tarjeta 6 fondo"]]
+    }
+  },
+  "contenido": { "clone": 6, "page_number": "Número de diapositiva", "fill": { "Título": "título", "Columna izquierda": "viñetas", "Columna derecha": "derecha", "Cierre": "cierre" } },
+  "dos-columnas": { "clone": 6, "page_number": "Número de diapositiva", "fill": { "Título": "título", "Columna izquierda": "izquierda", "Columna derecha": "derecha", "Cierre": "cierre" } },
+  "imagen": { "clone": 7, "page_number": "Número de diapositiva", "fill": { "Título": "título", "Texto": "viñetas", "Cierre": "cierre" }, "images": { "Caja imagen 1": "imagen", "Caja imagen 2": "imagen2" } },
+  "preguntas": { "clone": 8, "page_number": "Número de diapositiva", "fill": { "Signo": "título", "Subtítulo": "subtítulo" } }
+}
