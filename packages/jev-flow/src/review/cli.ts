@@ -6,7 +6,7 @@
  */
 import '../lib/cli-errors';
 import { readFileSync } from 'node:fs';
-import { jevMode, jevProvider } from '../config';
+import { JEV_PROVIDER, jevMode } from '../config';
 import { REVIEW_LABELS_ES, type ReviewQuestionId } from '../jev/questions/review';
 import { RUN_ID, setCommand } from '../metrics/log';
 import { usd } from '../prices';
@@ -22,7 +22,7 @@ const json = Boolean(flags.json);
 const log = (...a: unknown[]) => (json ? undefined : console.log(...a));
 
 if (flags.fixtures) {
-  log(bold('\nRevisión de fixtures'), dim(`· Jev ${jevProvider()} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
+  log(bold('\nRevisión de fixtures'), dim(`· Jev ${JEV_PROVIDER} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
   const { outcomes, summary, jevCost, opusCost } = await reviewFixtures({ lang, compareOpus: Boolean(flags['compare-opus']) });
   const rows = outcomes.map((o) => [
     o.id,
@@ -49,7 +49,7 @@ if (!range) {
   console.error('Uso: npm run review -- main..refactor/pdp   (o --fixtures)');
   process.exit(64);
 }
-log(bold(`\nRevisión local · ${range}`), dim(`· Jev ${jevProvider()} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
+log(bold(`\nRevisión local · ${range}`), dim(`· Jev ${JEV_PROVIDER} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
 const result = await reviewRange(range, {
   lang,
   skipChecks: Boolean(flags['skip-checks']),

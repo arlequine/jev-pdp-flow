@@ -1,6 +1,6 @@
 /**
  * Precios de lista en USD por millón de tokens (entrada / salida).
- * Fuente: Jev → página del modelo en OpenRouter y TypeSafe (doc "Que es jev", 13 oct 2026).
+ * Fuente: Jev → página Models de TypeSafe (doc "Que es jev", 13 oct 2026).
  * Claude → valores entregados para la charla; verificar contra la página de precios de Anthropic antes de presentar.
  */
 export const PRICES_AS_OF = '2026-10-14';

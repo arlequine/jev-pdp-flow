@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { TypeSafeClient } from '@typesafe-ai/sdk';
-import { jevProvider, requireEnv, type JevProvider } from '../config';
+import { JEV_PROVIDER, requireEnv } from '../config';
 import { JEV_BASE_URL, JEV_MODEL_ID, JEV_VERSION } from '../models';
 import { costUsd } from '../prices';
 import { withCassette } from '../replay/cassette';
@@ -22,17 +22,14 @@ export interface AskJevOutput {
   replayed: boolean;
 }
 
-/** Transporte real. Inyectable para tests. */
-export type JevTransport = (provider: JevProvider, body: { model: string; state: unknown; questions: JevQuestions }) => Promise<unknown>;
+/** Transporte real (SDK de TypeSafe, API nativa). Inyectable para tests. */
+export type JevTransport = (body: { model: string; state: unknown; questions: JevQuestions }) => Promise<unknown>;
 
-const clients = new Map<JevProvider, TypeSafeClient>();
-export const sdkTransport: JevTransport = async (provider, body) => {
-  if (!clients.has(provider)) {
-    const apiKey = provider === 'typesafe' ? requireEnv('TYPESAFE_API_KEY') : requireEnv('OPENROUTER_API_KEY');
-    clients.set(provider, new TypeSafeClient({ apiKey, baseURL: JEV_BASE_URL[provider], timeout: 20_000 }));
-  }
+let client: TypeSafeClient | null = null;
+export const sdkTransport: JevTransport = async (body) => {
+  client ??= new TypeSafeClient({ apiKey: requireEnv('TYPESAFE_API_KEY'), baseURL: JEV_BASE_URL, timeout: 20_000 });
   // El SDK tipa las respuestas según las preguntas; aquí validamos con zod después.
-  return (clients.get(provider)! as unknown as { systemOne: (b: unknown) => Promise<unknown> }).systemOne(body);
+  return (client as unknown as { systemOne: (b: unknown) => Promise<unknown> }).systemOne(body);
 };
 
 let transport: JevTransport = sdkTransport;
@@ -43,12 +40,10 @@ export const setJevTransport = (t: JevTransport) => (transport = t);
  * Registra snapshot, tokens, costo y latencia en metrics/jev.jsonl.
  */
 export async function askJev(input: AskJevInput): Promise<AskJevOutput> {
-  const provider = jevProvider();
-  // La llave de la grabación usa la versión lógica, no el ID del proveedor:
-  // una grabación hecha por OpenRouter se puede reproducir con JEV_PROVIDER=typesafe y viceversa.
+  // La llave de la grabación usa la versión lógica (jev-1.13) más state y preguntas.
   const logical = { model: JEV_VERSION, state: input.state, questions: input.questions };
-  const r = await withCassette('jev', logical, input.purpose, provider, async () =>
-    transport(provider, { model: JEV_MODEL_ID[provider], state: input.state, questions: input.questions }),
+  const r = await withCassette('jev', logical, input.purpose, JEV_PROVIDER, async () =>
+    transport({ model: JEV_MODEL_ID, state: input.state, questions: input.questions }),
   );
 
   const parsed = JevResponse.safeParse(r.response);
@@ -63,11 +58,9 @@ export async function askJev(input: AskJevInput): Promise<AskJevOutput> {
 
   const inputTokens = res.usage?.input_tokens ?? null;
   let cost: number | null = null;
-  let costSource: 'reported' | 'computed' | 'unknown' = 'unknown';
-  if (typeof res.usage?.cost === 'number') {
-    cost = res.usage.cost;
-    costSource = 'reported';
-  } else if (inputTokens != null) {
+  let costSource: 'computed' | 'unknown' = 'unknown';
+  // La API nativa devuelve tokens; el costo se calcula con el precio de lista (prices.ts).
+  if (inputTokens != null) {
     cost = costUsd(JEV_VERSION, { input: inputTokens, output: res.usage?.output_tokens ?? 0 });
     costSource = 'computed';
   }
@@ -76,7 +69,7 @@ export async function askJev(input: AskJevInput): Promise<AskJevOutput> {
     purpose: input.purpose,
     kind: 'jev',
     provider: r.provider,
-    requestedModel: JEV_MODEL_ID[r.provider as JevProvider] ?? JEV_VERSION,
+    requestedModel: JEV_MODEL_ID,
     model: res.model,
     inputTokens,
     outputTokens: res.usage?.output_tokens ?? null,

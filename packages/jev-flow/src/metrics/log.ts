@@ -21,8 +21,8 @@ export interface CallLog {
   cacheWriteTokens?: number | null;
   cacheReadTokens?: number | null;
   costUsd: number | null;
-  /** reported = lo devolvió la API (usage.cost); computed = tokens × precio de lista; unknown = sin tokens. */
-  costSource: 'reported' | 'computed' | 'unknown';
+  /** computed = tokens × precio de lista; unknown = la respuesta no trajo tokens. */
+  costSource: 'computed' | 'unknown';
   latencyMs: number;
   mode: 'live' | 'record' | 'replay';
   replayed: boolean;

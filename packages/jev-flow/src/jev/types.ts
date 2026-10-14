@@ -29,7 +29,7 @@ export type ChoiceAnswer = z.infer<typeof ChoiceAnswer>;
 export type ScoreAnswer = z.infer<typeof ScoreAnswer>;
 export type Answer = z.infer<typeof Answer>;
 
-/** Respuesta de Jev (sección 7). `usage.cost` solo lo agrega OpenRouter. */
+/** Respuesta de la API nativa de TypeSafe (`model`, `answers`, `usage`). */
 export const JevResponse = z.object({
   model: z.string(),
   answers: z.record(z.string(), Answer),

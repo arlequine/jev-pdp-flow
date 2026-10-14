@@ -42,8 +42,8 @@ Llena en `.env`:
 
 | Variable | Para qué |
 |---|---|
-| `JEV_PROVIDER` | `openrouter` (System One API de OpenRouter) o `typesafe` (API nativa) |
-| `OPENROUTER_API_KEY` o `TYPESAFE_API_KEY` | La que corresponda al proveedor |
+| `TYPESAFE_API_KEY` | Jev por la API nativa de TypeSafe (no se usa OpenRouter) |
+| `TYPESAFE_BASE_URL` | Opcional; por defecto `https://api.typesafe.ai` |
 | `ANTHROPIC_API_KEY` | Baselines con Sonnet/Opus, comentario de Haiku y plan B |
 | `JEV_MODE` | `record` para el ensayo, `replay` para el escenario |
 
@@ -55,9 +55,9 @@ Las keys solo viven en `.env` (está en `.gitignore`). `.claude/settings.json` l
 JEV_MODE=live npm run prioritize -- PDP-142
 ```
 
-Debes ver la tabla con 9 subtareas, una excluida (PDP-142.10), la línea de **Inyección** y el **Snapshot** (por ejemplo `typesafe/jev-1.13-20260917`). El primer snapshot queda en `metrics/snapshot.json`.
+Debes ver la tabla con 9 subtareas, una excluida (PDP-142.10), la línea de **Inyección** y el **Snapshot** que devuelve TypeSafe en el campo `model`. El primer snapshot queda en `metrics/snapshot.json`.
 
-> Proveedor `typesafe`: el SDK `@typesafe-ai/sdk` 0.6.0 usa `https://api.typesafe.ai` por defecto. La documentación de Jev no dice si la API nativa devuelve `usage.cost`; si no lo devuelve, el costo se calcula con tokens × precio de lista.
+> Jev se llama con el SDK `@typesafe-ai/sdk` 0.6.0 contra la API nativa (`https://api.typesafe.ai`, autenticación Bearer con `TYPESAFE_API_KEY`). La respuesta trae `usage.input_tokens`; el costo se calcula como tokens × precio de lista (`prices.ts`).
 
 ---
 
@@ -222,8 +222,8 @@ npm run dashboard
 | Síntoma | Causa probable | Qué hacer |
 |---|---|---|
 | `JEV_MODE=replay: no hay grabación jev/…` | El estado del repo o las preguntas cambiaron desde el ensayo | `npm run demo:reset`. Si cambiaste preguntas o código a propósito, vuelve a grabar (sección B). |
-| `Falta OPENROUTER_API_KEY en .env` | Modo `live` o `record` sin key | `export JEV_MODE=replay`, o llena `.env`. |
-| `⚠️ El snapshot de Jev cambió` | OpenRouter o TypeSafe sirven un snapshot nuevo de 1.13 | Sigue en replay. Después: corre B.1 y B.2 en `record`, compara las probabilidades y ajusta `thresholds.ts` solo si hace falta. Actualiza `metrics/snapshot.json`. |
+| `Falta TYPESAFE_API_KEY en .env` | Modo `live` o `record` sin key | `export JEV_MODE=replay`, o llena `.env`. |
+| `⚠️ El snapshot de Jev cambió` | TypeSafe sirve un snapshot nuevo de 1.13 | Sigue en replay. Después: corre B.1 y B.2 en `record`, compara las probabilidades y ajusta `thresholds.ts` solo si hace falta. Actualiza `metrics/snapshot.json`. |
 | 429 de Jev | Rate limit | El SDK reintenta solo. Si persiste, replay. |
 | La revisión tarda más de 30 s | Primer run sin caché de typecheck y tests | En el escenario ya debe estar en caché (B.5). Último recurso: `--skip-checks`. |
 | Revisión: `typecheck` o `tests` fallan | La rama no compila o un test falla | Es un bloqueo legítimo: muéstralo. Para ver el detalle, abre el reporte en `reports/`. |

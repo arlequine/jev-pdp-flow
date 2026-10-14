@@ -44,12 +44,12 @@ export function fakeAnswers(state: unknown, questions: JevQuestions) {
   return answers;
 }
 
-export const fakeTransport = (calls: unknown[] = []): JevTransport => async (provider, body) => {
+export const fakeTransport = (calls: unknown[] = []): JevTransport => async (body) => {
   calls.push(body);
   const tokens = Math.ceil(JSON.stringify(body).length / 4);
   return {
     model: 'fake/jev-test-double',
     answers: fakeAnswers(body.state, body.questions),
-    usage: { input_tokens: tokens, output_tokens: 0, ...(provider === 'openrouter' ? { cost: (tokens * 0.042) / 1e6 } : {}) },
+    usage: { input_tokens: tokens, output_tokens: 0 },
   };
 };

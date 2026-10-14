@@ -8,7 +8,6 @@ export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../../..');
 if (existsSync(join(ROOT, '.env'))) loadEnv({ path: join(ROOT, '.env'), quiet: true });
 
 export type JevMode = 'live' | 'record' | 'replay';
-export type JevProvider = 'typesafe' | 'openrouter';
 
 export function jevMode(): JevMode {
   const m = (process.env.JEV_MODE ?? 'replay').toLowerCase();
@@ -16,11 +15,8 @@ export function jevMode(): JevMode {
   return m;
 }
 
-export function jevProvider(): JevProvider {
-  const p = (process.env.JEV_PROVIDER ?? 'openrouter').toLowerCase();
-  if (p !== 'typesafe' && p !== 'openrouter') throw new Error(`JEV_PROVIDER inválido: "${p}" (usa typesafe u openrouter)`);
-  return p;
-}
+/** Jev se llama solo por la API nativa de TypeSafe (no por OpenRouter). */
+export const JEV_PROVIDER = 'typesafe' as const;
 
 export function requireEnv(name: string): string {
   const v = process.env[name];

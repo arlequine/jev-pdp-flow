@@ -43,7 +43,7 @@ Tienda de ropa (MXN) en un monorepo: `apps/api` (Express, :4000), `apps/web` (Re
 
 ## Reglas de Jev
 
-1. Versión fija `jev-1.13` (`jev-1.13.0` en TypeSafe, `typesafe/jev-1.13` en OpenRouter); se registra el snapshot y se avisa si cambia.
+1. API nativa de TypeSafe (no OpenRouter), versión fija `jev-1.13.0`; se registra el snapshot y se avisa si cambia.
 2. Instrucciones en inglés, contenido en español (`--lang es` mide la diferencia).
 3. Una propiedad por pregunta y todas las preguntas en un solo request.
 4. Texto de terceros bajo `evidence`, con la regla anti-inyección en cada instrucción.

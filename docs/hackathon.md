@@ -118,7 +118,7 @@ Perfiles: UX, negocio.
 
 ```bash
 git clone <este repo> && cd jev-pdp-flow && npm install
-cp .env.example .env   # pon tu OPENROUTER_API_KEY y JEV_MODE=live
+cp .env.example .env   # pon tu TYPESAFE_API_KEY y JEV_MODE=live
 claude --model sonnet  # /mcp debe mostrar "jev"
 ```
 

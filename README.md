@@ -17,7 +17,7 @@ Mensaje central: Jev toma decisiones baratas y calibradas, Claude genera solo do
 ```bash
 nvm use                 # Node 22
 npm install
-cp .env.example .env    # keys de OpenRouter o TypeSafe y de Anthropic
+cp .env.example .env    # TYPESAFE_API_KEY y ANTHROPIC_API_KEY
 npm run dev             # API http://localhost:4000 · web http://localhost:5173
 ```
 
@@ -51,7 +51,7 @@ Sin keys, todo lo que no llama a modelos funciona (`dev`, `test`, `metrics`, `de
 apps/api            Express + TS. Endpoints legacy (deprecated) y GET /api/products/:slug
 apps/web            React + Vite. Catálogo y PDP en /product/:slug
 packages/contracts  Esquemas zod compartidos (Money, ProductDetail, legacy, ticket)
-packages/jev-flow   Cliente de Jev (typesafe|openrouter), Anthropic, record/replay,
+packages/jev-flow   Cliente de Jev (API nativa de TypeSafe), Anthropic, record/replay,
                     priorización, revisión, costos, dashboard y servidor MCP
 tickets/            PDP-142.md, PDP-142.json y la verdad de referencia
 fixtures/diffs/     d01–d05 con su veredicto esperado
@@ -82,7 +82,8 @@ docs/               charla.md, runbook.md, hackathon.md, brand/ y slides/
 
 ## Reglas de Jev que sigue el código
 
-- Versión fija: `jev-1.13.0` (TypeSafe) o `typesafe/jev-1.13` (OpenRouter). Se registra el campo `model` de cada respuesta y se avisa si el snapshot cambia.
+- Jev se llama solo por la **API nativa de TypeSafe** (`@typesafe-ai/sdk`, `https://api.typesafe.ai`); no se usa OpenRouter.
+- Versión fija: `jev-1.13.0`. Se registra el campo `model` de cada respuesta y se avisa si el snapshot cambia.
 - Instrucciones en inglés, contenido en español; `--lang es` mide la diferencia.
 - Una propiedad por pregunta; todas las preguntas en un solo request.
 - El texto de tickets, PRs y commits va bajo `evidence` con una regla anti-inyección en cada instrucción.

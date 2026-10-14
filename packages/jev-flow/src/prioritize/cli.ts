@@ -4,7 +4,7 @@
  * Jev evalúa cada subtarea; el código calcula el orden y escribe .jev/plan.json.
  */
 import '../lib/cli-errors';
-import { jevMode, jevProvider } from '../config';
+import { JEV_PROVIDER, jevMode } from '../config';
 import { RUN_ID, appendJsonl, setCommand } from '../metrics/log';
 import { usd } from '../prices';
 import { loadTicket, loadTicketMarkdown, loadTruth } from '../lib/ticket';
@@ -23,7 +23,7 @@ const f2 = (n: number) => n.toFixed(2);
 const mark = (ok: boolean) => (ok ? green('✓') : red('✗'));
 
 console.log(bold(`\nPriorización de ${ticket.id} · ${ticket.subtasks.length} subtareas`));
-console.log(dim(`Jev ${jevProvider()} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
+console.log(dim(`Jev ${JEV_PROVIDER} · JEV_MODE=${jevMode()} · run ${RUN_ID}\n`));
 
 const run = await prioritize(ticket, truth, 'en');
 printRun(run);

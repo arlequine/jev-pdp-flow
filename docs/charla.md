@@ -351,7 +351,7 @@ Precios de lista (USD por millón de tokens), en `packages/jev-flow/src/prices.t
 
 Cómo se mide:
 
-- **Jev:** cada respuesta trae `usage.input_tokens`. Por OpenRouter también trae `usage.cost`, que se usa tal cual (`costSource: reported`). Con TypeSafe directo el costo se calcula como tokens × precio de lista (`computed`). Si una respuesta no trae tokens, el costo queda "sin dato".
+- **Jev (API nativa de TypeSafe):** cada respuesta trae `usage.input_tokens`; el costo se calcula como tokens × precio de lista (`costSource: computed`). Si una respuesta no trae tokens, el costo queda "sin dato".
 - **Anthropic por API** (baselines, Haiku, plan B): tokens de la respuesta × precio de lista.
 - **Claude Code:** el hook `Stop` suma los tokens del transcript por modelo (`metrics/claude-code.jsonl`). La caché se cobra con los multiplicadores de Anthropic (escritura 1.25×, lectura 0.1× del precio de entrada).
 - **"Con Opus":** estimación con los mismos tokens a precio de Opus. Se dice así en el deck.
@@ -370,7 +370,7 @@ Cifras del ensayo (las llena `npm run slides`; para verlas en la terminal: `npm 
 
 | Falla | Qué hago | Comando |
 |---|---|---|
-| No hay red o falla OpenRouter | Todo en replay | `export JEV_MODE=replay` y repetir el comando |
+| No hay red o falla la API de TypeSafe | Todo en replay | `export JEV_MODE=replay` y repetir el comando |
 | Falta una grabación (`no hay grabación …`) | El estado del repo no es el del ensayo | `npm run demo:reset` y repetir |
 | Claude Code tarda más de 4 min o falla | Ctrl-C y mostrar el commit del ensayo | `git show refactor/pdp-recorded~8 --stat` |
 | Claude Code no abre | Plan B por API, reproducido | `JEV_MODE=replay npm run refactor -- PDP-142.4` |

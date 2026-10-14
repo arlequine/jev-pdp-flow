@@ -33,7 +33,7 @@ describe('filtros, secretos y baseline', () => {
   it('detecta secretos solo en líneas agregadas', () => {
     expect(scanSecrets([{ file: 'a.ts', added: ['const k = "sk-or-v1-abcdefghijklmnopqrstuvwxyz0123"'] }]).ok).toBe(false);
     expect(scanSecrets([{ file: '.env', added: ['X=1'] }]).ok).toBe(false);
-    expect(scanSecrets([{ file: '.env.example', added: ['OPENROUTER_API_KEY='] }]).ok).toBe(true);
+    expect(scanSecrets([{ file: '.env.example', added: ['TYPESAFE_API_KEY='] }]).ok).toBe(true);
   });
   it('el baseline por carpeta marca d03 y no ve d02', () => {
     const fx = Object.fromEntries(loadFixtures().map((f) => [f.meta.id, parseUnifiedDiff(f.diff)]));

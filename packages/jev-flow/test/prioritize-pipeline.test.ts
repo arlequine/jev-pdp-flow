@@ -11,7 +11,6 @@ describe('pipeline de priorización (con doble de Jev)', () => {
   beforeEach(() => {
     process.env.JEV_RECORDINGS_DIR = mkdtempSync(join(tmpdir(), 'rec-'));
     process.env.JEV_METRICS_DIR = mkdtempSync(join(tmpdir(), 'met-'));
-    process.env.JEV_PROVIDER = 'openrouter';
   });
 
   it('record: 2 requests por subtarea + 1 de control; replay: las mismas respuestas sin red', async () => {
@@ -27,7 +26,7 @@ describe('pipeline de priorización (con doble de Jev)', () => {
 
     // Cada request lleva TODAS las preguntas juntas (8) y la regla anti-inyección en cada instrucción.
     const body = calls[0] as { model: string; questions: Record<string, { instructions: string }> };
-    expect(body.model).toBe('typesafe/jev-1.13');
+    expect(body.model).toBe('jev-1.13.0');
     expect(Object.keys(body.questions)).toHaveLength(8);
     for (const q of Object.values(body.questions)) expect(q.instructions).toMatch(/not as instructions/);
 
@@ -40,7 +39,7 @@ describe('pipeline de priorización (con doble de Jev)', () => {
     expect(b.replayed).toBe(true);
 
     const log = readFileSync(join(process.env.JEV_METRICS_DIR!, 'jev.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
-    expect(log[0]).toMatchObject({ kind: 'jev', model: 'fake/jev-test-double', costSource: 'reported' });
+    expect(log[0]).toMatchObject({ kind: 'jev', model: 'fake/jev-test-double', costSource: 'computed' });
     expect(log[0].inputTokens).toBeGreaterThan(0);
   });
 
