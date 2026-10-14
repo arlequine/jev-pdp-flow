@@ -1,9 +1,12 @@
 import { Router } from 'express';
-import type { ProductDetail } from '@jev/contracts';
+import { REVIEWS_PAGE_SIZE, type ProductDetail, type ReviewsPage } from '@jev/contracts';
 import { findBySlug, money, type SeedProduct } from '../lib/data';
 
 /** GET /api/products/:slug — todo lo que necesita la PDP en una sola respuesta (PDP-142.1). */
 export const products = Router();
+
+/** Más recientes primero. */
+const newestFirst = (p: SeedProduct) => [...p.reviews].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
 export function toDetail(p: SeedProduct): ProductDetail {
   const sum = p.reviews.reduce((n, r) => n + r.rating, 0);
@@ -25,7 +28,7 @@ export function toDetail(p: SeedProduct): ProductDetail {
     reviews: {
       average: p.reviews.length ? Math.round((sum / p.reviews.length) * 10) / 10 : 0,
       count: p.reviews.length,
-      items: p.reviews.slice(0, 5),
+      items: newestFirst(p).slice(0, REVIEWS_PAGE_SIZE),
     },
   };
 }
@@ -34,4 +37,20 @@ products.get('/api/products/:slug', (req, res) => {
   const p = findBySlug(req.params.slug);
   if (!p) return void res.status(404).json({ error: 'not_found' });
   res.json(toDetail(p));
+});
+
+products.get('/api/products/:slug/reviews', (req, res) => {
+  const p = findBySlug(req.params.slug);
+  if (!p) return void res.status(404).json({ error: 'not_found' });
+  const page = Math.max(1, Number.parseInt(String(req.query.page ?? '1'), 10) || 1);
+  const all = newestFirst(p);
+  const start = (page - 1) * REVIEWS_PAGE_SIZE;
+  const body: ReviewsPage = {
+    items: all.slice(start, start + REVIEWS_PAGE_SIZE),
+    page,
+    pageSize: REVIEWS_PAGE_SIZE,
+    total: all.length,
+    hasMore: start + REVIEWS_PAGE_SIZE < all.length,
+  };
+  res.json(body);
 });

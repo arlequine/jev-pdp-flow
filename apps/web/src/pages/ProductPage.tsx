@@ -85,7 +85,7 @@ function ProductView({ product }: { product: ProductDetail }) {
           <AddToCart sku={selected?.sku} stock={selected ? selected.stock : 0} quantity={qty} />
 
           <DetailsTabs description={product.description} />
-          <Reviews data={product.reviews} />
+          <Reviews slug={product.slug} data={product.reviews} />
           <WishlistButton slug={product.slug} />
           <ShippingEstimator priceCents={(selected ? selected.price : product.price).amountCents} />
         </div>

@@ -43,3 +43,14 @@ export const ProductDetail = z.object({
   reviews: ProductReviews,
 });
 export type ProductDetail = z.infer<typeof ProductDetail>;
+
+/** GET /api/products/:slug/reviews?page=N — más recientes primero, de 5 en 5 (PDP-142.9). */
+export const REVIEWS_PAGE_SIZE = 5;
+export const ReviewsPage = z.object({
+  items: z.array(ReviewItem).max(REVIEWS_PAGE_SIZE),
+  page: z.number().int().positive(),
+  pageSize: z.literal(REVIEWS_PAGE_SIZE),
+  total: z.number().int().nonnegative(),
+  hasMore: z.boolean(),
+});
+export type ReviewsPage = z.infer<typeof ReviewsPage>;
