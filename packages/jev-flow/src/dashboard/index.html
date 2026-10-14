@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Costos de la demo</title>
+<style>
+  .viz-root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --ink-1: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --border: rgba(11, 11, 11, 0.1);
+    /* Color por modelo (la entidad), en el orden fijo de la paleta categórica. */
+    --m-jev: #2a78d6;
+    --m-sonnet: #eb6834;
+    --m-opus: #1baf7a;
+    --m-haiku: #eda100;
+    --m-none: #898781;
+    --good: #0ca30c;
+    --warning: #fab219;
+    --critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme='light'])) .viz-root {
+      color-scheme: dark;
+      --surface-1: #1a1a19; --page: #0d0d0d; --ink-1: #f0efec; --ink-2: #c3c2b7; --grid: #2c2c2a; --axis: #383835;
+      --border: rgba(255, 255, 255, 0.1); --m-jev: #3987e5; --m-sonnet: #d95926; --m-opus: #199e70; --m-haiku: #c98500;
+    }
+  }
+  :root[data-theme='dark'] .viz-root {
+    color-scheme: dark;
+    --surface-1: #1a1a19; --page: #0d0d0d; --ink-1: #f0efec; --ink-2: #c3c2b7; --grid: #2c2c2a; --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1); --m-jev: #3987e5; --m-sonnet: #d95926; --m-opus: #199e70; --m-haiku: #c98500;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink-1); font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .viz-root { background: var(--page); color: var(--ink-1); min-height: 100vh; }
+  header { padding: 20px 24px 8px; max-width: 1240px; margin: 0 auto; }
+  header h1 { margin: 0; font-size: 22px; }
+  header p { margin: 4px 0 0; color: var(--ink-2); font-size: 13px; }
+  main { max-width: 1240px; margin: 0 auto; padding: 8px 24px 40px; display: grid; gap: 16px; }
+  section { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+  section h2 { margin: 0 0 2px; font-size: 17px; }
+  section .sub { margin: 0 0 14px; color: var(--ink-2); font-size: 13px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .chart-title { font-size: 13px; font-weight: 600; margin: 0 0 6px; color: var(--ink-1); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); margin: 0 0 8px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  svg text { font-family: inherit; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .tile { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .tile .k { font-size: 12px; color: var(--ink-2); }
+  .tile .v { font-size: 22px; font-weight: 600; margin-top: 2px; white-space: nowrap; }
+  .tile .v small { font-size: 14px; font-weight: 400; color: var(--ink-2); }
+  .tile .d { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+  .hero { font-size: 48px; font-weight: 600; line-height: 1.1; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--ink-2); font-weight: 600; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  details { margin-top: 10px; font-size: 13px; }
+  summary { cursor: pointer; color: var(--ink-2); }
+  .verdict { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+  .verdict i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; max-height: 520px; object-fit: contain; object-position: top; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+  .shots figcaption { font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+  .empty { color: var(--ink-2); font-size: 14px; padding: 12px 0; }
+  .empty code { background: var(--page); padding: 1px 5px; border-radius: 4px; }
+  #tip { position: fixed; pointer-events: none; background: var(--ink-1); color: var(--surface-1); font-size: 12px; padding: 6px 8px; border-radius: 6px; opacity: 0; transition: opacity 0.1s; z-index: 9; max-width: 280px; }
+  .export header, .export details { display: none; }
+  .export main { padding-top: 16px; }
+  @media (max-width: 760px) { .grid2, .shots { grid-template-columns: 1fr; } header, main { padding-left: 16px; padding-right: 16px; } }
+</style>
+</head>
+<body>
+<div class="viz-root" id="root">
+  <header>
+    <h1>Pregúntale a la IA lo justo · costos de la demo</h1>
+    <p id="meta">Cargando…</p>
+  </header>
+  <main id="main"></main>
+</div>
+<div id="tip" role="tooltip"></div>
+<script>
+const qs = new URLSearchParams(location.search);
+if (qs.has('export')) document.getElementById('root').classList.add('export');
+
+const MODEL = (m) => /jev/i.test(m) ? 'jev' : /sonnet/i.test(m) ? 'sonnet' : /opus/i.test(m) ? 'opus' : /haiku/i.test(m) ? 'haiku' : 'none';
+const METHOD = {
+  jev: ['Jev (inglés)', 'jev'], 'jev-es': ['Jev (español)', 'jev'],
+  'orden-del-ticket': ['Orden del ticket', 'none'], 'urgente-primero': ['"URGENTE" primero', 'none'],
+  'pedirle-a-sonnet': ['Pedirle el orden a Sonnet', 'sonnet'], 'pedirle-a-opus': ['Pedirle el orden a Opus', 'opus'],
+  baseline: ['Regex / carpeta', 'none'], opus: ['Opus revisando el diff', 'opus'],
+};
+const MODEL_LABEL = { jev: 'Jev 1.13', sonnet: 'Sonnet 5.5', opus: 'Opus 5.5', haiku: 'Haiku 5.5', none: 'Sin IA' };
+const VERDICT = { approve: ['APROBAR', 'var(--good)', '✓'], review: ['REVISAR', 'var(--warning)', '!'], block: ['BLOQUEAR', 'var(--critical)', '✕'] };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const usd = (n) => n == null ? 'sin dato' : n === 0 ? '$0' : n < 0.01 ? '$' + n.toFixed(6) : '$' + n.toFixed(4);
+const pct = (n) => n == null ? '—' : Math.round(n * 100) + ' %';
+
+/** Barras horizontales: una categoría por fila, valor al final de la barra, una sola escala lineal desde 0. */
+function hbar(rows, { max, fmt, unit = '', ticks: tk } = {}) {
+  const W = 560, rowH = 34, left = 210, right = 110, top = 6;
+  const H = top + rows.length * rowH + 22;
+  const m = max ?? Math.max(...rows.map((r) => r.value ?? 0), 1e-12);
+  const x = (v) => left + ((W - left - right) * (v ?? 0)) / m;
+  const ticks = tk ?? [0, m / 2, m];
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block" role="img" aria-label="${esc(rows.map((r) => `${r.label}: ${fmt(r.value)}`).join('; '))}">`;
+  for (const t of ticks) s += `<line x1="${x(t)}" x2="${x(t)}" y1="${top}" y2="${H - 20}" stroke="var(--grid)" stroke-width="1"/><text x="${x(t)}" y="${H - 6}" font-size="11" fill="var(--muted)" text-anchor="middle">${esc(fmt(t))}</text>`;
+  rows.forEach((r, i) => {
+    const y = top + i * rowH + 8, h = 18, w = Math.max(x(r.value) - left, r.value > 0 ? 2 : 0);
+    s += `<text x="${left - 10}" y="${y + 13}" font-size="13" fill="var(--ink-1)" text-anchor="end">${esc(r.label)}</text>`;
+    if (w > 0) s += `<path d="M${left} ${y}h${Math.max(w - 4, 0)}a4 4 0 0 1 4 4v${h - 8}a4 4 0 0 1 -4 4h${-Math.max(w - 4, 0)}z" fill="var(--m-${r.model})"/>`;
+    s += `<text x="${left + w + 8}" y="${y + 13}" font-size="13" fill="var(--ink-2)">${esc(r.value == null ? 'sin dato' : fmt(r.value))}${unit}</text>`;
+    s += `<rect x="0" y="${y - 7}" width="${W}" height="${rowH}" fill="transparent" data-tip="${esc(`${r.label} · ${r.value == null ? 'sin dato' : fmt(r.value)}${r.tip ? ' · ' + r.tip : ''}`)}"/>`;
+  });
+  return s + '</svg>';
+}
+const legend = (models) => `<p class="legend">${[...new Set(models)].map((m) => `<span><i style="background:var(--m-${m})"></i>${MODEL_LABEL[m]}</span>`).join('')}</p>`;
+const table = (head, rows, numCols = []) =>
+  `<table><thead><tr>${head.map((h, i) => `<th class="${numCols.includes(i) ? 'num' : ''}">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows
+    .map((r) => `<tr>${r.map((c, i) => `<td class="${numCols.includes(i) ? 'num' : ''}">${c}</td>`).join('')}</tr>`)
+    .join('')}</tbody></table>`;
+const verdict = (v) => (v ? `<span class="verdict"><i style="background:${VERDICT[v][1]}"></i>${VERDICT[v][2]} ${VERDICT[v][0]}</span>` : '—');
+const empty = (cmd) => `<p class="empty">Sin datos todavía. Corre <code>${esc(cmd)}</code>.</p>`;
+
+async function applyBrand() {
+  if (!qs.has('brand')) return;
+  const b = await fetch('/api/brand').then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const c = b?.theme?.colors;
+  if (!c) return;
+  const root = document.getElementById('root');
+  const hex = (k) => (c[k] ? (c[k].startsWith('#') ? c[k] : '#' + c[k]) : null);
+  const map = { '--m-jev': 'accent1', '--m-sonnet': 'accent2', '--m-opus': 'accent3', '--m-haiku': 'accent4', '--ink-1': 'dk1', '--surface-1': 'lt1', '--page': 'lt1' };
+  for (const [v, k] of Object.entries(map)) if (hex(k)) root.style.setProperty(v, hex(k));
+  if (b.dashboard_overrides) for (const [v, val] of Object.entries(b.dashboard_overrides)) root.style.setProperty(v, val);
+  document.documentElement.setAttribute('data-theme', 'light');
+}
+
+async function render() {
+  await applyBrand();
+  const a = await fetch('/api/data').then((r) => r.json());
+  document.getElementById('meta').textContent = a.hasData
+    ? `Precios de lista al ${a.pricesAsOf} · Jev: ${a.snapshots.join(', ') || '—'} · actualizado ${new Date(a.generatedAt).toLocaleTimeString('es-MX')}`
+    : 'Sin métricas todavía: corre la demo con JEV_MODE=record (o replay).';
+  const main = document.getElementById('main');
+  let html = '';
+
+  // 1. Priorización
+  const P = a.prioritize;
+  html += `<section id="sec-prioritize"><h2>1 · Priorización de PDP-142</h2><p class="sub">Jev decide por subtarea y el código ordena, contra el orden del ticket, lo que grita "URGENTE" y pedirle el orden completo a Sonnet u Opus.</p>`;
+  if (!P.length) html += empty('npm run prioritize -- PDP-142 --baselines');
+  else {
+    const rows = P.map((p) => ({ label: (METHOD[p.method] || [p.method])[0], model: (METHOD[p.method] || [0, 'none'])[1], value: p.passed, cost: p.costUsd, sp: p.spearman }));
+    html += legend(rows.map((r) => r.model));
+    html += `<div class="grid2"><div><p class="chart-title">Criterios de éxito cumplidos (de 5)</p>${hbar(rows, { max: 5, ticks: [0, 1, 2, 3, 4, 5], fmt: (v) => String(Math.round(v)) })}</div>`;
+    html += `<div><p class="chart-title">Costo de una priorización (USD)</p>${hbar(rows.map((r) => ({ ...r, value: r.cost })), { fmt: usd })}</div></div>`;
+    html += `<details><summary>Ver tabla</summary>${table(['Método', 'Criterios', 'Top 3', 'Precio top 2', 'URGENTE fuera top 5', 'Inyección ignorada', 'Checkout excluido', 'Spearman', 'Costo'],
+      P.map((p) => [(METHOD[p.method] || [p.method])[0], `${p.passed ?? '—'}/5`, ...(p.checks ? ['top3', 'top2', 'noise', 'injection', 'outOfScope'].map((k) => (p.checks[k] ? '✓' : '✗')) : ['—', '—', '—', '—', '—']), p.spearman == null ? '—' : p.spearman.toFixed(2), usd(p.costUsd)]), [1, 7, 8])}</details>`;
+  }
+  html += '</section>';
+
+  // 2. Refactor
+  const R = a.refactor;
+  html += `<section id="sec-refactor"><h2>2 · Refactor con Sonnet 5.5</h2><p class="sub">Aquí sí conviene generar. Costo real con Sonnet contra los mismos tokens a precio de Opus.</p>`;
+  if (!R.rows.length) html += empty('una subtarea con Claude Code (hook Stop) o npm run refactor -- PDP-142.4');
+  else {
+    const tok = R.rows.reduce((n, r) => n + r.inputTokens + r.outputTokens, 0);
+    html += `<div class="tiles"><div class="tile"><div class="k">Costo real (Sonnet)</div><div class="hero">${usd(R.totalUsd)}</div></div>`
+      + `<div class="tile"><div class="k">Mismos tokens con Opus (estimación)</div><div class="v">${usd(R.opusUsd)}</div><div class="d">${R.totalUsd ? (R.opusUsd / R.totalUsd).toFixed(1) + '× el costo real' : ''}</div></div>`
+      + `<div class="tile"><div class="k">Tokens procesados</div><div class="v">${tok.toLocaleString('es-MX')}</div><div class="d">${R.rows.length} sesión(es) o llamada(s)</div></div></div>`;
+    html += `<div style="margin-top:12px">${hbar([{ label: 'Sonnet 5.5 (real)', model: 'sonnet', value: R.totalUsd }, { label: 'Opus 5.5 (estimado)', model: 'opus', value: R.opusUsd }], { fmt: usd })}</div>`;
+    html += `<details><summary>Ver tabla</summary>${table(['Origen', 'Modelo', 'Tokens entrada', 'Tokens salida', 'Costo real', 'Con Opus'], R.rows.map((r) => [esc(r.source), esc(r.model), r.inputTokens.toLocaleString('es-MX'), r.outputTokens.toLocaleString('es-MX'), usd(r.costUsd), usd(r.opusUsd)]), [2, 3, 4, 5])}</details>`;
+  }
+  html += '</section>';
+
+  // 3. Revisión
+  const V = a.review;
+  html += `<section id="sec-review"><h2>3 · Revisión del PR en local</h2><p class="sub">Fixtures d01–d05: Jev contra reglas regex o por carpeta y contra Opus revisando el mismo diff. Con 5 casos las cifras son ilustrativas.</p>`;
+  if (!V.length) html += empty('npm run review -- --fixtures --compare-opus');
+  else {
+    const rows = V.map((r) => ({ label: (METHOD[r.method] || [r.method])[0], model: (METHOD[r.method] || [0, 'none'])[1], value: r.exact, cost: r.costUsd, tip: `recall ${pct(r.recall)}, falsos positivos ${r.falsePositives}/${r.negatives}` }));
+    html += legend(rows.map((r) => r.model));
+    html += `<div class="grid2"><div><p class="chart-title">Veredictos correctos (de ${V[0].total})</p>${hbar(rows, { max: V[0].total, ticks: [...Array(V[0].total + 1).keys()], fmt: (v) => String(Math.round(v)) })}</div>`;
+    html += `<div><p class="chart-title">Costo de revisar los 5 fixtures (USD)</p>${hbar(rows.map((r) => ({ ...r, value: r.cost })), { fmt: usd })}</div></div>`;
+    const ids = Object.keys(V[0].perFixture);
+    html += `<div style="margin-top:12px">${table(['Fixture', ...V.map((r) => (METHOD[r.method] || [r.method])[0])], ids.map((id) => [id, ...V.map((r) => verdict(r.perFixture[id]))]))}</div>`;
+    html += `<details><summary>Ver tabla de métricas</summary>${table(['Método', 'Recall', 'Falsos positivos', 'Exactos', 'Costo'], V.map((r) => [(METHOD[r.method] || [r.method])[0], pct(r.recall), `${r.falsePositives}/${r.negatives}`, `${r.exact}/${r.total}`, usd(r.costUsd)]), [1, 2, 3, 4])}</details>`;
+    if (a.branchReview) html += `<p class="sub" style="margin-top:10px">Última revisión de rama: Jev ${usd(a.branchReview.jevUsd)} en ${a.branchReview.jevRequests} requests${a.branchReview.haikuUsd ? ` + comentario de Haiku ${usd(a.branchReview.haikuUsd)}` : ' (aprobada: sin Haiku)'}.</p>`;
+  }
+  html += '</section>';
+
+  // 4. Antes / después
+  const B = a.beforeAfter;
+  html += `<section id="sec-before-after"><h2>4 · Antes y después de la PDP</h2>`;
+  if (!B) html += empty('npm run metrics');
+  else {
+    html += `<p class="sub">Builds de producción, móvil, red simulada (${esc(B.network)}), mediana de ${B.runs} corridas. ${esc(B.before.sha)} → ${esc(B.after.sha)}.</p>`;
+    const t = (k, f, u = '', note = '') => `<div class="tile"><div class="k">${k}</div><div class="v">${f(B.before)}${u} <small>→</small> ${f(B.after)}${u}</div>${note ? `<div class="d">${note}</div>` : ''}</div>`;
+    html += `<div class="tiles">${t('Requests a la API', (m) => m.apiRequests)}${t('Hasta ver el precio', (m) => m.timeToPriceMs, ' ms')}${t('Hasta carga completa', (m) => m.timeToCompleteMs, ' ms')}${t('Accesibilidad (Lighthouse)', (m) => m.a11yScore)}${t('Bundle JS+CSS gzip', (m) => m.bundleGzipKb, ' KB')}${t('Líneas de ProductPage.tsx', (m) => m.componentLines)}</div>`;
+    html += `<div class="shots"><figure><img src="/before-after/before-mobile.png" alt="PDP antes, en móvil"/><figcaption>Antes · móvil</figcaption></figure><figure><img src="/before-after/after-mobile.png" alt="PDP después, en móvil"/><figcaption>Después · móvil</figcaption></figure></div>`;
+  }
+  html += '</section>';
+
+  // Total por modelo
+  if (a.byModel.length) {
+    const rows = a.byModel.map((m) => ({ label: m.model, model: MODEL(m.model), value: m.costUsd, tip: `${m.calls} llamadas, ${m.inputTokens.toLocaleString('es-MX')} tokens de entrada` }));
+    html += `<section id="sec-models"><h2>Costo total de la demo por modelo</h2><p class="sub">Todo lo registrado en metrics/*.jsonl.</p>${hbar(rows, { fmt: usd })}`;
+    html += `<details><summary>Ver tabla</summary>${table(['Modelo', 'Llamadas', 'Tokens entrada', 'Tokens salida', 'Costo'], a.byModel.map((m) => [esc(m.model), m.calls, m.inputTokens.toLocaleString('es-MX'), m.outputTokens.toLocaleString('es-MX'), usd(m.costUsd)]), [1, 2, 3, 4])}</details></section>`;
+  }
+  main.innerHTML = html;
+  document.body.dataset.ready = '1';
+}
+
+const tip = document.getElementById('tip');
+document.addEventListener('mousemove', (e) => {
+  const t = e.target.closest?.('[data-tip]');
+  if (!t) return void (tip.style.opacity = 0);
+  tip.textContent = t.getAttribute('data-tip');
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - 300) + 'px';
+  tip.style.top = e.clientY + 14 + 'px';
+  tip.style.opacity = 1;
+});
+render();
+if (!qs.has('export')) setInterval(render, 15000);
+</script>
+</body>
+</html>

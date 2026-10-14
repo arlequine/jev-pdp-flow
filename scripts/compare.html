@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PDP antes y después</title>
+<style>
+  :root { --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --line: #e4e3df; --before: #e34948; --after: #1baf7a; }
+  @media (prefers-color-scheme: dark) { :root { --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --line: #3a3936; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--surface); color: var(--ink); }
+  header { display: flex; align-items: baseline; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; }
+  header .modes button { font: inherit; padding: 6px 12px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 6px; cursor: pointer; }
+  header .modes button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+  main { display: grid; grid-template-columns: 1fr 1fr 280px; gap: 16px; padding: 16px 20px; }
+  .pane h2 { font-size: 14px; margin: 0 0 8px; color: var(--ink-2); display: flex; gap: 8px; align-items: center; }
+  .pane h2 i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .frame { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; height: calc(100vh - 130px); }
+  .frame iframe { border: 0; width: 100%; height: 100%; display: block; }
+  body.mobile .frame { width: 375px; max-width: 100%; margin: 0 auto; height: 740px; }
+  aside { border-left: 1px solid var(--line); padding-left: 16px; }
+  aside h2 { font-size: 14px; margin: 0 0 12px; }
+  .metric { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .metric .k { font-size: 13px; color: var(--ink-2); }
+  .metric .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .metric .v span { color: var(--ink-2); font-weight: 400; font-size: 14px; }
+  .note { font-size: 12px; color: var(--ink-2); margin-top: 12px; }
+  @media (max-width: 1100px) { main { grid-template-columns: 1fr; } aside { border: 0; padding: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>PDP · antes y después</h1>
+  <div class="modes" role="group" aria-label="Vista">
+    <button type="button" data-mode="desktop" aria-pressed="true">Escritorio</button>
+    <button type="button" data-mode="mobile" aria-pressed="false">Móvil</button>
+  </div>
+</header>
+<main>
+  <section class="pane"><h2><i style="background: var(--before)"></i>Antes · tag pdp-before · :5174</h2><div class="frame"><iframe title="PDP antes" src="http://localhost:5174/product/sudadera-basica"></iframe></div></section>
+  <section class="pane"><h2><i style="background: var(--after)"></i>Después · rama actual · :5173</h2><div class="frame"><iframe title="PDP después" src="http://localhost:5173/product/sudadera-basica"></iframe></div></section>
+  <aside>
+    <h2>Métricas</h2>
+    <div id="metrics"><p class="note">Sin métricas todavía: corre <code>npm run metrics</code>.</p></div>
+  </aside>
+</main>
+<script>
+  document.querySelectorAll('[data-mode]').forEach((b) =>
+    b.addEventListener('click', () => {
+      document.body.classList.toggle('mobile', b.dataset.mode === 'mobile');
+      document.querySelectorAll('[data-mode]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    }),
+  );
+  fetch('/before-after.json')
+    .then((r) => (r.ok ? r.json() : null))
+    .then((m) => {
+      if (!m) return;
+      const rows = [
+        ['Requests a la API', (x) => x.apiRequests, ''],
+        ['Hasta ver el precio', (x) => x.timeToPriceMs, ' ms'],
+        ['Hasta carga completa', (x) => x.timeToCompleteMs, ' ms'],
+        ['Accesibilidad (Lighthouse)', (x) => x.a11yScore, ''],
+        ['Bundle JS+CSS gzip', (x) => x.bundleGzipKb, ' KB'],
+        ['Líneas de ProductPage.tsx', (x) => x.componentLines, ''],
+      ];
+      document.getElementById('metrics').innerHTML =
+        rows.map(([k, f, u]) => `<div class="metric"><div class="k">${k}</div><div class="v">${f(m.before)}${u} <span>→</span> ${f(m.after)}${u}</div></div>`).join('') +
+        `<p class="note">Red simulada: ${m.network}. Mediana de ${m.runs} corridas. Medido ${new Date(m.ts).toLocaleString('es-MX')} (${m.before.sha} → ${m.after.sha}).</p>`;
+    });
+</script>
+</body>
+</html>

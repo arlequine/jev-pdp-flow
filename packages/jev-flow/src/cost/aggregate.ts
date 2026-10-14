@@ -1,8 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
-import { path } from '../config';
 import { CLAUDE } from '../models';
 import { PRICES, PRICES_AS_OF, costUsd } from '../prices';
-import { readJsonl, type CallLog } from '../metrics/log';
+import { metricsDir, readJsonl, type CallLog } from '../metrics/log';
 import type { Evaluation } from '../prioritize/evaluate';
 
 /** Todo lo que muestran `npm run cost` y el dashboard sale de aquí, y todo sale de metrics/*.jsonl. */
@@ -102,7 +101,7 @@ export function aggregate() {
     : null;
 
   // ── 4. Antes / después ──
-  const ba = path('metrics', 'before-after.json');
+  const ba = `${metricsDir()}/before-after.json`;
   const beforeAfter = existsSync(ba) ? JSON.parse(readFileSync(ba, 'utf8')) : null;
 
   // ── Totales por modelo ──
