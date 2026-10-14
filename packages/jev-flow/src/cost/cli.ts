@@ -6,9 +6,13 @@ import { aggregate } from './aggregate';
 import { bold, dim, parseArgs, table } from '../lib/table';
 import { usd } from '../prices';
 
-const { positional } = parseArgs(process.argv.slice(2));
+const { positional, flags } = parseArgs(process.argv.slice(2));
 const what = positional[0] ?? 'all';
 const a = aggregate();
+if (flags.json) {
+  console.log(JSON.stringify(a));
+  process.exit(0);
+}
 const pct = (n: number | null) => (n == null ? '—' : `${Math.round(n * 100)} %`);
 const LABEL: Record<string, string> = {
   jev: 'Jev (preguntas en inglés)',
