@@ -13,7 +13,9 @@
 .pdp-thumb > img { width: 100%; height: 100%; display: block; }
 .pdp-thumb.is-active { border: 2px solid #111; }
 .pdp-buybar { margin-top: 22px; }
-.pdp-add { display: block; width: 100%; min-height: 48px; line-height: 48px; text-align: center; background: #222; color: #fff; cursor: pointer; font-size: 15px; letter-spacing: 1px; border: 0; }
+/* Naranja de campaña (PDP-142.3). Texto oscuro: con blanco el contraste sería 2.6:1 y no pasa AA; con #1a1a1a es ~6.7:1. */
+.pdp-add { display: block; width: 100%; min-height: 48px; line-height: 48px; text-align: center; background: #ff7a00; color: #1a1a1a; font-weight: bold; cursor: pointer; font-size: 15px; letter-spacing: 1px; border: 0; }
+.pdp-add:hover:not(:disabled) { background: #e86f00; }
 .pdp-section { margin-top: 40px; }
 .pdp-modal { width: min(520px, calc(100% - 32px)); margin: 120px auto; background: #fff; padding: 24px; }
 
