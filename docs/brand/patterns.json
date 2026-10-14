@@ -1,0 +1,416 @@
+{
+  "_nota": "Qué forma de qué diapositiva de ejemplo de la plantilla recibe qué campo de docs/charla.md. Los nombres salen del inventario de npm run slides:brand. clone = número de diapositiva de ejemplo (1-13).",
+  "espera": {
+    "clone": 1,
+    "fill": {
+      "Google Shape;88;p1": "título"
+    }
+  },
+  "título": {
+    "clone": 2,
+    "fill": {
+      "Google Shape;97;p2": "título",
+      "Google Shape;98;p2": "subtítulo"
+    }
+  },
+  "agenda": {
+    "clone": 3,
+    "page_number": "Google Shape;347;p14",
+    "fill": {
+      "Google Shape;348;p14": "título",
+      "TextBox 348": "subtítulo"
+    },
+    "timeline": {
+      "field": "línea",
+      "segments": [
+        [
+          "Rectangle 349",
+          "TextBox 350"
+        ],
+        [
+          "Rectangle 351",
+          "TextBox 352"
+        ],
+        [
+          "Rectangle 353",
+          "TextBox 354"
+        ],
+        [
+          "Rectangle 355",
+          "TextBox 356"
+        ]
+      ],
+      "ticks": [
+        "TextBox 357",
+        "TextBox 358",
+        "TextBox 359",
+        "TextBox 360",
+        "TextBox 361"
+      ],
+      "x0": 0.4,
+      "x1": 9.56,
+      "gap": 0.04
+    },
+    "cards": [
+      {
+        "field": "tarjetas",
+        "slots": [
+          {
+            "TextBox 363": 0,
+            "TextBox 364": 1,
+            "TextBox 365": 2,
+            "TextBox 366": 3
+          },
+          {
+            "TextBox 368": 0,
+            "TextBox 369": 1,
+            "TextBox 370": 2,
+            "TextBox 371": 3
+          },
+          {
+            "TextBox 373": 0,
+            "TextBox 374": 1,
+            "TextBox 375": 2,
+            "TextBox 376": 3
+          },
+          {
+            "TextBox 378": 0,
+            "TextBox 379": 1,
+            "TextBox 380": 2,
+            "TextBox 381": 3
+          }
+        ],
+        "decor": [
+          [
+            "Rectangle 362"
+          ],
+          [
+            "Rectangle 367"
+          ],
+          [
+            "Rectangle 372"
+          ],
+          [
+            "Rectangle 377"
+          ]
+        ]
+      }
+    ]
+  },
+  "separador": {
+    "clone": 5,
+    "page_number": "Google Shape;122;p3",
+    "fill": {
+      "Google Shape;118;p3": "número",
+      "Google Shape;119;p3": "título",
+      "Google Shape;120;p3": "subtítulo"
+    }
+  },
+  "comparación": {
+    "clone": 7,
+    "page_number": "Google Shape;347;p14",
+    "fill": {
+      "Google Shape;348;p14": "título",
+      "TextBox 349": "izq-título",
+      "TextBox 351": "izq-código",
+      "TextBox 352": "izq-etiqueta",
+      "TextBox 353": "izq-viñetas",
+      "TextBox 355": "der-título",
+      "TextBox 357": "der-código",
+      "TextBox 358": "der-etiqueta",
+      "TextBox 359": "der-viñetas",
+      "TextBox 361": "cierre"
+    },
+    "drop_with": {
+      "TextBox 351": [
+        "Rectangle 350"
+      ],
+      "TextBox 357": [
+        "Rectangle 356"
+      ],
+      "TextBox 361": [
+        "Rectangle 360"
+      ]
+    },
+    "images": {
+      "Rectangle 348": {
+        "field": "izq-imagen",
+        "top": 0.42,
+        "pad": 0.12,
+        "keep_box": true
+      },
+      "Rectangle 354": {
+        "field": "der-imagen",
+        "top": 0.42,
+        "pad": 0.12,
+        "keep_box": true
+      }
+    }
+  },
+  "tres-columnas": {
+    "clone": 10,
+    "page_number": "Google Shape;347;p14",
+    "fill": {
+      "Google Shape;348;p14": "título",
+      "TextBox 349": "c1-título",
+      "TextBox 350": "c1-sub",
+      "TextBox 352": "c1-código",
+      "TextBox 354": "c2-título",
+      "TextBox 355": "c2-sub",
+      "TextBox 357": "c2-código",
+      "TextBox 359": "c3-título",
+      "TextBox 360": "c3-sub",
+      "TextBox 373": "cierre"
+    },
+    "drop_with": {
+      "TextBox 352": [
+        "Rectangle 351"
+      ],
+      "TextBox 357": [
+        "Rectangle 356"
+      ],
+      "TextBox 373": [
+        "Rectangle 372"
+      ]
+    },
+    "cards": [
+      {
+        "field": "c3-cajas",
+        "slots": [
+          {
+            "TextBox 362": 0,
+            "TextBox 363": 1
+          },
+          {
+            "TextBox 365": 0,
+            "TextBox 366": 1
+          },
+          {
+            "TextBox 368": 0,
+            "TextBox 369": 1
+          }
+        ],
+        "decor": [
+          [
+            "Rectangle 361",
+            "Connector 370"
+          ],
+          [
+            "Rectangle 364",
+            "Connector 371"
+          ],
+          [
+            "Rectangle 367"
+          ]
+        ]
+      }
+    ]
+  },
+  "pasos": {
+    "clone": 9,
+    "page_number": "Google Shape;347;p14",
+    "fill": {
+      "Google Shape;348;p14": "título",
+      "TextBox 403": "cierre"
+    },
+    "drop_with": {
+      "TextBox 403": [
+        "Rectangle 402"
+      ]
+    },
+    "cards": [
+      {
+        "field": "tarjetas",
+        "slots": [
+          {
+            "TextBox 349": 0,
+            "TextBox 350": 1,
+            "TextBox 351": 2,
+            "TextBox 352": 3,
+            "TextBox 353": 4
+          },
+          {
+            "TextBox 356": 0,
+            "TextBox 357": 1,
+            "TextBox 358": 2,
+            "TextBox 359": 3,
+            "TextBox 360": 4
+          },
+          {
+            "TextBox 363": 0,
+            "TextBox 364": 1,
+            "TextBox 365": 2,
+            "TextBox 366": 3,
+            "TextBox 367": 4
+          },
+          {
+            "TextBox 370": 0,
+            "TextBox 371": 1,
+            "TextBox 372": 2,
+            "TextBox 373": 3,
+            "TextBox 374": 4
+          },
+          {
+            "TextBox 376": 0,
+            "TextBox 377": 1,
+            "TextBox 378": 2,
+            "TextBox 379": 3,
+            "TextBox 380": 4
+          },
+          {
+            "TextBox 383": 0,
+            "TextBox 384": 1,
+            "TextBox 385": 2,
+            "TextBox 386": 3,
+            "TextBox 387": 4
+          },
+          {
+            "TextBox 390": 0,
+            "TextBox 391": 1,
+            "TextBox 392": 2,
+            "TextBox 393": 3,
+            "TextBox 394": 4
+          },
+          {
+            "TextBox 397": 0,
+            "TextBox 398": 1,
+            "TextBox 399": 2,
+            "TextBox 400": 3,
+            "TextBox 401": 4
+          }
+        ],
+        "decor": [
+          [
+            "Rectangle 348"
+          ],
+          [
+            "Rectangle 355",
+            "Connector 354"
+          ],
+          [
+            "Rectangle 362",
+            "Connector 361"
+          ],
+          [
+            "Rectangle 369",
+            "Connector 368"
+          ],
+          [
+            "Rectangle 375"
+          ],
+          [
+            "Rectangle 382",
+            "Connector 381"
+          ],
+          [
+            "Rectangle 389",
+            "Connector 388"
+          ],
+          [
+            "Rectangle 396",
+            "Connector 395"
+          ]
+        ]
+      }
+    ]
+  },
+  "tarjetas": {
+    "clone": 11,
+    "page_number": "Google Shape;347;p14",
+    "fill": {
+      "Google Shape;348;p14": "título",
+      "TextBox 373": "cierre"
+    },
+    "drop_with": {
+      "TextBox 373": [
+        "Rectangle 372"
+      ]
+    },
+    "cards": [
+      {
+        "field": "tarjetas",
+        "slots": [
+          {
+            "Oval 349": 0,
+            "TextBox 350": 1,
+            "TextBox 351": 2
+          },
+          {
+            "Oval 353": 0,
+            "TextBox 354": 1,
+            "TextBox 355": 2
+          },
+          {
+            "Oval 357": 0,
+            "TextBox 358": 1,
+            "TextBox 359": 2
+          },
+          {
+            "Oval 361": 0,
+            "TextBox 362": 1,
+            "TextBox 363": 2
+          },
+          {
+            "Oval 365": 0,
+            "TextBox 366": 1,
+            "TextBox 367": 2
+          },
+          {
+            "Oval 369": 0,
+            "TextBox 370": 1,
+            "TextBox 371": 2
+          }
+        ],
+        "decor": [
+          [
+            "Rectangle 348"
+          ],
+          [
+            "Rectangle 352"
+          ],
+          [
+            "Rectangle 356"
+          ],
+          [
+            "Rectangle 360"
+          ],
+          [
+            "Rectangle 364"
+          ],
+          [
+            "Rectangle 368"
+          ]
+        ]
+      }
+    ]
+  },
+  "preguntas": {
+    "clone": 13,
+    "page_number": "Google Shape;122;p3",
+    "fill": {
+      "Google Shape;118;p3": "título",
+      "Google Shape;119;p3": "subtítulo",
+      "Google Shape;120;p3": "nota"
+    }
+  },
+  "dashboard": {
+    "_nota": "Colores para exportar las gráficas del dashboard con la paleta de la plantilla (npm run dashboard:export).",
+    "--page": "#0D0D0D",
+    "--surface-1": "#1A1A1A",
+    "--ink-1": "#FFFFFF",
+    "--ink-2": "#A6A6A6",
+    "--muted": "#A6A6A6",
+    "--grid": "#333333",
+    "--axis": "#666666",
+    "--border": "#333333",
+    "--m-jev": "#C8E64D",
+    "--m-haiku": "#DDDDDD",
+    "--m-sonnet": "#FFFFFF",
+    "--m-opus": "#A6A6A6",
+    "--m-none": "#666666",
+    "--good": "#C8E64D",
+    "--warning": "#DDDDDD",
+    "--critical": "#FFFFFF",
+    "font": "Arial, \"Liberation Sans\", sans-serif"
+  }
+}

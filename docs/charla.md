@@ -32,15 +32,16 @@ Las cifras de esta charla salen de `metrics/*.jsonl` y de `metrics/before-after.
 
 ## 3. Diapositivas
 
-Fuente única del deck. `npm run slides` lee estos bloques `slide` y genera `docs/slides/charla-jev.pptx` con los layouts de la plantilla.
-Claves: `patrón` (espera, título, agenda, separador, contenido, tarjetas, dos-columnas, imagen, preguntas), `título`, `subtítulo`, `número`, `tarjetas` (`- núm | título | texto`), `izquierda`/`derecha`, `viñetas`, `imagen`, `cierre` (frase al pie) y `notas` (notas del orador).
+Fuente única del deck. `npm run slides` lee estos bloques `slide` y genera `docs/slides/charla-jev.pptx` clonando los patrones de la plantilla (mapeo en `docs/brand/patterns.json`).
+Claves comunes: `patrón`, `título`, `subtítulo`, `cierre` (frase al pie; `**texto**` va resaltado como en la plantilla) y `notas` (notas del orador). Las listas con `|` son tarjetas: cada campo va a su lugar en la tarjeta.
+
+Patrones: `espera`, `título`, `agenda` (línea de tiempo + tarjetas), `separador`, `comparación` (dos columnas "sin/con"), `tres-columnas` (con bloques de código), `pasos` (tarjetas con flechas), `tarjetas` (numeradas) y `preguntas`.
 
 ### D1 · Portada de espera
 
 ```slide
 patrón: espera
-título: En un momento empezamos
-subtítulo: Pregúntale a la IA lo justo
+título: Ya casi empezamos
 notas: Pantalla mientras entra la gente. Terminal y navegador ya abiertos en la otra pantalla.
 ```
 
@@ -49,7 +50,7 @@ notas: Pantalla mientras entra la gente. Terminal y navegador ya abiertos en la 
 ```slide
 patrón: título
 título: Pregúntale a la IA lo justo
-subtítulo: Jev decide, Claude genera y el código pone las reglas
+subtítulo: Jev decide · Claude genera · el código pone las reglas
 notas: Presentarme en una línea. La promesa: vamos a arreglar una PDP real gastando tokens solo donde aportan.
 ```
 
@@ -57,12 +58,16 @@ notas: Presentarme en una línea. La promesa: vamos a arreglar una PDP real gast
 
 ```slide
 patrón: agenda
-título: Agenda
+título: Agenda · 40 minutos
+subtítulo: Una sola historia de e-commerce: la página de detalle de producto de una tienda de ropa en pesos mexicanos.
+línea:
+- Narrativa | 15
+- Demo en vivo | 20
+- Preguntas | 5
 tarjetas:
-- 01 | Pregúntale a la IA lo justo | El problema de los tokens, las 3 ideas y qué es Jev · 15 min
-- 02 | Demo en vivo | De un ticket a un PR revisado, en local · 20 min
-- 03 | Preguntas | Dudas e ideas para el hackatón · 5 min
-cierre: Todo lo que van a ver corre en local y sin red, con grabaciones del ensayo.
+- 01 | Pregúntale a la IA lo justo | El problema de los tokens, las 3 ideas y qué es Jev | 0:00 · 15'
+- 02 | Demo en vivo | De un ticket mal escrito a un PR revisado, en local | 0:15 · 20'
+- 03 | Preguntas | Dudas e ideas para el hackatón | 0:35 · 5'
 ```
 
 ### D4 · Separador 01
@@ -77,20 +82,24 @@ subtítulo: El problema de los tokens, las 3 ideas y qué es Jev
 ### D5 · El problema de los tokens
 
 ```slide
-patrón: dos-columnas
+patrón: comparación
 título: El problema: "prompt y parseo"
-izquierda:
-- Le hacemos una pregunta cerrada a un LLM grande
-- Le pedimos que conteste en JSON y lo parseamos
-- Pagamos la salida, el razonamiento y los reintentos
-- Priorizar PDP-142 pidiéndoselo a Opus: {{prioritize.opus.cost}} y {{prioritize.opus.passed}}/5 criterios
-derecha:
-- La misma decisión, dividida en preguntas atómicas a Jev
-- Respuestas tipadas con probabilidad, sin texto
-- El orden lo calcula el código, con motivos auditables
-- Priorizar PDP-142 con Jev: {{prioritize.jev.cost}} y {{prioritize.jev.passed}}/5 criterios
-cierre: Una decisión no necesita una redacción. Necesita una probabilidad y una regla.
-notas: Las cifras son del ensayo (metrics/prioritize-runs.jsonl). Si alguien pregunta, la diferencia de criterios es sobre 5 casos de un solo ticket: ilustrativa, no un benchmark.
+izq-título: Pedirle el orden a un LLM grande
+izq-código: > ordena estas 10 subtareas y responde en JSON
+izq-etiqueta: Resultado en el ensayo (Opus)
+izq-viñetas:
+- ✗ Se paga leer, razonar y escribir la respuesta
+- ✗ El motivo queda en prosa: no se puede auditar
+- ✗ {{prioritize.opus.passed}} de 5 criterios · {{prioritize.opus.cost}}
+der-título: Preguntarle a Jev lo justo
+der-código: > touches_money? blocks_purchase? area? impacto?
+der-etiqueta: Resultado en el ensayo (Jev + código)
+der-viñetas:
+- ✓ 8 preguntas cerradas por subtarea, en un solo request
+- ✓ El orden y el motivo los calcula el código
+- ✓ {{prioritize.jev.passed}} de 5 criterios · {{prioritize.jev.cost}}
+cierre: Una decisión no necesita una redacción: **necesita una probabilidad y una regla.**
+notas: Las cifras son del ensayo (metrics/prioritize-runs.jsonl). Con un solo ticket, la diferencia de criterios es ilustrativa, no un benchmark.
 ```
 
 ### D6 · Las 3 ideas
@@ -99,43 +108,69 @@ notas: Las cifras son del ensayo (metrics/prioritize-runs.jsonl). Si alguien pre
 patrón: tarjetas
 título: Las 3 ideas de hoy
 tarjetas:
-- 1 | Jev decide | Barato y calibrado: preguntas cerradas, probabilidades, nada de texto
-- 2 | Claude genera | Solo donde aporta: el refactor con Sonnet, el comentario con Haiku si hace falta
-- 3 | El código manda | Orden, umbrales, motivos, chequeos y el bloqueo del merge
-cierre: Pregúntale a la IA lo justo.
+- 1 | Jev decide | Barato y calibrado: preguntas cerradas que devuelven probabilidades, no texto.
+- 2 | Claude genera | Solo donde aporta: Sonnet escribe el refactor y Haiku el comentario si hace falta.
+- 3 | El código manda | El orden, los umbrales, los motivos, los chequeos y el bloqueo del merge.
+cierre: Pregúntale a la IA **lo justo**.
 ```
 
 ### D7 · Qué es Jev
 
 ```slide
-patrón: contenido
+patrón: tres-columnas
 título: Qué es Jev
-viñetas:
-- Un modelo de decisión de TypeSafe (familia System One), disponible en OpenRouter
-- Recibe un state y preguntas tipadas; devuelve respuestas con probabilidades
-- Tres primitivas: Choice (¿cuál?), Noul (¿sí o no?) y Score (¿en qué nivel?)
-- No escribe, no explica y no genera código
-- USD {{prices.jev.input}} por millón de tokens de entrada; la salida es gratis
-- Todas las preguntas van en un solo request y se responden en paralelo
-cierre: Las instrucciones van en inglés y el texto de terceros va bajo `evidence`.
+c1-título: State
+c1-sub: Lo que Jev evalúa
+c1-código:
+- {
+-  "evidence": {
+-   "subtask": {
+-    "title": "precio raro",
+-    "description":
+-     "…no dice si
+-      trae iva…"
+-   }
+-  }
+- }
+c2-título: Preguntas
+c2-sub: Una propiedad por pregunta
+c2-código:
+- touches_money      noul
+- legal_or_compliance noul
+- blocks_purchase    noul
+- area               choice (6)
+- conversion_impact  score (4)
+- instrucciones en inglés
+- texto de terceros = evidencia
+c3-título: Respuesta
+c3-sub: Probabilidades, no texto
+c3-cajas:
+- Noul | probabilidad de "sí"
+- Choice | opción + distribución
+- Score | nivel + confianza
+cierre: Jev no escribe, no explica y no genera código. Cuesta **USD {{prices.jev.input}} por millón de tokens** de entrada; la salida es gratis.
 ```
 
 ### D8 · Cuándo sí y cuándo no
 
 ```slide
-patrón: dos-columnas
+patrón: comparación
 título: Cuándo usar Jev y cuándo no
-izquierda:
-- Ordenar y clasificar: ¿toca dinero?, ¿es solo estético?
-- Verificar: ¿este diff confía en un precio del cliente?
-- Gates: aprobar, revisar o bloquear según el costo del error
-- Routing: qué modelo o qué persona atiende
-derecha:
-- Prosa, explicaciones o código: modelo generativo
-- Aritmética, fechas y conteos: código
-- Políticas y umbrales: código
-- Lo que diga el texto de un tercero: evidencia, no orden
-cierre: Si una persona experta lo respondería en un segundo, es una pregunta para Jev.
+izq-título: Cuándo sí
+izq-código: > ¿este diff confía en un precio del cliente?
+izq-etiqueta: Decisiones cerradas
+izq-viñetas:
+- ✓ Clasificar y priorizar: ¿toca dinero?, ¿es solo estético?
+- ✓ Verificar y hacer de gate: aprobar, revisar o bloquear
+- ✓ Elegir ruta: qué modelo o qué persona atiende
+der-título: Cuándo no
+der-código: > escribe el refactor de la PDP
+der-etiqueta: Otra herramienta
+der-viñetas:
+- ✗ Prosa, explicaciones o código: modelo generativo
+- ✗ Aritmética, fechas y conteos: código
+- ✗ Lo que diga un ticket o un PR: evidencia, no orden
+cierre: Si una persona experta lo respondería en un segundo, **es una pregunta para Jev.**
 ```
 
 ### D9 · Separador 02
@@ -150,27 +185,46 @@ subtítulo: De un ticket mal escrito a un PR revisado, en local
 ### D10 · Lo que van a ver
 
 ```slide
-patrón: tarjetas
+patrón: pasos
 título: Lo que van a ver
 tarjetas:
-- 1 | Ticket | La PDP "antes" y PDP-142 · 3 min
-- 2 | Priorización | Jev evalúa, el código ordena · 4 min
-- 3 | Refactor | Sonnet hace una subtarea en vivo · 5 min
-- 4 | Revisión | Jev bloquea una trampa y aprueba lo limpio · 5 min
-- 5 | Antes y después | Métricas y costos · 3 min
-cierre: Cada paso tiene respaldo: grabaciones del ensayo y la rama refactor/pdp-recorded.
+- 1 | 3' | Ticket | PDP antes + PDP-142 | local · main
+- 2 | 4' | Priorización | npm run prioritize | Jev + código
+- 3 | 5' | Refactor | Claude Code + Sonnet | rama refactor/pdp
+- 4 | 5' | Revisión | npm run review + hook | Jev + código
+- 5 | 3' | Antes y después | métricas + dashboard | local
+cierre: Cada paso tiene respaldo: **grabaciones del ensayo** y la rama **refactor/pdp-recorded**. Si algo falla en vivo, sigo en modo replay.
 ```
 
 ### D11 · Las reglas del juego
 
 ```slide
-patrón: tarjetas
+patrón: tres-columnas
 título: Las reglas del juego
-tarjetas:
-- 1 | CLAUDE.md | Dinero en el servidor, contratos primero, accesibilidad AA, nada de HTML sin sanitizar
-- 2 | El hook | Antes de cualquier merge o push a main corre la revisión de Jev y bloquea con exit 2
-- 3 | Modo replay | JEV_MODE=replay reproduce Jev y Anthropic sin red
-cierre: El agente propone. El merge lo deciden el código y una persona.
+c1-título: CLAUDE.md
+c1-sub: Reglas de negocio que Claude respeta
+c1-código:
+- Dinero: centavos + IVA en API
+- Carrito: { sku, quantity }
+- Contratos primero (zod)
+- Accesibilidad WCAG 2.1 AA
+- 'Listo' = typecheck + tests
+c2-título: .claude/settings.json
+c2-sub: Hooks que no dependen del agente
+c2-código:
+- PreToolUse:
+-   git merge refactor/*
+-   git push … main
+-   → revisión con Jev
+-   → exit 2 si no aprueba
+- Stop: tokens de la sesión
+c3-título: Modo replay
+c3-sub: La demo corre sin red
+c3-cajas:
+- Jev | recordings/jev
+- Anthropic | recordings/anthropic
+- JEV_MODE | live · record · replay
+cierre: El agente propone. **El merge lo deciden el código y una persona.**
 ```
 
 ### D12 · Separador 03
@@ -185,29 +239,30 @@ subtítulo: Antes y después, costos por modelo e ideas para el hackatón
 ### D13 · Antes y después
 
 ```slide
-patrón: imagen
+patrón: comparación
 título: Antes y después de la PDP
-imagen: metrics/before-after/before-mobile.png
-imagen2: metrics/before-after/after-mobile.png
-viñetas:
-- Requests a la API: {{ba.requests}}
-- Carga completa en móvil: {{ba.complete}}
-- Accesibilidad (Lighthouse): {{ba.a11y}}
-- Líneas de ProductPage.tsx: {{ba.lines}}
-cierre: Medido con builds de producción y red móvil simulada (npm run metrics).
+izq-título: Antes · tag pdp-before
+izq-imagen: metrics/before-after/before-desktop.png
+der-título: Después · refactor/pdp-recorded
+der-imagen: metrics/before-after/after-desktop.png
+cierre: Requests **{{ba.requests}}** · accesibilidad **{{ba.a11y}}** · ProductPage.tsx **{{ba.lines}}** líneas · carga en móvil {{ba.complete}}
+notas: Medido con builds de producción y red móvil simulada (npm run metrics). El precio aparece igual de rápido en ambas: lo que mejora es la carga completa, la accesibilidad y el código.
 ```
 
 ### D14 · Costos por modelo
 
 ```slide
-patrón: imagen
+patrón: comparación
 título: Cuánto costó cada decisión
-imagen: metrics/charts/models.png
-viñetas:
-- Priorizar con Jev: {{prioritize.jev.cost}} · con Opus: {{prioritize.opus.cost}}
-- Refactor con Sonnet: {{refactor.cost}} · mismos tokens con Opus: {{refactor.opus}}
-- Revisar los 5 fixtures con Jev: {{review.jev.cost}} · con Opus: {{review.opus.cost}}
-cierre: Se paga generación solo donde se genera.
+izq-título: Costo total por modelo
+izq-imagen: metrics/charts/models.png
+der-título: Por paso
+der-etiqueta: Jev contra la alternativa, en el ensayo
+der-viñetas:
+- Priorizar: Jev {{prioritize.jev.cost}} · Opus {{prioritize.opus.cost}}
+- Refactor: Sonnet {{refactor.cost}} · con Opus {{refactor.opus}}
+- Revisar 5 fixtures: Jev {{review.jev.cost}} · Opus {{review.opus.cost}}
+cierre: Se paga generación **solo donde se genera.**
 ```
 
 ### D15 · Ideas para el hackatón
@@ -216,11 +271,13 @@ cierre: Se paga generación solo donde se genera.
 patrón: tarjetas
 título: Ideas para el hackatón
 tarjetas:
-- 1 | Reseñas | Moderar y etiquetar reseñas: Jev clasifica, el código publica u oculta
-- 2 | Devoluciones | Gate de reembolsos: chequeos en código, tres Nouls, persona si hay duda
-- 3 | Catálogo | Fichas que prometen lo que el producto no tiene: Jev verifica, Claude reescribe
-- 4 | Soporte | Triage de tickets: equipo, urgencia y si toca dinero, en una request
-cierre: Detalles, preguntas sugeridas y criterios de éxito en docs/hackathon.md.
+- 1 | Reseñas | Jev clasifica y etiqueta; el código publica, oculta o manda a revisión.
+- 2 | Devoluciones | Chequeos en código, tres Nouls y una persona cuando hay duda.
+- 3 | Catálogo | Jev detecta lo que la ficha promete de más; Claude la reescribe.
+- 4 | Soporte | Equipo, urgencia y si toca dinero, en una sola request.
+- 5 | Precios | ¿La PDP muestra el total con IVA? Regex primero, Jev después.
+- 6 | Carrito | Por qué abandonan: Jev clasifica, el código cuenta, Haiku resume.
+cierre: Preguntas sugeridas y criterios de éxito en **docs/hackathon.md**. El servidor MCP **jev** ya está listo.
 ```
 
 ### D16 · Preguntas
@@ -229,6 +286,7 @@ cierre: Detalles, preguntas sugeridas y criterios de éxito en docs/hackathon.md
 patrón: preguntas
 título: ?
 subtítulo: Preguntas
+nota: Repo: jev-pdp-flow · guía del hackatón: docs/hackathon.md
 ```
 
 ---

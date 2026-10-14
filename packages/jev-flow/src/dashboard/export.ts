@@ -1,7 +1,7 @@
 /**
  * npm run dashboard:export → metrics/charts/<sección>.png
  * Captura cada sección del dashboard para insertarla en las diapositivas.
- * Si existe docs/brand/brand.json, usa los colores del tema de la plantilla (?brand=1).
+ * Si existe docs/brand/patterns.json, usa la paleta de la plantilla (?brand=1).
  */
 import { existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
@@ -15,7 +15,7 @@ const out = join(metricsDir(), 'charts');
 mkdirSync(out, { recursive: true });
 const server = dashboardServer().listen(0);
 const port = (server.address() as { port: number }).port;
-const brand = existsSync(path('docs', 'brand', 'brand.json'));
+const brand = existsSync(path('docs', 'brand', 'patterns.json'));
 const browser = await chromium.launch({ executablePath: CHROME });
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2, colorScheme: 'light' });
 await page.goto(`http://localhost:${port}/?export=1${brand ? '&brand=1' : ''}`, { waitUntil: 'networkidle' });

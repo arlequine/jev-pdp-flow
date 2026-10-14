@@ -1,0 +1,4293 @@
+{
+  "source": "docs/brand/AIforDevelopers_E1_Introduccion_Demostracion.pptx",
+  "slide_size_emu": {
+    "width": 9144000,
+    "height": 5148050
+  },
+  "theme": {
+    "name": "Office",
+    "colors": {
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#1F497D",
+      "lt2": "#EEECE1",
+      "accent1": "#4F81BD",
+      "accent2": "#C0504D",
+      "accent3": "#9BBB59",
+      "accent4": "#8064A2",
+      "accent5": "#4BACC6",
+      "accent6": "#F79646",
+      "hlink": "#0000FF",
+      "folHlink": "#800080"
+    },
+    "fonts": {
+      "major": "Arial",
+      "minor": "Arial"
+    }
+  },
+  "palette": {
+    "colors": {
+      "#C8E64D": 109,
+      "#FFFFFF": 83,
+      "#A6A6A6": 60,
+      "#1A1A1A": 44,
+      "#666666": 22,
+      "#0D0D0D": 20,
+      "#DDDDDD": 20,
+      "#232323": 12,
+      "#000000": 10,
+      "#E8E8E8": 10,
+      "#333333": 6,
+      "#121212": 4,
+      "#999999": 3,
+      "#CCCCCC": 1
+    },
+    "fonts": {
+      "Arial": 236,
+      "Courier New": 20,
+      "Calibri": 15
+    },
+    "roles": {
+      "background": "#0D0D0D",
+      "accent": "#C8E64D",
+      "surface": "#1A1A1A",
+      "text": "#FFFFFF",
+      "text_muted": "#A6A6A6"
+    }
+  },
+  "layouts": [
+    {
+      "index": 0,
+      "name": "BLANK",
+      "placeholders": [
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;12;p34",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;13;p34",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;14;p34",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 3
+    },
+    {
+      "index": 1,
+      "name": "TITLE",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "CENTER_TITLE",
+          "name": "Google Shape;16;p35",
+          "left": 685800,
+          "top": 2130425,
+          "width": 7772400,
+          "height": 1470025
+        },
+        {
+          "idx": 1,
+          "type": "SUBTITLE",
+          "name": "Google Shape;17;p35",
+          "left": 1371600,
+          "top": 3886200,
+          "width": 6400800,
+          "height": 1752600
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;18;p35",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;19;p35",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;20;p35",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 5
+    },
+    {
+      "index": 2,
+      "name": "OBJECT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;22;p36",
+          "left": 457200,
+          "top": 274638,
+          "width": 8229600,
+          "height": 1143000
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;23;p36",
+          "left": 457200,
+          "top": 1600200,
+          "width": 8229600,
+          "height": 4525963
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;24;p36",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;25;p36",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;26;p36",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 5
+    },
+    {
+      "index": 3,
+      "name": "SECTION_HEADER",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;28;p37",
+          "left": 722313,
+          "top": 4406900,
+          "width": 7772400,
+          "height": 1362075
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;29;p37",
+          "left": 722313,
+          "top": 2906713,
+          "width": 7772400,
+          "height": 1500187
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;30;p37",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;31;p37",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;32;p37",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 5
+    },
+    {
+      "index": 4,
+      "name": "TWO_OBJECTS",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;34;p38",
+          "left": 457200,
+          "top": 274638,
+          "width": 8229600,
+          "height": 1143000
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;35;p38",
+          "left": 457200,
+          "top": 1600200,
+          "width": 4038600,
+          "height": 4525963
+        },
+        {
+          "idx": 2,
+          "type": "BODY",
+          "name": "Google Shape;36;p38",
+          "left": 4648200,
+          "top": 1600200,
+          "width": 4038600,
+          "height": 4525963
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;37;p38",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;38;p38",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;39;p38",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 6
+    },
+    {
+      "index": 5,
+      "name": "TWO_OBJECTS_WITH_TEXT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;41;p39",
+          "left": 457200,
+          "top": 274638,
+          "width": 8229600,
+          "height": 1143000
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;42;p39",
+          "left": 457200,
+          "top": 1535113,
+          "width": 4040188,
+          "height": 639762
+        },
+        {
+          "idx": 2,
+          "type": "BODY",
+          "name": "Google Shape;43;p39",
+          "left": 457200,
+          "top": 2174875,
+          "width": 4040188,
+          "height": 3951288
+        },
+        {
+          "idx": 3,
+          "type": "BODY",
+          "name": "Google Shape;44;p39",
+          "left": 4645025,
+          "top": 1535113,
+          "width": 4041775,
+          "height": 639762
+        },
+        {
+          "idx": 4,
+          "type": "BODY",
+          "name": "Google Shape;45;p39",
+          "left": 4645025,
+          "top": 2174875,
+          "width": 4041775,
+          "height": 3951288
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;46;p39",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;47;p39",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;48;p39",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 8
+    },
+    {
+      "index": 6,
+      "name": "TITLE_ONLY",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;50;p40",
+          "left": 457200,
+          "top": 274638,
+          "width": 8229600,
+          "height": 1143000
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;51;p40",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;52;p40",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;53;p40",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 4
+    },
+    {
+      "index": 7,
+      "name": "OBJECT_WITH_CAPTION_TEXT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;55;p41",
+          "left": 457200,
+          "top": 273050,
+          "width": 3008313,
+          "height": 1162050
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;56;p41",
+          "left": 3575050,
+          "top": 273050,
+          "width": 5111750,
+          "height": 5853113
+        },
+        {
+          "idx": 2,
+          "type": "BODY",
+          "name": "Google Shape;57;p41",
+          "left": 457200,
+          "top": 1435100,
+          "width": 3008313,
+          "height": 4691063
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;58;p41",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;59;p41",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;60;p41",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 6
+    },
+    {
+      "index": 8,
+      "name": "PICTURE_WITH_CAPTION_TEXT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;62;p42",
+          "left": 1792288,
+          "top": 4800600,
+          "width": 5486400,
+          "height": 566738
+        },
+        {
+          "idx": 2,
+          "type": "PICTURE",
+          "name": "Google Shape;63;p42",
+          "left": 1792288,
+          "top": 612775,
+          "width": 5486400,
+          "height": 4114800
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;64;p42",
+          "left": 1792288,
+          "top": 5367338,
+          "width": 5486400,
+          "height": 804862
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;65;p42",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;66;p42",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;67;p42",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 6
+    },
+    {
+      "index": 9,
+      "name": "VERTICAL_TEXT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;69;p43",
+          "left": 457200,
+          "top": 274638,
+          "width": 8229600,
+          "height": 1143000
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;70;p43",
+          "left": 2309019,
+          "top": -251618,
+          "width": 4525963,
+          "height": 8229600
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;71;p43",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;72;p43",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;73;p43",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 5
+    },
+    {
+      "index": 10,
+      "name": "VERTICAL_TITLE_AND_VERTICAL_TEXT",
+      "placeholders": [
+        {
+          "idx": 0,
+          "type": "TITLE",
+          "name": "Google Shape;75;p44",
+          "left": 4732338,
+          "top": 2171701,
+          "width": 5851525,
+          "height": 2057400
+        },
+        {
+          "idx": 1,
+          "type": "BODY",
+          "name": "Google Shape;76;p44",
+          "left": 541338,
+          "top": 190500,
+          "width": 5851525,
+          "height": 6019800
+        },
+        {
+          "idx": 10,
+          "type": "DATE",
+          "name": "Google Shape;77;p44",
+          "left": 457200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        },
+        {
+          "idx": 11,
+          "type": "FOOTER",
+          "name": "Google Shape;78;p44",
+          "left": 3124200,
+          "top": 6356350,
+          "width": 2895600,
+          "height": 365125
+        },
+        {
+          "idx": 12,
+          "type": "SLIDE_NUMBER",
+          "name": "Google Shape;79;p44",
+          "left": 6553200,
+          "top": 6356350,
+          "width": 2133600,
+          "height": 365125
+        }
+      ],
+      "shapes": 5
+    }
+  ],
+  "media": [
+    {
+      "name": "image3.png",
+      "sha256": "c6b053eaa8695594d0aa9f75a5778eca31994ffd80ac649e9bfa8a27baef3b60",
+      "bytes": 12877,
+      "slides": [
+        1,
+        2
+      ],
+      "used_in": "slides:1,2"
+    },
+    {
+      "name": "image7.png",
+      "sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e",
+      "bytes": 5942,
+      "slides": [
+        3,
+        4,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "used_in": "slides:3,4,6,7,9,10,11,12"
+    }
+  ],
+  "example_slides": [
+    {
+      "n": 1,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;84;p1",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4600,
+          "width": 9143999,
+          "height": 109825,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;85;p1",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 5047398,
+          "width": 9143999,
+          "height": 109825,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;86;p1",
+          "kind": "LINE",
+          "left": 3022092,
+          "top": 2036317,
+          "width": 3108960,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;87;p1",
+          "kind": "PICTURE",
+          "left": 3429000,
+          "top": 594867,
+          "width": 2286000,
+          "height": 1289303,
+          "is_placeholder": false,
+          "image_sha256": "c6b053eaa8695594d0aa9f75a5778eca31994ffd80ac649e9bfa8a27baef3b60"
+        },
+        {
+          "name": "Google Shape;88;p1",
+          "kind": "TEXT_BOX",
+          "left": 940892,
+          "top": 2279534,
+          "width": 8406131,
+          "height": 736190,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 52.0
+        }
+      ],
+      "first_text": "Estamos por comenzar"
+    },
+    {
+      "n": 2,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;93;p2",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4600,
+          "width": 9143999,
+          "height": 109825,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;94;p2",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 5047398,
+          "width": 9143999,
+          "height": 109825,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;95;p2",
+          "kind": "LINE",
+          "left": 3022092,
+          "top": 2036317,
+          "width": 3108960,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;96;p2",
+          "kind": "PICTURE",
+          "left": 3429000,
+          "top": 594867,
+          "width": 2286000,
+          "height": 1289303,
+          "is_placeholder": false,
+          "image_sha256": "c6b053eaa8695594d0aa9f75a5778eca31994ffd80ac649e9bfa8a27baef3b60"
+        },
+        {
+          "name": "Google Shape;97;p2",
+          "kind": "TEXT_BOX",
+          "left": 457200,
+          "top": 2279534,
+          "width": 8229600,
+          "height": 736190,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 52.0
+        },
+        {
+          "name": "Google Shape;98;p2",
+          "kind": "TEXT_BOX",
+          "left": 914400,
+          "top": 3264395,
+          "width": 7315200,
+          "height": 337161,
+          "is_placeholder": false,
+          "text_len": 50,
+          "font_pt": 23.8
+        }
+      ],
+      "first_text": "Estación 1"
+    },
+    {
+      "n": 3,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 24,
+          "font_pt": 22.4
+        },
+        {
+          "name": "TextBox 348",
+          "kind": "TEXT_BOX",
+          "left": 365760,
+          "top": 896112,
+          "width": 8412480,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 85,
+          "font_pt": 11.5
+        },
+        {
+          "name": "Rectangle 349",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 1325880,
+          "width": 1110580,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 365760,
+          "top": 1325880,
+          "width": 1110580,
+          "height": 457200,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 351",
+          "kind": "AUTO_SHAPE",
+          "left": 1512916,
+          "top": 1325880,
+          "width": 2257736,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 1512916,
+          "top": 1325880,
+          "width": 2257736,
+          "height": 457200,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 353",
+          "kind": "AUTO_SHAPE",
+          "left": 3807229,
+          "top": 1325880,
+          "width": 345809,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 354",
+          "kind": "TEXT_BOX",
+          "left": 3807229,
+          "top": 1325880,
+          "width": 345809,
+          "height": 457200,
+          "is_placeholder": false,
+          "text_len": 3,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 355",
+          "kind": "AUTO_SHAPE",
+          "left": 4189614,
+          "top": 1325880,
+          "width": 4552049,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 356",
+          "kind": "TEXT_BOX",
+          "left": 4189614,
+          "top": 1325880,
+          "width": 4552049,
+          "height": 457200,
+          "is_placeholder": false,
+          "text_len": 13,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 365760,
+          "top": 1810512,
+          "width": 548640,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.0
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 1512916,
+          "top": 1810512,
+          "width": 548640,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.0
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 3807229,
+          "top": 1810512,
+          "width": 548640,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.0
+        },
+        {
+          "name": "TextBox 360",
+          "kind": "TEXT_BOX",
+          "left": 4189614,
+          "top": 1810512,
+          "width": 548640,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.0
+        },
+        {
+          "name": "TextBox 361",
+          "kind": "TEXT_BOX",
+          "left": 8412480,
+          "top": 1810512,
+          "width": 548640,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 362",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 2240280,
+          "width": 4114800,
+          "height": 868680,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 363",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 2240280,
+          "width": 548640,
+          "height": 868680,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 20.0
+        },
+        {
+          "name": "TextBox 364",
+          "kind": "TEXT_BOX",
+          "left": 1097280,
+          "top": 2395728,
+          "width": 2377440,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 365",
+          "kind": "TEXT_BOX",
+          "left": 1097280,
+          "top": 2697480,
+          "width": 3246120,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 56,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 366",
+          "kind": "TEXT_BOX",
+          "left": 3383279,
+          "top": 2395728,
+          "width": 960120,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 367",
+          "kind": "AUTO_SHAPE",
+          "left": 4663440,
+          "top": 2240280,
+          "width": 4114800,
+          "height": 868680,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 368",
+          "kind": "TEXT_BOX",
+          "left": 4800600,
+          "top": 2240280,
+          "width": 548640,
+          "height": 868680,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 20.0
+        },
+        {
+          "name": "TextBox 369",
+          "kind": "TEXT_BOX",
+          "left": 5394960,
+          "top": 2395728,
+          "width": 2377440,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 370",
+          "kind": "TEXT_BOX",
+          "left": 5394960,
+          "top": 2697480,
+          "width": 3246120,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 49,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 371",
+          "kind": "TEXT_BOX",
+          "left": 7680960,
+          "top": 2395728,
+          "width": 960120,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 372",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3264408,
+          "width": 4114800,
+          "height": 868680,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 373",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 3264408,
+          "width": 548640,
+          "height": 868680,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 20.0
+        },
+        {
+          "name": "TextBox 374",
+          "kind": "TEXT_BOX",
+          "left": 1097280,
+          "top": 3419856,
+          "width": 2377440,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 375",
+          "kind": "TEXT_BOX",
+          "left": 1097280,
+          "top": 3721608,
+          "width": 3246120,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 39,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 376",
+          "kind": "TEXT_BOX",
+          "left": 3383279,
+          "top": 3419856,
+          "width": 960120,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 377",
+          "kind": "AUTO_SHAPE",
+          "left": 4663440,
+          "top": 3264408,
+          "width": 4114800,
+          "height": 868680,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 378",
+          "kind": "TEXT_BOX",
+          "left": 4800600,
+          "top": 3264408,
+          "width": 548640,
+          "height": 868680,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 20.0
+        },
+        {
+          "name": "TextBox 379",
+          "kind": "TEXT_BOX",
+          "left": 5394960,
+          "top": 3419856,
+          "width": 2377440,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 24,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 380",
+          "kind": "TEXT_BOX",
+          "left": 5394960,
+          "top": 3721608,
+          "width": 3246120,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 22,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 381",
+          "kind": "TEXT_BOX",
+          "left": 7680960,
+          "top": 3419856,
+          "width": 960120,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 9.5
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 4,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 35,
+          "font_pt": 22.4
+        },
+        {
+          "name": "TextBox 348",
+          "kind": "TEXT_BOX",
+          "left": 365760,
+          "top": 896112,
+          "width": 8412480,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 94,
+          "font_pt": 11.5
+        },
+        {
+          "name": "Rectangle 349",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 351",
+          "kind": "TEXT_BOX",
+          "left": 914400,
+          "top": 1499616,
+          "width": 685800,
+          "height": 182880,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 7.5
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 27,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 353",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 354",
+          "kind": "AUTO_SHAPE",
+          "left": 1783080,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 355",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 356",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 27,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 3,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 358",
+          "kind": "AUTO_SHAPE",
+          "left": 3200400,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 360",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 22,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 361",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 26,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 362",
+          "kind": "AUTO_SHAPE",
+          "left": 4617720,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 363",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 364",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 365",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 22,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 366",
+          "kind": "AUTO_SHAPE",
+          "left": 6035040,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 367",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 368",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 17,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 369",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 19,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 370",
+          "kind": "AUTO_SHAPE",
+          "left": 7452360,
+          "top": 1371600,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 371",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 1463040,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 372",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 1783080,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 373",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 2157984,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 22,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 374",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 375",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 376",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 17,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 377",
+          "kind": "TEXT_BOX",
+          "left": 475488,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 25,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 378",
+          "kind": "AUTO_SHAPE",
+          "left": 1783080,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 379",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 380",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 7,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 381",
+          "kind": "TEXT_BOX",
+          "left": 1892808,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 382",
+          "kind": "AUTO_SHAPE",
+          "left": 3200400,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 383",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 384",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 385",
+          "kind": "TEXT_BOX",
+          "left": 3310128,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 19,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 386",
+          "kind": "AUTO_SHAPE",
+          "left": 4617720,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 387",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 3,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 388",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 389",
+          "kind": "TEXT_BOX",
+          "left": 4727448,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 390",
+          "kind": "AUTO_SHAPE",
+          "left": 6035040,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 391",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 3,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 392",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 14,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 393",
+          "kind": "TEXT_BOX",
+          "left": 6144768,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 18,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 394",
+          "kind": "AUTO_SHAPE",
+          "left": 7452360,
+          "top": 2670048,
+          "width": 1325880,
+          "height": 1143000,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 395",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 2761488,
+          "width": 731520,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 396",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 3081528,
+          "width": 1124712,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 8,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 397",
+          "kind": "TEXT_BOX",
+          "left": 7562088,
+          "top": 3456432,
+          "width": 1124712,
+          "height": 320040,
+          "is_placeholder": false,
+          "text_len": 21,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 398",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 4041648,
+          "width": 8412480,
+          "height": 566928,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 399",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 4041648,
+          "width": 8046720,
+          "height": 566928,
+          "is_placeholder": false,
+          "text_len": 90,
+          "font_pt": 11.5
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 5,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;117;p3",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4579,
+          "width": 128015,
+          "height": 5152644,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;118;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 737089,
+          "width": 1381971,
+          "height": 1165451,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 82.3
+        },
+        {
+          "name": "Google Shape;119;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 2583813,
+          "width": 7255061,
+          "height": 450006,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 31.8
+        },
+        {
+          "name": "Google Shape;120;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 3723373,
+          "width": 7772400,
+          "height": 184227,
+          "is_placeholder": false,
+          "text_len": 43,
+          "font_pt": 13.0
+        },
+        {
+          "name": "Google Shape;121;p3",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4941101,
+          "width": 1262575,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;122;p3",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4941101,
+          "width": 457200,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        }
+      ],
+      "first_text": "01"
+    },
+    {
+      "n": 6,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 22.4
+        },
+        {
+          "name": "Rectangle 348",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 896112,
+          "width": 8412480,
+          "height": 658368,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 349",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 950976,
+          "width": 1280160,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 1170432,
+          "width": 8046720,
+          "height": 365760,
+          "is_placeholder": false,
+          "text_len": 134,
+          "font_pt": 11.0
+        },
+        {
+          "name": "Rectangle 351",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 1664208,
+          "width": 2034540,
+          "height": 2157984,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 1755648,
+          "width": 1760220,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 8,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 353",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 1984248,
+          "width": 1760220,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 354",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 2377440,
+          "width": 1760220,
+          "height": 1371600,
+          "is_placeholder": false,
+          "text_len": 84,
+          "font_pt": 10.0
+        },
+        {
+          "name": "Rectangle 355",
+          "kind": "AUTO_SHAPE",
+          "left": 2491740,
+          "top": 1664208,
+          "width": 2034540,
+          "height": 2157984,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 356",
+          "kind": "TEXT_BOX",
+          "left": 2628900,
+          "top": 1755648,
+          "width": 1760220,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 11,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 2628900,
+          "top": 1984248,
+          "width": 1760220,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 27,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 2628900,
+          "top": 2377440,
+          "width": 1760220,
+          "height": 1371600,
+          "is_placeholder": false,
+          "text_len": 69,
+          "font_pt": 10.0
+        },
+        {
+          "name": "Rectangle 359",
+          "kind": "AUTO_SHAPE",
+          "left": 4617720,
+          "top": 1664208,
+          "width": 2034540,
+          "height": 2157984,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 360",
+          "kind": "TEXT_BOX",
+          "left": 4754880,
+          "top": 1755648,
+          "width": 1760220,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 8,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 361",
+          "kind": "TEXT_BOX",
+          "left": 4754880,
+          "top": 1984248,
+          "width": 1760220,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 25,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 362",
+          "kind": "TEXT_BOX",
+          "left": 4754880,
+          "top": 2377440,
+          "width": 1760220,
+          "height": 1371600,
+          "is_placeholder": false,
+          "text_len": 78,
+          "font_pt": 10.0
+        },
+        {
+          "name": "Rectangle 363",
+          "kind": "AUTO_SHAPE",
+          "left": 6743700,
+          "top": 1664208,
+          "width": 2034540,
+          "height": 2157984,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 364",
+          "kind": "TEXT_BOX",
+          "left": 6880860,
+          "top": 1755648,
+          "width": 1760220,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 365",
+          "kind": "TEXT_BOX",
+          "left": 6880860,
+          "top": 1984248,
+          "width": 1760220,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 26,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 366",
+          "kind": "TEXT_BOX",
+          "left": 6880860,
+          "top": 2377440,
+          "width": 1760220,
+          "height": 1371600,
+          "is_placeholder": false,
+          "text_len": 71,
+          "font_pt": 10.0
+        },
+        {
+          "name": "Rectangle 367",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3931920,
+          "width": 8412480,
+          "height": 685800,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 368",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 3931920,
+          "width": 8046720,
+          "height": 685800,
+          "is_placeholder": false,
+          "text_len": 145,
+          "font_pt": 11.0
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 7,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 35,
+          "font_pt": 22.4
+        },
+        {
+          "name": "Rectangle 348",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 896112,
+          "width": 4114800,
+          "height": 2971800,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 349",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 1005840,
+          "width": 3749039,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 7,
+          "font_pt": 13.0
+        },
+        {
+          "name": "Rectangle 350",
+          "kind": "AUTO_SHAPE",
+          "left": 548640,
+          "top": 1417320,
+          "width": 3749039,
+          "height": 365760,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 351",
+          "kind": "TEXT_BOX",
+          "left": 640080,
+          "top": 1490472,
+          "width": 3566159,
+          "height": 219456,
+          "is_placeholder": false,
+          "text_len": 26,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 1965960,
+          "width": 3749039,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 353",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 2240280,
+          "width": 3749039,
+          "height": 1554480,
+          "is_placeholder": false,
+          "text_len": 109,
+          "font_pt": 11.0
+        },
+        {
+          "name": "Rectangle 354",
+          "kind": "AUTO_SHAPE",
+          "left": 4663440,
+          "top": 896112,
+          "width": 4114800,
+          "height": 2971800,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 355",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1005840,
+          "width": 3749039,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 7,
+          "font_pt": 13.0
+        },
+        {
+          "name": "Rectangle 356",
+          "kind": "AUTO_SHAPE",
+          "left": 4846320,
+          "top": 1417320,
+          "width": 3749039,
+          "height": 365760,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 4937760,
+          "top": 1490472,
+          "width": 3566159,
+          "height": 219456,
+          "is_placeholder": false,
+          "text_len": 34,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1965960,
+          "width": 3749039,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 2240280,
+          "width": 3749039,
+          "height": 1554480,
+          "is_placeholder": false,
+          "text_len": 132,
+          "font_pt": 11.0
+        },
+        {
+          "name": "Rectangle 360",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 4005072,
+          "width": 8412480,
+          "height": 621792,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 361",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 4005072,
+          "width": 8046720,
+          "height": 621792,
+          "is_placeholder": false,
+          "text_len": 105,
+          "font_pt": 12.0
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 8,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;117;p3",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4579,
+          "width": 128015,
+          "height": 5152644,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;118;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 737089,
+          "width": 1381971,
+          "height": 1165451,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 82.3
+        },
+        {
+          "name": "Google Shape;119;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 2583813,
+          "width": 7255061,
+          "height": 450006,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 31.8
+        },
+        {
+          "name": "Google Shape;120;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 3723373,
+          "width": 7772400,
+          "height": 184227,
+          "is_placeholder": false,
+          "text_len": 51,
+          "font_pt": 13.0
+        },
+        {
+          "name": "Google Shape;121;p3",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4941101,
+          "width": 1262575,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;122;p3",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4941101,
+          "width": 457200,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        }
+      ],
+      "first_text": "02"
+    },
+    {
+      "n": 9,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 22.4
+        },
+        {
+          "name": "Rectangle 348",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 914400,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 349",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 1024128,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 1188720,
+          "top": 1051560,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 351",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 1371600,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 8,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 1645920,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 18,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 353",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 1847088,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 354",
+          "kind": "LINE",
+          "left": 2286000,
+          "top": 1508760,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 355",
+          "kind": "AUTO_SHAPE",
+          "left": 2542032,
+          "top": 914400,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 356",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 1024128,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 3364991,
+          "top": 1051560,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 1371600,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 3,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 1645920,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 11,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 360",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 1847088,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 361",
+          "kind": "LINE",
+          "left": 4462272,
+          "top": 1508760,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 362",
+          "kind": "AUTO_SHAPE",
+          "left": 4718304,
+          "top": 914400,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 363",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1024128,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 364",
+          "kind": "TEXT_BOX",
+          "left": 5541264,
+          "top": 1051560,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 365",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1371600,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 366",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1645920,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 367",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 1847088,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 13,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 368",
+          "kind": "LINE",
+          "left": 6638544,
+          "top": 1508760,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 369",
+          "kind": "AUTO_SHAPE",
+          "left": 6894576,
+          "top": 914400,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 370",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 1024128,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 371",
+          "kind": "TEXT_BOX",
+          "left": 7717536,
+          "top": 1051560,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 372",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 1371600,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 7,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 373",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 1645920,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 374",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 1847088,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 13,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 375",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 2331720,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 376",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 2441448,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 377",
+          "kind": "TEXT_BOX",
+          "left": 1188720,
+          "top": 2468879,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 378",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 2788920,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 379",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 3063239,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 380",
+          "kind": "TEXT_BOX",
+          "left": 493776,
+          "top": 3264408,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 13,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 381",
+          "kind": "LINE",
+          "left": 2286000,
+          "top": 2926079,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 382",
+          "kind": "AUTO_SHAPE",
+          "left": 2542032,
+          "top": 2331720,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 383",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 2441448,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 384",
+          "kind": "TEXT_BOX",
+          "left": 3364991,
+          "top": 2468879,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 385",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 2788920,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 10,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 386",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 3063239,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 387",
+          "kind": "TEXT_BOX",
+          "left": 2670048,
+          "top": 3264408,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 388",
+          "kind": "LINE",
+          "left": 4462272,
+          "top": 2926079,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 389",
+          "kind": "AUTO_SHAPE",
+          "left": 4718304,
+          "top": 2331720,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 390",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 2441448,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 391",
+          "kind": "TEXT_BOX",
+          "left": 5541264,
+          "top": 2468879,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 392",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 2788920,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 14,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 393",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 3063239,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 394",
+          "kind": "TEXT_BOX",
+          "left": 4846320,
+          "top": 3264408,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Connector 395",
+          "kind": "LINE",
+          "left": 6638544,
+          "top": 2926079,
+          "width": 219456,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 396",
+          "kind": "AUTO_SHAPE",
+          "left": 6894576,
+          "top": 2331720,
+          "width": 1883664,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 397",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 2441448,
+          "width": 548640,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 14.0
+        },
+        {
+          "name": "TextBox 398",
+          "kind": "TEXT_BOX",
+          "left": 7717536,
+          "top": 2468879,
+          "width": 932688,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 399",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 2788920,
+          "width": 1627632,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 400",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 3063239,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 17,
+          "font_pt": 9.0
+        },
+        {
+          "name": "TextBox 401",
+          "kind": "TEXT_BOX",
+          "left": 7022592,
+          "top": 3264408,
+          "width": 1627632,
+          "height": 201168,
+          "is_placeholder": false,
+          "text_len": 15,
+          "font_pt": 8.0
+        },
+        {
+          "name": "Rectangle 402",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3886200,
+          "width": 8412480,
+          "height": 731520,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 403",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 3886200,
+          "width": 8046720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 195,
+          "font_pt": 10.5
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 10,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 22.4
+        },
+        {
+          "name": "Rectangle 348",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 896112,
+          "width": 2697480,
+          "height": 2606040,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 349",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 987552,
+          "width": 2423160,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 502920,
+          "top": 1261872,
+          "width": 2423160,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 34,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 351",
+          "kind": "AUTO_SHAPE",
+          "left": 502920,
+          "top": 1600200,
+          "width": 2423160,
+          "height": 1737360,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 594360,
+          "top": 1673352,
+          "width": 2240279,
+          "height": 1591056,
+          "is_placeholder": false,
+          "text_len": 120,
+          "font_pt": 8.5
+        },
+        {
+          "name": "Rectangle 353",
+          "kind": "AUTO_SHAPE",
+          "left": 3200400,
+          "top": 896112,
+          "width": 2697480,
+          "height": 2606040,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 354",
+          "kind": "TEXT_BOX",
+          "left": 3337560,
+          "top": 987552,
+          "width": 2423160,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 21,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 355",
+          "kind": "TEXT_BOX",
+          "left": 3337560,
+          "top": 1261872,
+          "width": 2423160,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 32,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 356",
+          "kind": "AUTO_SHAPE",
+          "left": 3337560,
+          "top": 1600200,
+          "width": 2423160,
+          "height": 1737360,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 357",
+          "kind": "TEXT_BOX",
+          "left": 3429000,
+          "top": 1673352,
+          "width": 2240279,
+          "height": 1591056,
+          "is_placeholder": false,
+          "text_len": 107,
+          "font_pt": 8.5
+        },
+        {
+          "name": "Rectangle 358",
+          "kind": "AUTO_SHAPE",
+          "left": 6035040,
+          "top": 896112,
+          "width": 2743200,
+          "height": 2606040,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 6172200,
+          "top": 987552,
+          "width": 2468880,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 12,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 360",
+          "kind": "TEXT_BOX",
+          "left": 6172200,
+          "top": 1261872,
+          "width": 2468880,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 31,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 361",
+          "kind": "AUTO_SHAPE",
+          "left": 6172200,
+          "top": 1645920,
+          "width": 2468880,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 362",
+          "kind": "TEXT_BOX",
+          "left": 6281927,
+          "top": 1700784,
+          "width": 822960,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 10.0
+        },
+        {
+          "name": "TextBox 363",
+          "kind": "TEXT_BOX",
+          "left": 7040879,
+          "top": 1700784,
+          "width": 1554480,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 4,
+          "font_pt": 8.5
+        },
+        {
+          "name": "Rectangle 364",
+          "kind": "AUTO_SHAPE",
+          "left": 6172200,
+          "top": 2240280,
+          "width": 2468880,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 365",
+          "kind": "TEXT_BOX",
+          "left": 6281927,
+          "top": 2295144,
+          "width": 822960,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 10.0
+        },
+        {
+          "name": "TextBox 366",
+          "kind": "TEXT_BOX",
+          "left": 7040879,
+          "top": 2295144,
+          "width": 1554480,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 8.5
+        },
+        {
+          "name": "Rectangle 367",
+          "kind": "AUTO_SHAPE",
+          "left": 6172200,
+          "top": 2834640,
+          "width": 2468880,
+          "height": 457200,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 368",
+          "kind": "TEXT_BOX",
+          "left": 6281927,
+          "top": 2889504,
+          "width": 822960,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 6,
+          "font_pt": 10.0
+        },
+        {
+          "name": "TextBox 369",
+          "kind": "TEXT_BOX",
+          "left": 7040879,
+          "top": 2889504,
+          "width": 1554480,
+          "height": 347472,
+          "is_placeholder": false,
+          "text_len": 24,
+          "font_pt": 8.5
+        },
+        {
+          "name": "Connector 370",
+          "kind": "LINE",
+          "left": 7406640,
+          "top": 2103120,
+          "width": 0,
+          "height": 137160,
+          "is_placeholder": false
+        },
+        {
+          "name": "Connector 371",
+          "kind": "LINE",
+          "left": 7406640,
+          "top": 2697480,
+          "width": 0,
+          "height": 137160,
+          "is_placeholder": false
+        },
+        {
+          "name": "Rectangle 372",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3657600,
+          "width": 8412480,
+          "height": 960120,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 373",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 3657600,
+          "width": 8046720,
+          "height": 960120,
+          "is_placeholder": false,
+          "text_len": 148,
+          "font_pt": 11.5
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 11,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 20,
+          "font_pt": 22.4
+        },
+        {
+          "name": "Rectangle 348",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 896112,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 349",
+          "kind": "AUTO_SHAPE",
+          "left": 530352,
+          "top": 1051560,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 932688,
+          "top": 1051560,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 25,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 351",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 1490472,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 80,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 352",
+          "kind": "AUTO_SHAPE",
+          "left": 3223260,
+          "top": 896112,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 353",
+          "kind": "AUTO_SHAPE",
+          "left": 3387852,
+          "top": 1051560,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 354",
+          "kind": "TEXT_BOX",
+          "left": 3790187,
+          "top": 1051560,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 17,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 355",
+          "kind": "TEXT_BOX",
+          "left": 3406140,
+          "top": 1490472,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 65,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 356",
+          "kind": "AUTO_SHAPE",
+          "left": 6080760,
+          "top": 896112,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 357",
+          "kind": "AUTO_SHAPE",
+          "left": 6245352,
+          "top": 1051560,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 6647688,
+          "top": 1051560,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 6263640,
+          "top": 1490472,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 65,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 360",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 2377440,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 361",
+          "kind": "AUTO_SHAPE",
+          "left": 530352,
+          "top": 2532888,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 362",
+          "kind": "TEXT_BOX",
+          "left": 932688,
+          "top": 2532888,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 19,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 363",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 2971800,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 65,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 364",
+          "kind": "AUTO_SHAPE",
+          "left": 3223260,
+          "top": 2377440,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 365",
+          "kind": "AUTO_SHAPE",
+          "left": 3387852,
+          "top": 2532888,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 366",
+          "kind": "TEXT_BOX",
+          "left": 3790187,
+          "top": 2532888,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 19,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 367",
+          "kind": "TEXT_BOX",
+          "left": 3406140,
+          "top": 2971800,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 74,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 368",
+          "kind": "AUTO_SHAPE",
+          "left": 6080760,
+          "top": 2377440,
+          "width": 2697480,
+          "height": 1371600,
+          "is_placeholder": false
+        },
+        {
+          "name": "Oval 369",
+          "kind": "AUTO_SHAPE",
+          "left": 6245352,
+          "top": 2532888,
+          "width": 310896,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 9.5
+        },
+        {
+          "name": "TextBox 370",
+          "kind": "TEXT_BOX",
+          "left": 6647688,
+          "top": 2532888,
+          "width": 2011680,
+          "height": 310896,
+          "is_placeholder": false,
+          "text_len": 11,
+          "font_pt": 11.0
+        },
+        {
+          "name": "TextBox 371",
+          "kind": "TEXT_BOX",
+          "left": 6263640,
+          "top": 2971800,
+          "width": 2331720,
+          "height": 731520,
+          "is_placeholder": false,
+          "text_len": 59,
+          "font_pt": 9.5
+        },
+        {
+          "name": "Rectangle 372",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3931920,
+          "width": 8412480,
+          "height": 685800,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 373",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 3931920,
+          "width": 8046720,
+          "height": 685800,
+          "is_placeholder": false,
+          "text_len": 86,
+          "font_pt": 12.0
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 12,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;335;p14",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4514,
+          "width": 9143999,
+          "height": 64065,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;336;p14",
+          "kind": "LINE",
+          "left": 365759,
+          "top": 759586,
+          "width": 4389120,
+          "height": 0,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;345;p14",
+          "kind": "PICTURE",
+          "left": 7772400,
+          "top": 91566,
+          "width": 1170432,
+          "height": 658368,
+          "is_placeholder": false,
+          "image_sha256": "47ba4375ddae76e8c4be80f858457be265805fc27fd89e6ca8ab5c8d51c15c1e"
+        },
+        {
+          "name": "Google Shape;346;p14",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4940472,
+          "width": 1263005,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;347;p14",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4940472,
+          "width": 457200,
+          "height": 112502,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;348;p14",
+          "kind": "TEXT_BOX",
+          "left": 366077,
+          "top": 236955,
+          "width": 7223760,
+          "height": 317110,
+          "is_placeholder": false,
+          "text_len": 35,
+          "font_pt": 22.4
+        },
+        {
+          "name": "TextBox 348",
+          "kind": "TEXT_BOX",
+          "left": 365760,
+          "top": 896112,
+          "width": 8412480,
+          "height": 274320,
+          "is_placeholder": false,
+          "text_len": 71,
+          "font_pt": 11.5
+        },
+        {
+          "name": "Rectangle 349",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 1325880,
+          "width": 4023360,
+          "height": 896112,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 350",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 1435607,
+          "width": 3657600,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 14,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 351",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 1709928,
+          "width": 3657600,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 26,
+          "font_pt": 10.0
+        },
+        {
+          "name": "TextBox 352",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 1947672,
+          "width": 3657600,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 49,
+          "font_pt": 9.0
+        },
+        {
+          "name": "Rectangle 353",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 2350008,
+          "width": 4023360,
+          "height": 896112,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 354",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 2459736,
+          "width": 3657600,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 16,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 355",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 2734056,
+          "width": 3657600,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 29,
+          "font_pt": 10.0
+        },
+        {
+          "name": "TextBox 356",
+          "kind": "TEXT_BOX",
+          "left": 530352,
+          "top": 2971800,
+          "width": 3657600,
+          "height": 228600,
+          "is_placeholder": false,
+          "text_len": 47,
+          "font_pt": 9.0
+        },
+        {
+          "name": "Rectangle 357",
+          "kind": "AUTO_SHAPE",
+          "left": 4572000,
+          "top": 1325880,
+          "width": 4206240,
+          "height": 1920240,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 358",
+          "kind": "TEXT_BOX",
+          "left": 4736592,
+          "top": 1417320,
+          "width": 3840480,
+          "height": 256032,
+          "is_placeholder": false,
+          "text_len": 19,
+          "font_pt": 11.5
+        },
+        {
+          "name": "TextBox 359",
+          "kind": "TEXT_BOX",
+          "left": 4736592,
+          "top": 1755648,
+          "width": 3840480,
+          "height": 1463040,
+          "is_placeholder": false,
+          "text_len": 201,
+          "font_pt": 10.0
+        },
+        {
+          "name": "Rectangle 360",
+          "kind": "AUTO_SHAPE",
+          "left": 365760,
+          "top": 3429000,
+          "width": 8412480,
+          "height": 1188720,
+          "is_placeholder": false
+        },
+        {
+          "name": "TextBox 361",
+          "kind": "TEXT_BOX",
+          "left": 548640,
+          "top": 3493008,
+          "width": 8046720,
+          "height": 1097280,
+          "is_placeholder": false,
+          "text_len": 240,
+          "font_pt": 10.5
+        }
+      ],
+      "first_text": "AI for Developers | 30X"
+    },
+    {
+      "n": 13,
+      "layout": "BLANK",
+      "shapes": [
+        {
+          "name": "Google Shape;117;p3",
+          "kind": "AUTO_SHAPE",
+          "left": 4572,
+          "top": 4579,
+          "width": 128015,
+          "height": 5152644,
+          "is_placeholder": false
+        },
+        {
+          "name": "Google Shape;118;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 737089,
+          "width": 1381971,
+          "height": 1165451,
+          "is_placeholder": false,
+          "text_len": 1,
+          "font_pt": 82.3
+        },
+        {
+          "name": "Google Shape;119;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 2583813,
+          "width": 7255061,
+          "height": 450006,
+          "is_placeholder": false,
+          "text_len": 9,
+          "font_pt": 31.8
+        },
+        {
+          "name": "Google Shape;120;p3",
+          "kind": "TEXT_BOX",
+          "left": 457834,
+          "top": 3723373,
+          "width": 7772400,
+          "height": 184227,
+          "is_placeholder": false,
+          "text_len": 26,
+          "font_pt": 13.0
+        },
+        {
+          "name": "Google Shape;121;p3",
+          "kind": "TEXT_BOX",
+          "left": 320357,
+          "top": 4941101,
+          "width": 1262575,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 23,
+          "font_pt": 7.9
+        },
+        {
+          "name": "Google Shape;122;p3",
+          "kind": "TEXT_BOX",
+          "left": 8549640,
+          "top": 4941101,
+          "width": 457200,
+          "height": 112151,
+          "is_placeholder": false,
+          "text_len": 2,
+          "font_pt": 7.9
+        }
+      ],
+      "first_text": "?"
+    }
+  ],
+  "patterns": {
+    "espera": 1,
+    "título": 2,
+    "agenda": 3,
+    "separador": 5,
+    "tarjetas": 11,
+    "contenido": null,
+    "dos-columnas": null,
+    "imagen": null,
+    "preguntas": 13
+  },
+  "footer": {
+    "text_found": true,
+    "pattern": "AI for Developers | 30X"
+  },
+  "template_texts_sha256": [
+    "02978873fc72aa6ef79e238463192a61aaa5e0a77c2d86567b8074778f209efe",
+    "057373cac5bae43d56040c0b18354222e28e3040b2de118e58df753ba819fa83",
+    "080f626098377e96e40b2ff0260738034149998b08e5c086b940ae567580c32c",
+    "0af8882684962361c8a2ca531f4c72cfa9025b66ce4856224045354c67f40823",
+    "0b3adcf0ab1009a187bc50617e0c25864a85e2d0843ff15a28dcf839385303a6",
+    "0bce2bcbd086f97f152282488b71cc939e53eb8cc597ea98722655720fc14497",
+    "0bd07b2f6e9ae968a4d8b818146bb47608b88aed3322a7c3917d910eeb20d34c",
+    "0cf383c21c7fd80d16cfd4eb6228e8e6b99ae3cfe3f91b88c053dab6df5aa891",
+    "0d6e4079e36703ebd37c00722f5891d28b0e2811dc114b129215123adcce3605",
+    "0e99cbedb1d27bdaffd2bf234ae1dcb81cc4dbbb9bf622801b1be251c1a054cb",
+    "0ea7e183d912b0ff68342aca7975fff6f89226cb40377d45ab494b526d5b3fee",
+    "0fb7f964fca9d66806985dc5300b302bc51dc14730fb695fd51cca621d26df49",
+    "10a2d1e185701a2e47a89880b2363e4c3a900716f86c34dcb4c91feee90b0ee7",
+    "115a0c656d48d45818ed2350625e4ff97a706fbcb724dd91a876ffdb12445853",
+    "12a750139ca2e4c14287bb6ed9ece9ee75b556a911f19f91c2f0d59ef40e7597",
+    "13f10ac3289d9fd5a545d4607a64c3045b416cab7415f673a9dfb862f8862783",
+    "1634ba8f0d6cfbf24f7f40a56a2cad494336d3853dd0420d463f87a0199f86a8",
+    "183499aaeec2b9ca37bd647ae892902fd61b9a1dd8867a54287fd2c19ee97ed7",
+    "190524be49426b594b2fb8e52ebadd0e93ebb4753b3a378fd8a9a343d1550261",
+    "1af23718cdf84c47ab2950a898b474b5e4bf2dea0a24aff07d86f8bf08de685f",
+    "1be6a1042498fedd74c4eb7d2d386362c0553ab00f086ca72052bc76a3f26636",
+    "1e2a17e2739e6d6d453aa8f474dc62330a96e05a40c309a15a94d832f0a08738",
+    "2032ea400f77275bc6a9cb1a27d5d6603e2e8486110c6244f881c9026ee5194b",
+    "20d2a797612813d56a96d581e8617aa2b5f4613c85ae3891d2d90931582e1599",
+    "21ee38e3f38d77ae9cbd428e5d5692ccabd08af0f45b90fa0b0c5e7ad1a2d335",
+    "22249aa61fd2594e50910aa574afbb977f9df8f7377e6f02e19c72245d899ad8",
+    "2265f5336d7b6037b5b75ace727a6c482c37ae963dad3bd8eff402314e8548ab",
+    "22c9bcd713f6d10fc4ff55dbe5ff9428d3758091b7dfcf5b421fa73f606e0ff9",
+    "239ddda67731bebef043f8bd78cc503ef47f1b88b038dfd102cb974558185c6c",
+    "25434d955ff9e1d37565f8af968995f3e094b2c0cd82d27cb7a53bcacd320e22",
+    "26246c279808dfa9846959933017f877023555e0dbc00de8e27676472e1fc4b6",
+    "26c57b0854989f62923fcf255fa1da458a381ad59a6065ca7981a110f771cb3e",
+    "2b9e1122c2059bb437ef36eab44026332ff97859c2eda8dac5125c657771114d",
+    "2e320fd2dfee14dd7f59b727938d1e22d2f94205dc2d7769f73a3153e2c8dc7a",
+    "2e8cbedbe8444bc789a2c13a606fbbf24705b664ccbb29811f74ca2bcd343e03",
+    "2ed4db88efc73cb946a1d79436c1daf1020c8a312ee3faf737dbd2c36f80c3d0",
+    "2f434ba53bd39e7933d7e12070c4a783c41b3f1c68d9f14008cb29f7c3871a1e",
+    "2fb4019a35e427e8d595c79fe996407a01031a9e00ed0a7d174bfb1a0e455b90",
+    "312528f7612dabbdd2cd08d7cbd124befa0f6a4941166f1c806f8b15dbab38d2",
+    "334908efbe3f2ca9f7c602d0121d0d4bef394130e1eb1ff21a1879a12b0bceb6",
+    "33a123e5d474e8f3495a7c304f17184276715204ccb2887317f37bcb216b4681",
+    "341f3fa2cb866f57924535a97d09542971587d9b3ad152c9950348c31790e176",
+    "34db7854bfc1fc23df76ec64c817fe2e041e555603bf4ff7077a7249dd905c97",
+    "36d9977c457c41a74d189fe64751e27a6e79ce89f3d043b13e001fdb827a2784",
+    "371c1ba1ff22424129b57d7443c0cdc5b75544d0e5da36710818b230ca54e09c",
+    "39430a51af098ec4f93b0ed131ddbb29e188947a51ba85840badf98e932725ce",
+    "39ae15a3f7b86cf50206b4b934de9f0ae21d218ff1adda0e353355a5a2405b36",
+    "3ae91aeed31082c3a3739bad58bcd535cbfcd3ce96914b9d1d45bf853ded1e16",
+    "3e07fa1685d5eefc46f904bc6cceb3e869e965581efff7dbde26eeb1337ce5b1",
+    "3eb3ba52c166431405a659282bd0e1832fef234109c27f543e3f1e10acb0ef03",
+    "45591be538f517e323b433c526353190e81c5b3e1350b4fb596b7c377c17456f",
+    "468123808a8e64126a591cbf38964a5b2f7e81603b26d958d6ca000b773a10bf",
+    "483718c37bed52d44dbee9308c6b1a597029739274a37955f0c0ce9f57c7b60b",
+    "48947c06d09a212ca1dcfbdf5a63d18dde8c964dbc66eea033a363eee856de21",
+    "49beb3274810e3e759a3c2b8586e040a1a68e9096f443da3f7addf2035aabb11",
+    "49c081725b0b36b158d2ce90c612b05ea894c63ac252f70e90b9c46917a78ee4",
+    "4e26947a7263288cc3fdd469bc9172932fce72e389536f0579749c6f39f84eed",
+    "503ecd27863e6c7bf90bb8fc1ae6d2e72937eac124a2bf7cfa49f4f0a99fa64e",
+    "564ecfd6be34dca58343f23de930ac50302abdf72a700fcc455f0e3f4f8a5398",
+    "5df40943739b5d878b6e05889bcf82c5ebdf77fff9b3dd5c585e79c87e7aa68b",
+    "5f46eca755d087b79b8b784be52468870edf9affa9942b7041a058b6fa0680ae",
+    "609009dacc979515f86be107df311656dfeaa51ea4ac072f519b14498caf9a4a",
+    "61bf200863ca1adb54d7fa64bc1aafcf84547f3fd3f20db81ae2e3799b88ca77",
+    "628e81f34bad051f6f15af5bd8844490bac804cdeea917053975b156961f4a17",
+    "649c127c03dd5823a69e32cd37e3172eddae7ba095360d41a6f7188f4222c2c2",
+    "67f60a088d43732e6e4e959958ba31cedd334f9120a603668a92c8fcce5f943c",
+    "68edc75c015e2e10f7fef2ac7849c583dffff28e183dcc61ceb53d7ecabdc62f",
+    "698fba7dfa869c310a23387c7d3556009efc55ee391544b668d8504238a7dfde",
+    "6c2d0f32e4cfb38bb9c88e618c1cf9724d3b6097f380d2590a9f996812aabb1a",
+    "6c5433d4587202a2578f47c12be62e1690115b81339594c98096e4fca4609827",
+    "6d89eb7d0938564938636b4a5ee73c09e55c2e6e5aaa9e3016781bf54805e8d3",
+    "6ebdb617a8104a7756d0cf36578ab01103dc9f07e4dc6feb751296b9c402faf7",
+    "6edc845fd67e0d0cc4038e8bc9f095f3da311bd6401b40d77691eafc2dc9a2a3",
+    "6f77999c4b35a49e00ac74f4df21d7449a37b35e6888907ef7e2003f9522ccf5",
+    "6f82f2a4f45ec9baadd415db39811afc12706bef7225900add17376df73e46e5",
+    "70d55c90b79e747ddb4719b4e63c84d0d73b8e808747f4b2931defe275610794",
+    "711176fbd604403db0270400d0e46873712a309c986aaf5d743d5b042899e090",
+    "713a5bb2d170c8684937ab1dd0311be88e0d95fbd9b253333965841517794f64",
+    "71b158cee311cdcc44a2de4773b11d124962b01a12ad491a8d5096b670be77b9",
+    "72d5b58ffa9ff27fcb7199f3e7d382035126491674a361b890ccb1e1c43bc414",
+    "73ce37011515b65e6fdf5fc1474ae6919582b6a5588f0431bf7ce71d90265370",
+    "73d2d18368e96671cd990d7d3de09b19c769219d9f89fc99611f8557e0ed0d32",
+    "74854fb0e6a4851997ea6ec0383256ed6a5b62327eaf78dc5fd80f9818b18045",
+    "7a676bd6a1411cfd94644c02e2e5a95a26b8c394dd149183a8f5b6f9c5c221ba",
+    "833d0e3df81b021bae2de619e757efe6bb274d9c6f3a13be923d7501cbdf22ce",
+    "83b67725dd336a71f498e77b0994199972b0692ff82c8bc351ee40af83bfdfc1",
+    "8426e5fcfcfe2a0f7fdb1453aeced8e49daa04f88aed3a6439d8a59aa39ef3ae",
+    "84498f87d9dae196b2e775d6ec3f4db6e9b4f2accc0b84e65123eeb5b53bfd86",
+    "87ba7b7da192b81faaa3bf53ba227152cd49d9db4ff63e0f586ae76932151829",
+    "87e9d2d23f674293a63027ca8868f3d2a49ae9257ad1652e0b2cda6bb0418c06",
+    "8851c812ac8d56b75375a4e68885c8e435d3709bf4f4de6639676fffc5c4e6d3",
+    "88ec391f63ea7995c2c56b573c89f7f45e113c5530b1de882ea492a493aca7b9",
+    "8a8de823d5ed3e12746a62ef169bcf372be0ca44f0a1236abc35df05d96928e1",
+    "8e11e16309b7743bc6f8b094ab183f73f63e0f55584c84598e882b5eee5f2f4f",
+    "969d0bc2df027a67d3e8709fb7616c657298993ba082542557980f99756e29a7",
+    "969e8e306abe6f7105c4051aa610dc88f73634c902ecd22a3a24ac6e61345793",
+    "97cbcc9f3a60c5c8ea6a36528d02dfa6e998987725d7a369b43c5f0c518874d0",
+    "9aace41fdec8442b4a08907fc3c2b048cdb0c9864e8be87d6f42cd89e1e2f142",
+    "9bad9c5c68a090953ded166981fd139dca4176e85ad92fabfeb105a5d3ff0a8a",
+    "9cf6e617907dcfbf2595ad6f4c179bff4c97e4c92128187fb79f86e6607f14f0",
+    "9d4bacb4376916256e3e9f7f63f189bf9dd20499747f653562b6f5585841d1e8",
+    "9d7cef17860812c0b400dc77db44b5f83b14709f2f4ac610617f2c69042b4355",
+    "9e1ca18a201852c8da19dc90799933757892f37d2636e28d4ae71583cb27272f",
+    "a01a4adad3763fa37c6edd3451227eb33b45b125d5ae9b2e3360e67bb9d3733d",
+    "a0d3e9a4e6812c87ce487f43b3229a0de78d107d7747a5c865d5c92c8470612a",
+    "a0ffe3818444d97b004faed8945433a5e0fca8e04f75e19f849ba879b20ec66e",
+    "a29d84f0185eac917b8cb0a675f3b0b12ab6fe6e8ee9a6a5902f05a3a5cb9fbd",
+    "a71bc39fe3f33e42d1164472c83a9a340c52da9718ce3b8114c488647338fdf5",
+    "a8d0a1117e28efe9d9bcd29833dd103ca8f1110f68e814dbff635c08c6d71907",
+    "a969cb7f454181d07fa39f0338b182127787a86e0f5c17d13b1dec0de1ea0293",
+    "a9d72a66b9d5f6b68fd43ab734bb8b0a743cbc0302ba3bed61aad20f019072da",
+    "a9dd8bbdc62cbda317e20440c9fc21edbbbf1ce44d1a63505f5510fd277ad015",
+    "aad67f106a0849a45116f1163ca09c73e7869587e43c8c13f148dbeef3e528c8",
+    "aaf766f6da1e4107ef52670efcd4b0b349ff1c116c85a2bef8ee876be3f22cc0",
+    "b073b98568c2ff91549c889fd15dec963294e98dbce6ee38c9b5f3c6cd112515",
+    "b2f8e05e31430f4109a0d6ba4e96681f12b26ec63736cc944eb2b20e1662b388",
+    "b64167f58e1cf0c322747fbe1a7361084a004ffb5c145fd64e5413ef11215965",
+    "b6cb4654b7280d23a371b46a337e1688e12c5d329f5712d6f2cd6355d59615ab",
+    "b78b36de6752361cbe2fe77ab148627a5f5d89cc7f060576671162fea0ec61f5",
+    "b907188229042a9fad7c037409dfcf39daee50d62eb8cb9ee7ac7ab754297885",
+    "b91a3eaf50c113bff2c4c086c6976f4540b6deea7c97f962fb883f720c5c6900",
+    "b9877944e96c474fb6414bd9f3c2d51bc23ef7d1a57adf227764ea3c9d6798d5",
+    "bbeed3d96ec80507bc6172f9250bbd53295b5000d052d395236147befc2d518b",
+    "bc651a1268cd4d0d330ba00ac354624cf4fb0ef6603b18e23fa62b7c07deb8be",
+    "bed7abeac56e560a96b7fef4c846a691fe3deb2e4d1e5bbf1085b8d9e2c6e934",
+    "c13c22f0edc65fb1bbe9740f068ecd899701f720eeb1048abe2137493285e0ae",
+    "c1d126f3f42e41f2badcfdc78cbd6a7edc1a00492fe970c8b4800ee11dfd8ad9",
+    "c348bc8774cd8d7564aa085af711d83c6d239a2196f1f63df9ac1730b51d722e",
+    "c9551d1dc6a8fc5158818f392e5db54c8df88ec09675e66795bb3db3f4aef5ab",
+    "c9ce74058a944031cb87e944893a10cdb20daba616c537485539a77431b695d4",
+    "caea50f1bc3118a8133f97773410d4405d789c1c622be457ba1ed8846219859f",
+    "cd07c9524155d3578f178f67b93bd0ee5e1b94406dbb201e5fe642d55e46cd98",
+    "ce2f505af2a46e39a52f42e3a04339f4e3933c161b6b67f4c35fe7497bf9f92f",
+    "cf440f61634b8b95c9a22657060ec63fd4323075838d159a7ae91e5287700a32",
+    "d0275e026510d09a78122d1961bdd1af0415ad0bcf2831447ad204a06afd2a12",
+    "d03f76b70e0f5f772cd1299c89bd69cf1a13af7820f9974cd88d6651a123df46",
+    "d36c2a837a4c39e4953f7e5a9a08b63fb545fdad3b518324c528b82cbd035c79",
+    "d432e1884c5cc00b34c5020177c53036ba0b8aa80d7ec08d8af4cf9e1205215d",
+    "d5065e057874ac94bab954b5739fe54aef651cc173f5a8596a84defe4864811d",
+    "d51afac84da3c5fc151bb844c8c4986aca9efb987457d77065bde44e404005c7",
+    "d628b0aac4e55a0c56ef4335434894ef39b47298bd28266f63daac1eea1d2b30",
+    "d764a9aea1c01466def20daa98638273e975d116233ec2ed03cb6cbd0e56c16a",
+    "d8365277e178005147d0f1a62cedbc78b8c9538811a2e0a50f1f5ed403b1388c",
+    "db9043eea2bbf316d5ca6c40fed87cb4a94e56f96af9fff7fcfb1af6d7a0af44",
+    "dbb654a486a5fc1f1e487bc415a08ec13d89b857a28979e8ea2446fcbffaf52b",
+    "dc09ad7c894c845b7169be1d61013fc092b22bd277d126318753259e05f9993a",
+    "dcc7aade96ae83c6de95167ecc19b37e86028fa19954c1c76c8e4853abd8888e",
+    "dcd17c90602cd18e9ffb6ba619e3ba73c4c4c44349553e8f9bb65c0b552dd0d3",
+    "dd2990c9c673842d3b5019a6607bb35e4001283f9262d236b4b772709250626f",
+    "de793ba19330c40e4999ec96737972345b49f02f8189ef581ee32c95e422b473",
+    "dfbb6d64c674f8893ca500c2f6df2869214a9f467a744acdc785b174fdeb9076",
+    "e0137605945a6d626de2ae4397bdd0c0f569061bc391b5ef707becd153205a7a",
+    "e1bc63efb5d9ba5279d864368782664b7b45f4888f0c4174e6acddb3c7dc00c8",
+    "e381d9dedab2691fe4795c651282b359f3a670235531b139c6eff5e363ef0096",
+    "e6ba245ee82099ad7d022cdf618da13021ae389a4e318c2a60a6743831ccb1ce",
+    "e6d96d714aba7f8834cdfb46f3623e8cedea27a0f6a4cdff3b39cc792e778612",
+    "e91305de4f2df5a79da12be9e69a2b30f76e4dc91dd62046c4d8cf1128f6ae77",
+    "ebec8a6ed1a4595c38f4f05242eb7c90223fdbf1d57604d92735e358a235d18f",
+    "ed35195ae02792a34387364493a4c766809f13a5d2b597830d70db652bd1afa4",
+    "ef099fcece6eeca3777d0d4a6ac606beb557e08dcd95cf93d0d42a0334329c10",
+    "f032e4367543f36436859828ab463ae828d4465976625518dd999330e985af51",
+    "f0ba0c1a1215ebd0975836710700b1d1e86402dc629a2445c454c9b70d3b65d6",
+    "f0e6bb654ebbb5c546c069e9dd67b2b990c7e34faac1c9e0dca158be7b2ce729",
+    "f0fd4c68e562b75e17df7f29030105213f369f677e6507e273a8625795cf7dfa",
+    "f13c69cb4d081467f46c28062c9f92e955f8aa7e5fabfcd222a59711b84c3ad2",
+    "f15ebf9fa58f95649b865bc0c94b3cecf014303354d0903ac519ede561b50f06",
+    "f27ac6f39d89fe021c56900069198aa7d9968f2cd6645c00b11ffd1b78fcf546",
+    "f3b1f102edbfd8e300d5247cdd0e4ce8a20eaa2184864b11688d586f03fb24e6",
+    "f70f0ed2c7b77696d02ba885da2a3633ee3a7b7eb5f911883b6b99151b3f028c",
+    "f911e414cf6bdfc595532ab166b5ba0f63d73c021452fcdacbda363dda6ad8fb",
+    "fdbf432c629c74204a6690382946a5b2d210909fc34d57829f7f0b3f239be3d4",
+    "ff1ec6d645b0854cf993bf72c3d4ce4f82c502310cb95fbd7c4f66086908b38b",
+    "ff3945fb34d2d60780bd0fcef40540da3a17a11265eb71092e213e5a85f0d424",
+    "ffa6ae2a461169ed36e18a038e03276b5f271aa5603887bc786198a2c5db9934"
+  ]
+}

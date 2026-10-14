@@ -19,8 +19,10 @@ export function dashboardServer(): Server {
       if (url.pathname === '/api/data') {
         res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }).end(JSON.stringify(aggregate()));
       } else if (url.pathname === '/api/brand') {
-        const f = path('docs', 'brand', 'brand.json');
-        res.writeHead(existsSync(f) ? 200 : 404, { 'content-type': 'application/json' }).end(existsSync(f) ? readFileSync(f) : '{}');
+        // Paleta de la plantilla para exportar las gráficas del deck (docs/brand/patterns.json → dashboard).
+        const f = path('docs', 'brand', 'patterns.json');
+        const overrides = existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')).dashboard ?? null : null;
+        res.writeHead(overrides ? 200 : 404, { 'content-type': 'application/json' }).end(JSON.stringify({ dashboard_overrides: overrides }));
       } else if (url.pathname.startsWith('/before-after/')) {
         const f = normalize(join(metricsDir(), 'before-after', url.pathname.slice('/before-after/'.length)));
         if (!f.startsWith(normalize(join(metricsDir(), 'before-after'))) || !existsSync(f)) return void res.writeHead(404).end();

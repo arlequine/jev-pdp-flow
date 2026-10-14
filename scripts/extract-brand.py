@@ -138,10 +138,33 @@ patterns = {
 }
 footer = {'text_found': any(footer_re.search(t) for t in template_texts), 'pattern': 'AI for Developers | 30X'}
 
+# ── Paleta y fuentes que la plantilla USA en sus diapositivas ──
+# En esta plantilla el tema es el "Office" por defecto: la marca real (fondo oscuro, verde lima, grises)
+# está aplicada directamente en las formas. Se lee del XML, con conteos, sin aproximar.
+from collections import Counter
+A_NS = '{http://schemas.openxmlformats.org/drawingml/2006/main}'
+used_colors, used_fonts, slide_media = Counter(), Counter(), {}
+for s in prs.slides:
+    for el in s._element.iter(f'{A_NS}srgbClr'):
+        used_colors['#' + el.get('val').upper()] += 1
+    for el in s._element.iter(f'{A_NS}latin'):
+        if el.get('typeface') and not el.get('typeface').startswith('+'):
+            used_fonts[el.get('typeface')] += 1
+    for rel in s.part.rels.values():
+        if rel.reltype.endswith('/image'):
+            blob = rel.target_part.blob
+            h = hashlib.sha256(blob).hexdigest()
+            slide_media.setdefault(h, {'name': Path(rel.target_part.partname).name, 'sha256': h, 'bytes': len(blob), 'slides': []})['slides'].append(prs.slides.index(s) + 1)
+media += [{**m, 'used_in': 'slides:' + ','.join(map(str, m.pop('slides')))} for m in slide_media.values()]
+palette = {'colors': dict(used_colors.most_common()), 'fonts': dict(used_fonts.most_common()),
+           'roles': {'background': '#0D0D0D', 'accent': '#C8E64D', 'surface': '#1A1A1A', 'text': '#FFFFFF', 'text_muted': '#A6A6A6'}}
+
 brand = {
     'source': str(SRC.relative_to(ROOT)) if SRC.is_relative_to(ROOT) else str(SRC),
     'slide_size_emu': {'width': prs.slide_width, 'height': prs.slide_height},
     'theme': {'name': scheme_name, 'colors': colors, 'fonts': fonts},
+    # Lo que de verdad se ve: colores y fuentes aplicados en las formas de la plantilla.
+    'palette': palette,
     'layouts': layouts,
     'media': media,
     'example_slides': slides,
@@ -157,10 +180,12 @@ print(f'Plantilla: {SRC.name} · {Emu(prs.slide_width).inches:.2f} × {Emu(prs.s
 print(f'Tema "{scheme_name}"')
 print('  Colores: ' + '  '.join(f'{k}={v}' for k, v in colors.items()))
 print(f'  Fuentes: títulos={fonts["major"]} · cuerpo={fonts["minor"]}')
+print('Paleta usada en las diapositivas (la marca visible): ' + '  '.join(f'{c}×{n}' for c, n in palette['colors'].items()))
+print('Fuentes usadas en las diapositivas: ' + ', '.join(f'{f}×{n}' for f, n in palette['fonts'].items()))
 print(f'Layouts ({len(layouts)}):')
 for l in layouts:
     print(f'  [{l["index"]}] {l["name"]}: ' + ', '.join(f'{p["type"]}#{p["idx"]}' for p in l['placeholders']))
-print(f'Imágenes de marca: {len(media)} (' + ', '.join(sorted({m["used_in"] for m in media})) + ')')
+print('Imágenes de marca: ' + '; '.join(f'{m["name"]} ({m["bytes"]//1024} KB, {m["used_in"]})' for m in media))
 print('Patrones detectados (diapositiva de ejemplo):')
 for k, v in patterns.items():
     print(f'  {k:13} → {v if v else "— (usa un layout)"}')

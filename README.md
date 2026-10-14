@@ -97,3 +97,5 @@ docs/               charla.md, runbook.md, hackathon.md, brand/ y slides/
 - **El costo de una sesión de Claude Code** se lee del transcript con el hook `Stop`; el formato del transcript no está documentado como API estable, así que hay que verificarlo en el ensayo. El plan B por API sí registra tokens exactos.
 - **Precios de Claude 5.5** tomados de la especificación de la charla; verifícalos antes de presentar (`prices.ts`).
 - Con 9 subtareas y 5 fixtures, los aciertos son ilustrativos, no un benchmark.
+- **Diapositivas:** `docs/slides/charla-jev.pptx` ya sale de la plantilla real, pero las cifras de costos dicen "s/d" y la gráfica de D14 está vacía hasta que el ensayo genere métricas. Después del ensayo: `npm run dashboard:export && npm run slides`.
+- **Marca de la plantilla:** su tema es el "Office" por defecto; la marca visible (fondo `#0D0D0D`, lima `#C8E64D`, grises, Arial y Courier New) está aplicada en las formas. `brand.json` guarda las dos cosas y la verificación del deck acepta ambas.

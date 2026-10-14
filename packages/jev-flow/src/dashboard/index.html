@@ -134,13 +134,10 @@ const empty = (cmd) => `<p class="empty">Sin datos todavía. Corre <code>${esc(c
 async function applyBrand() {
   if (!qs.has('brand')) return;
   const b = await fetch('/api/brand').then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const c = b?.theme?.colors;
-  if (!c) return;
+  if (!b?.dashboard_overrides) return;
   const root = document.getElementById('root');
-  const hex = (k) => (c[k] ? (c[k].startsWith('#') ? c[k] : '#' + c[k]) : null);
-  const map = { '--m-jev': 'accent1', '--m-sonnet': 'accent2', '--m-opus': 'accent3', '--m-haiku': 'accent4', '--ink-1': 'dk1', '--surface-1': 'lt1', '--page': 'lt1' };
-  for (const [v, k] of Object.entries(map)) if (hex(k)) root.style.setProperty(v, hex(k));
-  if (b.dashboard_overrides) for (const [v, val] of Object.entries(b.dashboard_overrides)) root.style.setProperty(v, val);
+  for (const [v, val] of Object.entries(b.dashboard_overrides)) if (v.startsWith('--')) root.style.setProperty(v, val);
+  if (b.dashboard_overrides.font) root.style.fontFamily = b.dashboard_overrides.font;
   document.documentElement.setAttribute('data-theme', 'light');
 }
 
