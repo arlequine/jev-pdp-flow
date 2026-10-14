@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { Money } from './money';
 
 /**
  * Contratos de los endpoints legacy de la PDP.
@@ -12,6 +13,8 @@ export const LegacyProduct = z.object({
   description: z.string(),
   /** Precio sin IVA, en pesos, como número flotante (así lo devolvía el sistema viejo). */
   price: z.number(),
+  /** Precio final con IVA, calculado en el servidor (PDP-142.4). Campo nuevo; `price` se conserva. */
+  priceMoney: Money,
   images: z.array(z.string()),
 });
 export type LegacyProduct = z.infer<typeof LegacyProduct>;

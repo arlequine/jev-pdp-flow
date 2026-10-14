@@ -3,6 +3,7 @@
 // TODO: separar en componentes cuando haya tiempo
 // TODO: mover estilos a CSS
 import { useEffect, useState } from 'react';
+import { PriceBlock } from '../features/pdp/PriceBlock';
 
 const styles: any = {
   page: { width: 1100, margin: '0 auto', padding: '20px 0 160px 0', fontFamily: 'Arial' },
@@ -18,7 +19,6 @@ const styles: any = {
   brand: { fontSize: 12, color: '#bbb', textTransform: 'uppercase', letterSpacing: 2 },
   title: { fontSize: 30, margin: '6px 0 10px 0', color: '#222', fontWeight: 'normal' },
   rating: { fontSize: 13, color: '#aaa', marginBottom: 14 },
-  price: { fontSize: 28, color: '#222', margin: '10px 0 4px 0' },
   priceNote: { fontSize: 11, color: '#ccc', marginBottom: 20 },
   label: { fontSize: 12, color: '#aaa', margin: '16px 0 8px 0', textTransform: 'uppercase' },
   swatches: { display: 'flex' },
@@ -181,9 +181,6 @@ export default function ProductPage(props: any) {
     return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
   };
 
-  // precio
-  const price = '$' + product.price;
-
   const colorHex = (name: string) => {
     if (name === 'Negro') return '#1f1f1f';
     if (name === 'Arena') return '#d8c3a5';
@@ -293,9 +290,7 @@ export default function ProductPage(props: any) {
             {stars(avg)} {avg} ({reviews.length} reseñas)
           </div>
 
-          <div style={styles.price} className="price">
-            {price}
-          </div>
+          <PriceBlock price={product.priceMoney} />
           <div style={styles.priceNote}>Envío gratis en compras mayores a $999</div>
 
           {/* color */}
