@@ -19,6 +19,7 @@ import { RecentlyViewed } from '../features/pdp/RecentlyViewed';
 import { SizeGuide } from '../features/pdp/SizeGuide';
 import { stars } from '../features/pdp/reviewFormat';
 import { pickVariant, toViews } from '../features/pdp/variants';
+import { useProductSeo } from '../features/pdp/seo';
 
 /** PDP: una request, estados de carga y error, y composición de componentes chicos. */
 export default function ProductPage({ slug }: { slug: string }) {
@@ -29,6 +30,7 @@ export default function ProductPage({ slug }: { slug: string }) {
 }
 
 function ProductView({ product }: { product: ProductDetail }) {
+  useProductSeo(product);
   const variants = toViews(product);
   const images = product.colors.map((c) => c.image);
   const [selectedColor, setSelectedColor] = useState(variants[0].color);
