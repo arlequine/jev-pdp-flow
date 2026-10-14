@@ -14,3 +14,7 @@ export const pickVariant = (variants: VariantView[], color: string | null, size:
   variants.find((v) => v.color === color && v.size === size);
 
 export const stockFor = (variants: VariantView[], color: string, size: string) => pickVariant(variants, color, size)?.stock ?? 0;
+
+/** Variantes del contrato de la PDP con la imagen de su color. */
+export const toViews = (p: { colors: { name: string; image: string }[]; variants: Omit<VariantView, 'image'>[] }): VariantView[] =>
+  p.variants.map((v) => ({ ...v, image: p.colors.find((c) => c.name === v.color)?.image ?? p.colors[0].image }));

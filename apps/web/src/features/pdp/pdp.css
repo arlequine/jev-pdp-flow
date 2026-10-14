@@ -80,3 +80,10 @@
 .pdp-modal-title { font-weight: normal; color: #222; font-size: 20px; }
 .pdp-table { width: 100%; font-size: 14px; color: #333; border-collapse: collapse; }
 .pdp-table th, .pdp-table td { border-bottom: 1px solid #eee; padding: 6px; text-align: left; }
+
+/* Estados de carga y error (PDP-142.2). */
+.pdp-status { font-size: 14px; color: #444; }
+.pdp-skeleton { background: linear-gradient(90deg, #f0f0f0, #e6e6e6, #f0f0f0); border-radius: 4px; }
+.pdp-skeleton-image { aspect-ratio: 1 / 1; }
+.pdp-skeleton-info { min-height: 320px; }
+.pdp-error-box { max-width: 420px; margin: 40px auto; text-align: center; font-size: 16px; color: #222; }
