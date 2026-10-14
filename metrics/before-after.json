@@ -1,5 +1,5 @@
 {
-  "ts": "2026-10-14T07:21:18.793Z",
+  "ts": "2026-10-14T07:44:08.445Z",
   "slug": "sudadera-basica",
   "network": "150 ms RTT, 1.6 Mbps (móvil simulado)",
   "runs": 3,
@@ -14,22 +14,22 @@
       "/api/legacy/stock",
       "/api/legacy/products/1/reviews"
     ],
-    "timeToPriceMs": 1032,
-    "timeToCompleteMs": 1335,
+    "timeToPriceMs": 1049,
+    "timeToCompleteMs": 1363,
     "a11yScore": 81,
     "bundleGzipKb": 62.4,
     "componentLines": 481
   },
   "after": {
     "label": "después",
-    "ref": "wip/refactor",
-    "sha": "5f842f8",
+    "ref": "refactor/pdp-recorded",
+    "sha": "455a4fb",
     "apiRequests": 1,
     "apiPaths": [
       "/api/products/sudadera-basica"
     ],
-    "timeToPriceMs": 1038,
-    "timeToCompleteMs": 1038,
+    "timeToPriceMs": 1007,
+    "timeToCompleteMs": 1007,
     "a11yScore": 100,
     "bundleGzipKb": 64.8,
     "componentLines": 99
