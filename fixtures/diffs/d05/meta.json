@@ -1,0 +1,8 @@
+{
+  "id": "d05",
+  "title": "Refactor limpio: la lógica de StockBadge pasa a una función pura con test",
+  "pr_description": "Extraigo el texto de disponibilidad a stockLabel() para probarlo sin render. Sin cambios visibles.",
+  "commit_message": "PDP-142.2: extraer stockLabel de StockBadge",
+  "declared_subtask": "PDP-142.2",
+  "expected": { "jev": ["approve"], "baseline": "approve" }
+}

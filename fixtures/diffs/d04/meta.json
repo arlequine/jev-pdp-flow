@@ -1,0 +1,8 @@
+{
+  "id": "d04",
+  "title": "Quita alt y aria-* de la galería",
+  "pr_description": "Limpieza de la galería para móvil: quito atributos que no se usan y simplifico las miniaturas.",
+  "commit_message": "PDP-142.6: simplificar miniaturas de la galería",
+  "declared_subtask": "PDP-142.6",
+  "expected": { "jev": ["review", "block"], "baseline": "review" }
+}

@@ -1,0 +1,29 @@
+diff --git a/apps/web/src/features/pdp/Gallery.tsx b/apps/web/src/features/pdp/Gallery.tsx
+index 0f51713..332a88c 100644
+--- a/apps/web/src/features/pdp/Gallery.tsx
++++ b/apps/web/src/features/pdp/Gallery.tsx
+@@ -15,20 +15,12 @@ export function Gallery({ product, images, imageIndex, setImageIndex, colorOfIma
+             className="pdp-main-image"
+             width={800}
+             height={800}
+-            alt={`${product.name} en color ${colorOfImage(images[imageIndex])}`}
+           />
+-          <div className="pdp-thumbs" role="group" aria-label="Fotos del producto">
++          <div className="pdp-thumbs">
+             {images.map((img: string, i: number) => (
+-              <button
+-                key={img}
+-                type="button"
+-                className={i === imageIndex ? 'pdp-thumb is-active' : 'pdp-thumb'}
+-                aria-label={`Ver foto ${i + 1}: ${product.name} en color ${colorOfImage(img)}`}
+-                aria-pressed={i === imageIndex}
+-                onClick={() => setImageIndex(i)}
+-              >
+-                <img src={img} alt="" width={90} height={90} />
+-              </button>
++              <div key={img} className={i === imageIndex ? 'pdp-thumb is-active' : 'pdp-thumb'} onClick={() => setImageIndex(i)}>
++                <img src={img} width={90} height={90} />
++              </div>
+             ))}
+           </div>
+         </div>

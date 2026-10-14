@@ -1,0 +1,8 @@
+{
+  "id": "d03",
+  "title": "Cambio inofensivo en pricing/: renombra una variable y agrega JSDoc",
+  "pr_description": "Renombro el formateador para que sea más claro y documento que formatMXN solo formatea. Sin cambios de comportamiento.",
+  "commit_message": "PDP-142.4: documentar formatMXN",
+  "declared_subtask": "PDP-142.4",
+  "expected": { "jev": ["approve"], "baseline": "review" }
+}

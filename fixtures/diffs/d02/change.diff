@@ -1,0 +1,52 @@
+diff --git a/apps/web/src/features/pdp/AddToCart.tsx b/apps/web/src/features/pdp/AddToCart.tsx
+index 0ec86ab..1477951 100644
+--- a/apps/web/src/features/pdp/AddToCart.tsx
++++ b/apps/web/src/features/pdp/AddToCart.tsx
+@@ -1,27 +1,32 @@
+ import { useState } from 'react';
++import type { Money } from '@jev/contracts';
+ 
+ interface Props {
+   sku: string | undefined;
+   stock: number;
+   quantity: number;
++  price: Money;
+ }
+ 
+ /**
+  * Agrega la variante elegida al carrito. Manda solo SKU y cantidad: el precio lo calcula el servidor.
+  * Sin stock, el botón se deshabilita y dice "Agotado".
+  */
+-export function AddToCart({ sku, stock, quantity }: Props) {
++export function AddToCart({ sku, stock, quantity, price }: Props) {
+   const [state, setState] = useState<'idle' | 'adding' | 'added' | 'error'>('idle');
+   const soldOut = !sku || stock <= 0;
+ 
+   const add = async () => {
+     if (soldOut) return;
+     setState('adding');
++    // Mandamos el total ya calculado para no recalcularlo en el carrito.
++    const unitPriceCents = price.amountCents;
++    const totalCents = unitPriceCents * quantity;
+     try {
+       const r = await fetch('/api/cart', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+-        body: JSON.stringify({ sku, quantity }),
++        body: JSON.stringify({ sku, quantity, unitPriceCents, totalCents }),
+       });
+       if (!r.ok) throw new Error(String(r.status));
+       setState('added');
+diff --git a/apps/web/src/pages/ProductPage.tsx b/apps/web/src/pages/ProductPage.tsx
+index 52ddffc..5369983 100644
+--- a/apps/web/src/pages/ProductPage.tsx
++++ b/apps/web/src/pages/ProductPage.tsx
+@@ -82,7 +82,7 @@ function ProductView({ product }: { product: ProductDetail }) {
+           <StockBadge stock={selected ? selected.stock : 0} />
+           <Quantity qty={qty} setQty={setQty} />
+           {/* en móvil queda fijo abajo */}
+-          <AddToCart sku={selected?.sku} stock={selected ? selected.stock : 0} quantity={qty} />
++          <AddToCart sku={selected?.sku} stock={selected ? selected.stock : 0} quantity={qty} price={selected ? selected.price : product.price} />
+ 
+           <DetailsTabs description={product.description} />
+           <Reviews slug={product.slug} data={product.reviews} />

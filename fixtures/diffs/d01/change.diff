@@ -1,0 +1,33 @@
+diff --git a/apps/web/src/features/pdp/DetailsTabs.tsx b/apps/web/src/features/pdp/DetailsTabs.tsx
+index 6609ffe..813bc4d 100644
+--- a/apps/web/src/features/pdp/DetailsTabs.tsx
++++ b/apps/web/src/features/pdp/DetailsTabs.tsx
+@@ -1,4 +1,5 @@
+ import { useState } from 'react';
++import { ProductDescription } from './ProductDescription';
+ 
+ const TABS: [string, string][] = [
+   ['desc', 'Descripción'],
+@@ -29,7 +30,7 @@ export function DetailsTabs({ description }: { description: string }) {
+             ))}
+           </div>
+           <div className="pdp-tab-body" role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
+-            {tab === 'desc' && product.description.split('\n\n').map((par: string, i: number) => <p key={i}>{par}</p>)}
++            {tab === 'desc' && <ProductDescription html={product.description} />}
+             {tab === 'envio' && (
+               <p>
+                 Entrega de 3 a 5 días hábiles en zona metropolitana y de 5 a 8 días en el resto del país. Envío gratis en
+diff --git a/apps/web/src/features/pdp/ProductDescription.tsx b/apps/web/src/features/pdp/ProductDescription.tsx
+new file mode 100644
+index 0000000..0979b21
+--- /dev/null
++++ b/apps/web/src/features/pdp/ProductDescription.tsx
+@@ -0,0 +1,8 @@
++/**
++ * Descripción del producto con el formato que capturan en el back-office
++ * (saltos de línea, negritas y listas).
++ */
++export function ProductDescription({ html }: { html: string }) {
++  const withBreaks = html.replace(/\n\n/g, '<br /><br />');
++  return <div className="pdp-description" dangerouslySetInnerHTML={{ __html: withBreaks }} />;
++}

@@ -1,0 +1,17 @@
+diff --git a/apps/web/src/pricing/format.ts b/apps/web/src/pricing/format.ts
+index 853d27a..9788774 100644
+--- a/apps/web/src/pricing/format.ts
++++ b/apps/web/src/pricing/format.ts
+@@ -1,4 +1,9 @@
+-const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
++/** Formateador de pesos mexicanos. Se crea una sola vez porque Intl.NumberFormat es costoso de construir. */
++const mxnFormatter = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+ 
+-/** Formatea centavos como pesos mexicanos: 150742 → "$1,507.42". Solo formato; no calcula impuestos. */
+-export const formatMXN = (cents: number) => mxn.format(cents / 100);
++/**
++ * Formatea centavos como pesos mexicanos: 150742 → "$1,507.42".
++ * Solo formato: no calcula impuestos ni redondea montos; eso lo hace el servidor.
++ * @param cents monto en centavos, tal como viene en `Money.amountCents`
++ */
++export const formatMXN = (cents: number) => mxnFormatter.format(cents / 100);

@@ -1,0 +1,45 @@
+diff --git a/apps/web/src/features/pdp/StockBadge.tsx b/apps/web/src/features/pdp/StockBadge.tsx
+index 1c5e1ed..d576c69 100644
+--- a/apps/web/src/features/pdp/StockBadge.tsx
++++ b/apps/web/src/features/pdp/StockBadge.tsx
+@@ -1,9 +1,10 @@
++import { stockLabel } from './stock';
++
+ /** Disponibilidad de la variante elegida. */
+ export function StockBadge({ stock }: { stock: number }) {
+-  const text = stock <= 0 ? 'Agotado en esta combinación' : stock <= 3 ? `Últimas ${stock} piezas` : 'Disponible';
+   return (
+     <p className={stock <= 0 ? 'pdp-stock is-out' : 'pdp-stock'} data-testid="stock" role="status" aria-live="polite">
+-      {text}
++      {stockLabel(stock)}
+     </p>
+   );
+ }
+diff --git a/apps/web/src/features/pdp/stock.ts b/apps/web/src/features/pdp/stock.ts
+new file mode 100644
+index 0000000..59ead3f
+--- /dev/null
++++ b/apps/web/src/features/pdp/stock.ts
+@@ -0,0 +1,6 @@
++/** Texto de disponibilidad para una variante. Función pura para poder probarla sin render. */
++export function stockLabel(stock: number): string {
++  if (stock <= 0) return 'Agotado en esta combinación';
++  if (stock <= 3) return `Últimas ${stock} piezas`;
++  return 'Disponible';
++}
+diff --git a/apps/web/test/stock.test.ts b/apps/web/test/stock.test.ts
+new file mode 100644
+index 0000000..610ae38
+--- /dev/null
++++ b/apps/web/test/stock.test.ts
+@@ -0,0 +1,10 @@
++import { describe, expect, it } from 'vitest';
++import { stockLabel } from '../src/features/pdp/stock';
++
++describe('stockLabel', () => {
++  it('agotado, últimas piezas y disponible', () => {
++    expect(stockLabel(0)).toBe('Agotado en esta combinación');
++    expect(stockLabel(2)).toBe('Últimas 2 piezas');
++    expect(stockLabel(9)).toBe('Disponible');
++  });
++});

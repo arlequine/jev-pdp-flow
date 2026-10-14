@@ -1,0 +1,8 @@
+{
+  "id": "d02",
+  "title": "El total se calcula en el cliente y se manda al carrito",
+  "pr_description": "Mandamos el precio unitario y el total ya calculados al carrito para que no tenga que recalcularlos. Mejora el tiempo de respuesta de POST /api/cart.",
+  "commit_message": "PDP-142.5: mandar el total al agregar al carrito",
+  "declared_subtask": "PDP-142.5",
+  "expected": { "jev": ["block"], "baseline": "approve" }
+}

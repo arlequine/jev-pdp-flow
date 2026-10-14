@@ -71,8 +71,11 @@ function subtaskInfo(id: string | null): Unit['declaredSubtask'] {
 function movedLines(f: FileDiff, siblings: FileDiff[]) {
   const addedElsewhere = new Map<string, string>();
   for (const s of siblings) if (s !== f) for (const l of s.added) if (l.trim().length > 8) addedElsewhere.set(l.trim(), s.file);
+  // Primero las líneas que importan para accesibilidad, que son las que más se confunden con "se borró".
+  const weight = (l: string) => (/\balt=|aria-|role=|<button|<label|htmlFor/.test(l) ? 0 : 1);
   return f.removed
     .filter((l) => addedElsewhere.has(l.trim()))
+    .sort((x, y) => weight(x) - weight(y))
     .slice(0, 30)
     .map((l) => ({ line: l.trim(), to: addedElsewhere.get(l.trim())! }));
 }
