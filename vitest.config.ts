@@ -26,7 +26,7 @@ export default defineConfig({
       {
         plugins: [react()],
         resolve: { alias },
-        test: { name: 'web', include: ['apps/web/test/**/*.test.tsx'], environment: 'jsdom', passWithNoTests: true },
+        test: { name: 'web', include: ['apps/web/test/**/*.test.{ts,tsx}'], environment: 'jsdom', passWithNoTests: true },
       },
     ],
   },
